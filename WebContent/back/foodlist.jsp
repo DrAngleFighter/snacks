@@ -13,7 +13,7 @@
                 <h3>食品管理 
                     <div class="amcl fr">
                         <input type="text" placeholder="食品名" class="fl" name="">
-                        <div class="search fl"><img src="images/search.png"></div>
+                        <div class="search fl"><img src="back/images/search.png"></div>
                     </div> 
                 </h3>
                 <div class="AM_ct text_center">
@@ -46,7 +46,6 @@
                       	</c:forEach>
                     	<script>
                     		function deleteCommodity(id){
-                    			alert(id);
                     			if (confirm("确认要删除吗？")){
                     				location.href="${pageContext.request.contextPath }/DeleteCommodityByIdServlet?commodity_id=" + id;
                     			}
