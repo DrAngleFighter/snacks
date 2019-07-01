@@ -11,6 +11,7 @@
 		<link href="css/dlstyle.css" rel="stylesheet" type="text/css">
 		<script src="js/jquery.min.js"></script>
 		<script src="js/amazeui.min.js"></script>
+		<script src="js/check.js"></script>
 
 	</head>
 
@@ -31,16 +32,17 @@
 
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-active">
-									<form method="post" action="UserRegisterServlet">
+									<form method="post" action="UserRegisterServlet" onsubmit="return check()">
 										
 							   <div class="user-email">
-							     <input type="text" name="username" id="email" placeholder="请输入邮箱账号">
+							     <input type="text" name="username" id="username" placeholder="请输入邮箱账号" onblur="checkExistName()">
+                 </div>	
+                 <font color ="red" id="usernameMsg"></font>									
+                 <div class="user-pass">
+                   <input type="password" name="password" id="userPassword" placeholder="设置密码">
                  </div>										
                  <div class="user-pass">
-                   <input type="password" name="password" id="password" placeholder="设置密码">
-                 </div>										
-                 <div class="user-pass">
-                   <input type="password" name="" id="passwordRepeat" placeholder="确认密码">
+                   <input type="password" name="" id="userPasswordRepeat" placeholder="确认密码">
                  </div>	
                  
                  
@@ -54,8 +56,9 @@
 											<input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
 										</div>
 
-								</div>
+
 				</form>
+
 								<div class="am-tab-panel">
 									<form method="post">
                  <div class="user-phone">

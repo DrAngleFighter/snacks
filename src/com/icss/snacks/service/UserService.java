@@ -50,4 +50,17 @@ public class UserService {
 		
 		return row;
 	}
+
+	public User checkName(String name) throws Exception {
+		User user = null;
+		try {
+			user = userDao.checkName(name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbFactory.closeConnection();
+		}
+		return user;
+	}
+
 }

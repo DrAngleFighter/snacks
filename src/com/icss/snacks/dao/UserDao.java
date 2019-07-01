@@ -213,7 +213,31 @@ public class UserDao {
 		ps.close();
 		return user;
 	}
-	
+
+	public User checkName(String name) throws Exception {
+		User user = null;
+		Connection connection = DbFactory.openConnection();
+		String sql = "SELECT * FROM tb_user WHERE username = ?";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setString(1, name);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			user = new User();
+			user.setUid(rs.getInt("uid"));
+			user.setAccount_id(rs.getInt("account_id"));
+			user.setEmail(rs.getString("email"));
+			user.setPassword(rs.getString("password"));
+			user.setPhone(rs.getString("phone"));
+			user.setRegtime(rs.getTimestamp("regtime"));
+			user.setGender(rs.getString("sex"));
+			user.setUsername(rs.getString("username"));
+		}
+		rs.close();
+		ps.close();
+		return user;
+	}
+
+
 	public static void main(String[] args) {
 		try {
 			User user = new UserDao().login("whn", "123456");
