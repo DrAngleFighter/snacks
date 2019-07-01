@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -68,7 +69,7 @@
 									});
 								});
 							</script>
-      <div class="tb-booth tb-pic tb-s310"> <a href="images/01.jpg"><img src="/img/${requestScope.commodity.img}" alt="细节展示放大镜特效" rel="images/01.jpg" class="jqzoom" /></a> </div>
+      <div class="tb-booth tb-pic tb-s310"> <a href="img/${commodity.img}.jpg"><img src="/img/${commodity.img}" alt="细节展示放大镜特效" rel="/img/${commodity.img}" class="jqzoom" /></a> </div>
       <ul class="tb-thumb" id="thumblist">
         <li class="tb-selected">
           <div class="tb-pic tb-s40"> <a href="#"><img src="images/01_small.jpg" mid="images/01_mid.jpg" big="images/01.jpg"></a> </div>
@@ -127,12 +128,12 @@
               <div class="theme-signin-left">
                 <div class="theme-options">
                   <div class="cart-title">口味</div>
-                  <ul>
-                    <li class="sku-line selected">原味<i></i></li>
-                    <li class="sku-line">奶油<i></i></li>
-                    <li class="sku-line">炭烧<i></i></li>
-                    <li class="sku-line">咸香<i></i></li>
-                  </ul>
+
+    				<ul>
+                 	  <c:forEach items="${requestScope.flavor}" var="flavor">
+       			    		<li class="sku-line">${flavor.fname}<i></i></li>
+				   		      </c:forEach>
+    				</ul>
                 </div>
                 <div class="theme-options">
                   <div class="cart-title number">数量</div>
@@ -206,16 +207,16 @@
         </div>
         <div class="clear"></div>
         <ul id="J_AttrUL">
-          <li title="">产品类型:&nbsp;${requestScope.commodity.commodityParam.type}</li>
-          <li title="">原料产地:&nbsp;${requestScope.commodity.commodityParam.product_area}</li>
-          <li title="">产地:&nbsp;${requestScope.commodity.commodityParam.product_place}</li>
-          <li title="">配料表:&nbsp;${requestScope.commodity.commodityParam.ingredients}</li>
-          <li title="">产品规格:&nbsp;${requestScope.commodity.commodityParam.product_specification}</li>
-          <li title="">保质期:&nbsp;${requestScope.commodity.commodityParam.expiration_date}</li>
+          <li title="">产品类型:&nbsp;${requestScope.commodity.commodityParam.type }</li>
+          <li title="">原料产地:&nbsp;${requestScope.commodity.commodityParam.product_area }</li>
+          <li title="">产地:&nbsp;${requestScope.commodity.commodityParam.product_place }</li>
+          <li title="">配料表:&nbsp;${requestScope.commodity.commodityParam.ingredients }</li>
+          <li title="">产品规格:&nbsp;${requestScope.commodity.commodityParam.product_specification }</li>
+          <li title="">保质期:&nbsp;${requestScope.commodity.commodityParam.expiration_date }</li>
           <li title="">产品标准号:&nbsp;${requestScope.commodity.commodityParam.standard_number}</li>
-          <li title="">生产许可证编号：&nbsp;${requestScope.commodity.commodityParam.license_number}</li>
-          <li title="">储存方法：&nbsp;${requestScope.commodity.commodityParam.storage_method} </li>
-          <li title="">食用方法：&nbsp;${requestScope.commodity.commodityParam.usage}</li>
+          <li title="">生产许可证编号：&nbsp;${requestScope.commodity.commodityParam.license_number }</li>
+          <li title="">储存方法：&nbsp;${requestScope.commodity.commodityParam.storage_method } </li>
+          <li title="">食用方法：&nbsp;${requestScope.commodity.commodityParam.usage }</li>
         </ul>
         <div class="clear"></div>
       </div>
@@ -223,7 +224,7 @@
         <div class="attr-list-hd after-market-hd">
           <h4>商品细节</h4>
         </div>
-        <div class="twlistNews"> <img src="images/tw1.jpg" /> </div>
+        <div class="twlistNews"> <img src="/img/${commodity.img}" /> </div>
       </div>
       <div class="clear"></div>
     </div>

@@ -171,6 +171,30 @@ public class FlavorDao {
 		return count;
 	}
 	
+
+	public List<Flavor> findFlavorListByCid(int cid) throws Exception {
+		List<Flavor> flavorList = new ArrayList<Flavor>();
+		// 1. 连接数据库
+		Connection connection = DbFactory.openConnection();
+		// 2. 编写SQL语句
+		String sql = "SELECT * FROM tb_flavor INNER JOIN tb_flavor_commodity ON tb_flavor.fid = tb_flavor_commodity.fid AND tb_flavor_commodity.commodity_id=?";
+		// 3. 创建执行SQL对象，添加到集合中
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, cid);
+		// 4. 执行SQL，返回结果集
+		ResultSet rs = ps.executeQuery();
+		// 5. 循环后去用户对象，添加到集合中
+		while (rs.next()) {
+			Flavor flavor = new Flavor();
+			flavor.setFid(rs.getInt("fid"));
+			flavor.setFname(rs.getString("fname"));
+			flavorList.add(flavor);
+		}
+		// 6. 释放资源
+		rs.close();
+		ps.close();
+		return flavorList;
+	}
 	
 public static void main (String[] args) throws Exception {
 		
