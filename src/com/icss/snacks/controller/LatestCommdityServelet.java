@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.icss.snacks.entity.Category;
 import com.icss.snacks.entity.Commodity;
+import com.icss.snacks.service.CategoryService;
 import com.icss.snacks.service.CommodityService;
 
 /**
@@ -42,17 +44,21 @@ public class LatestCommdityServelet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		CommodityService commodityService = new CommodityService();
-		List<Commodity> list = null;
+		List<Commodity> commodityList = null;
+		CategoryService categoryService = new CategoryService();
+		List<Category> categoryList = null;
 		
 		try {
-			list = commodityService.findLatestCommodityList();
+			commodityList = commodityService.findLatestCommodityList();
+			categoryList = categoryService.findAllCategory();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 			return;
 		} 
 		
-		request.setAttribute("commodityList", list);
+		request.setAttribute("commodityList", commodityList);
+		request.setAttribute("categoryList", categoryList);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}

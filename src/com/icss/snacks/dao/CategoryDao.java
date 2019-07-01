@@ -174,4 +174,31 @@ public class CategoryDao {
 		ps.close();
 		return count;
 	}
+
+	public List<Category> findByParentId(Integer parent_id) throws Exception {
+		List<Category> categoryList = new ArrayList<Category>();
+		// 1. 连接数据库
+		Connection connection = DbFactory.openConnection();
+		// 2. 编写SQL语句
+		String sql = "SELECT * FROM tb_category WHERE category_parentid = ?";
+		// 3. 创建执行SQL对象，添加到集合中
+		PreparedStatement ps = connection.prepareStatement(sql);
+		// 4. 设置占位符的值
+		ps.setInt(1, parent_id);
+		// 5. 执行SQL，返回结果集
+		ResultSet rs = ps.executeQuery();
+		// 6. 循环后去用户对象，添加到集合中
+		while (rs.next()) {
+			Category category = new Category();
+			category.setCategory_id(rs.getInt("category_id"));
+			category.setCategory_parentid(rs.getInt("category_parentid"));
+			category.setName(rs.getString("name"));
+			categoryList.add(category);
+		}
+		// 6. 释放资源
+		rs.close();
+		ps.close();
+		return categoryList;
+	}
+
 }
