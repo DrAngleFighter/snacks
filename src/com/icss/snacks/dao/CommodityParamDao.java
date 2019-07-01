@@ -14,10 +14,10 @@ import com.icss.snacks.util.DbFactory;
  *
  */
 public class CommodityParamDao {
-	public int Add(CommodityParam CommodityParam) throws Exception{
+	public int add(CommodityParam CommodityParam) throws Exception{
 		int row=0;
 		Connection connection = DbFactory.openConnection();
-		String sql = "insert into tb_CommodityParam(type,product_area,product_place,product_specification,expiration_date,`usage`,`storage _method`,`standard_ number`,`license_ number`) values(?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into tb_commodity_param(`type`,product_area,product_place,product_specification,expiration_date,`usage`,`storage _method`,`standard_ number`,`license_ number`, ingredients) values(?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ps.setString(1, CommodityParam.getType());
 		ps.setString(2, CommodityParam.getProduct_area());
@@ -28,6 +28,7 @@ public class CommodityParamDao {
 		ps.setString(7, CommodityParam.getStorage_method());
 		ps.setString(8, CommodityParam.getStandard_number());
 		ps.setString(9, CommodityParam.getLicense_number());
+		ps.setString(10, CommodityParam.getIngredients());
 		
 		row = ps.executeUpdate();
 		ps.close();
@@ -36,7 +37,7 @@ public class CommodityParamDao {
 	public int Update(CommodityParam CommodityParam) throws Exception{
 		int row = 0;
 		Connection connection = DbFactory.openConnection();
-		String sql = "update tb_CommodityParam set type = ?,product_area=?,product_place=?,product_specification=?,expiration_date=?,`usage`=?,`storage _method`=?,`standard_ number`=?,`license_ number`=? where param_id = ?";
+		String sql = "update tb_commodity_param set type = ?,product_area=?,product_place=?,product_specification=?,expiration_date=?,`usage`=?,`storage _method`=?,`standard_ number`=?,`license_ number`=?, ingredients=? where param_id = ?";
 		PreparedStatement ps = connection.prepareStatement(sql);
 		
 		ps.setString(1, CommodityParam.getType());
@@ -48,7 +49,9 @@ public class CommodityParamDao {
 		ps.setString(7, CommodityParam.getStorage_method());
 		ps.setString(8, CommodityParam.getStandard_number());
 		ps.setString(9, CommodityParam.getLicense_number());
-		ps.setInt(10, CommodityParam.getParam_id());
+		ps.setString(10, CommodityParam.getIngredients());
+		ps.setInt(11, CommodityParam.getParam_id());
+
 		
 		row = ps.executeUpdate();
 		ps.close();
@@ -59,7 +62,7 @@ public class CommodityParamDao {
 		//1.连接数据库
 		Connection connection = DbFactory.openConnection();
 		//2.编写sql语句  添加语句
-		String sql = "delete from tb_CommodityParam where param_id=?";
+		String sql = "delete from tb_commodity_param where param_id=?";
 		//3.创建执行sql的对象
 		PreparedStatement ps = connection.prepareStatement(sql);
 		//4.设置占位符的值
@@ -79,7 +82,7 @@ public class CommodityParamDao {
 		 //1.连接数据库
 		Connection connection = DbFactory.openConnection();
 		//2.编写sql语句  添加语句
-		String sql = "select * from tb_CommodityParam where param_id=?";
+		String sql = "select * from tb_commodity_param where param_id=?";
 		//3.创建执行sql的对象
 		PreparedStatement ps = connection.prepareStatement(sql);
 		//4.设置占位符的值
@@ -98,6 +101,7 @@ public class CommodityParamDao {
 			CommodityParam.setStorage_method(rs.getString("storage _method"));
 			CommodityParam.setStandard_number(rs.getString("standard_ number"));
 			CommodityParam.setLicense_number(rs.getString("license_ number"));
+			CommodityParam.setIngredients(rs.getString("ingredients"));
 		}
 		//6.释放资源
 		rs.close();
@@ -109,7 +113,7 @@ public class CommodityParamDao {
 		//1.连接数据库
 		Connection connection = DbFactory.openConnection();
 		//2.编写sql语句  添加语句
-		String sql = "select * from tb_CommodityParam";
+		String sql = "select * from tb_commodity_param";
 		//3.创建执行sql的对象
 		PreparedStatement ps = connection.prepareStatement(sql);
 		//4.执行sql，返回结果集
@@ -127,6 +131,7 @@ public class CommodityParamDao {
 			CommodityParam.setStorage_method(rs.getString("storage _method"));
 			CommodityParam.setStandard_number(rs.getString("standard_ number"));
 			CommodityParam.setLicense_number(rs.getString("license_ number"));
+			CommodityParam.setIngredients(rs.getString("ingredients"));
 			CommodityParamList.add(CommodityParam);
 		}
 		//6.释放资源
@@ -139,7 +144,7 @@ public class CommodityParamDao {
 		//1.连接数据库
 		Connection connection = DbFactory.openConnection();
 		//2.编写sql语句  添加语句
-		String sql = "select count(*) from tb_CommodityParam";
+		String sql = "select count(*) from tb_commodity_param";
 		//3.创建执行sql的对象
 		PreparedStatement ps = connection.prepareStatement(sql);
 		//4.执行sql，返回结果集
@@ -154,20 +159,20 @@ public class CommodityParamDao {
 		 return count;
 	 }
 	public static void main(String[] args) throws Exception{
-//		CommodityParam CommodityParam = new CommodityParam();
-//		CommodityParamDao CommodityParamDao = new CommodityParamDao();
-//		CommodityParam.setType("type");
-//		CommodityParam.setProduct_area("product_area");
-//		CommodityParam.setProduct_place("product_place");
-//		CommodityParam.setProduct_specification("product_specification");
-//		CommodityParam.setExpiration_date("expiration");
-//		CommodityParam.setUsage("usage");
-//		CommodityParam.setStorage_method("storage_method");
-//		CommodityParam.setStandard_number("standard_number");
-//		CommodityParam.setLicense_number("license_number");
-//		
-//		int row = CommodityParamDao.Add(CommodityParam);
-//		System.out.println(row);
+		CommodityParam CommodityParam = new CommodityParam();
+		CommodityParamDao CommodityParamDao = new CommodityParamDao();
+		CommodityParam.setType("type");
+		CommodityParam.setProduct_area("product_area");
+		CommodityParam.setProduct_place("product_place");
+		CommodityParam.setProduct_specification("product_specification");
+		CommodityParam.setExpiration_date("expiration");
+		CommodityParam.setUsage("usage");
+		CommodityParam.setStorage_method("storage_method");
+		CommodityParam.setStandard_number("standard_number");
+		CommodityParam.setLicense_number("license_number");
+		CommodityParam.setIngredients("原材料");
+		int row = CommodityParamDao.add(CommodityParam);
+		System.out.println(row);
 		
 //
 //		CommodityParam.setType("type");

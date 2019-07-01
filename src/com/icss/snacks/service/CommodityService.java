@@ -3,7 +3,9 @@ package com.icss.snacks.service;
 import java.util.List;
 
 import com.icss.snacks.dao.CommodityDao;
+import com.icss.snacks.dao.CommodityParamDao;
 import com.icss.snacks.entity.Commodity;
+import com.icss.snacks.entity.CommodityParam;
 import com.icss.snacks.util.DbFactory;
 import com.icss.snacks.util.PageUtil;
 
@@ -32,6 +34,8 @@ public class CommodityService {
 		Commodity commodity = null;
 		try {
 			commodity = commodityDao.findByCommodityid(cid);
+			CommodityParam commodityParam = new CommodityParamDao().findCommodityParamByCommodityParam_id(commodity.getParam_id()); //通过主键（commodity 外键）查询产品参数详情
+			commodity.setCommodityParam(commodityParam);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

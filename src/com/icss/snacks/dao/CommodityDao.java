@@ -27,7 +27,7 @@ public class CommodityDao {
 		// 1. 连接数据库
 		Connection connection = DbFactory.openConnection();
 		// 2. 编写SQL语句 添加语句 "INSERT "
-		String sql = "INSERT INTO tb_commodity(category_id, brand_id, cname, promotional_price, original_price, description, img, createtime) VALUE(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO tb_commodity(category_id, brand_id, cname, promotional_price, original_price, description, img, createtime, param_id) VALUE(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		// 3. 创建执行SQL对象
 		PreparedStatement ps = connection.prepareStatement(sql);
 		// 4. 设置占位符的值
@@ -39,6 +39,7 @@ public class CommodityDao {
 		ps.setString(6, commodity.getDescription());
 		ps.setString(7, commodity.getImg());
 		ps.setTimestamp(8, commodity.getCreatetime());
+		ps.setInt(9, commodity.getParam_id());
 		// 5. 执行SQL返回受影响的行数
 		row = ps.executeUpdate();
 		// 6. 释放资源
@@ -81,7 +82,7 @@ public class CommodityDao {
 		// 1. 连接数据库
 		Connection connection = DbFactory.openConnection();
 		// 2. 编写SQL语句
-		String sql = "UPDATE tb_commodity SET category_id = ?, brand_id = ?, cname = ?, promotional_price = ?, original_price = ?, description = ?, img = ?, createtime = ? WHERE commodity_id = ?";
+		String sql = "UPDATE tb_commodity SET category_id = ?, brand_id = ?, cname = ?, promotional_price = ?, original_price = ?, description = ?, img = ?, createtime = ?, param_id = ? WHERE commodity_id = ?";
 		// 3. 创建执行SQL对象
 		PreparedStatement ps = connection.prepareStatement(sql);
 		// 4. 设置占位符的值
@@ -93,7 +94,9 @@ public class CommodityDao {
 		ps.setString(6, commodity.getDescription());
 		ps.setString(7, commodity.getImg());
 		ps.setTimestamp(8, commodity.getCreatetime());
-		ps.setInt(9, commodity.getCommodity_id());
+		ps.setInt(9, commodity.getParam_id());
+		ps.setInt(10, commodity.getCommodity_id());
+
 		// 5. 执行SQL返回受影响的行数
 		row = ps.executeUpdate();
 		// 6. 释放资源
@@ -131,6 +134,7 @@ public class CommodityDao {
 			commodity.setDescription(rs.getString("description"));
 			commodity.setImg(rs.getString("img"));
 			commodity.setCreatetime(rs.getTimestamp("createtime"));
+			commodity.setParam_id(rs.getInt("param_id"));
 		}
 		// 7. 释放资源
 		rs.close();
@@ -166,6 +170,7 @@ public class CommodityDao {
 			commodity.setDescription(rs.getString("description"));
 			commodity.setImg(rs.getString("img"));
 			commodity.setCreatetime(rs.getTimestamp("createtime"));
+			commodity.setParam_id(rs.getInt("param_id"));
 			commodityList.add(commodity);
 		}
 		// 6. 释放资源

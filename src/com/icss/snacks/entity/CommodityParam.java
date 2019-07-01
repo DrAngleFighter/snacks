@@ -17,8 +17,14 @@ public class CommodityParam {
 	private String storage_method;
 	private String standard_number;
 	private String license_number;
-	
-	
+	private String ingredients;
+
+	public String getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
+	}
 	public Integer getParam_id() {
 		return param_id;
 	}
@@ -79,12 +85,21 @@ public class CommodityParam {
 	public void setLicense_number(String license_number) {
 		this.license_number = license_number;
 	}
+
 	@Override
 	public String toString() {
-		return "CommodityParam [param_id=" + param_id + ", type=" + type + ", product_area=" + product_area
-				+ ", product_place=" + product_place + ", product_specification=" + product_specification
-				+ ", expiration_date=" + expiration_date + ", usage=" + usage + ", storage_method=" + storage_method
-				+ ", standard_number=" + standard_number + "]";
+		return "CommodityParam{" +
+				"param_id=" + param_id +
+				", type='" + type + '\'' +
+				", product_area='" + product_area + '\'' +
+				", product_place='" + product_place + '\'' +
+				", product_specification='" + product_specification + '\'' +
+				", expiration_date='" + expiration_date + '\'' +
+				", usage='" + usage + '\'' +
+				", storage_method='" + storage_method + '\'' +
+				", standard_number='" + standard_number + '\'' +
+				", license_number='" + license_number + '\'' +
+				", ingredients='" + ingredients + '\'' +
+				'}';
 	}
-	
 }

@@ -206,16 +206,16 @@
         </div>
         <div class="clear"></div>
         <ul id="J_AttrUL">
-          <li title="">产品类型:&nbsp;烘炒类</li>
-          <li title="">原料产地:&nbsp;巴基斯坦</li>
-          <li title="">产地:&nbsp;湖北省武汉市</li>
-          <li title="">配料表:&nbsp;进口松子、食用盐</li>
-          <li title="">产品规格:&nbsp;210g</li>
-          <li title="">保质期:&nbsp;180天</li>
-          <li title="">产品标准号:&nbsp;GB/T 22165</li>
-          <li title="">生产许可证编号：&nbsp;QS4201 1801 0226</li>
-          <li title="">储存方法：&nbsp;请放置于常温、阴凉、通风、干燥处保存 </li>
-          <li title="">食用方法：&nbsp;开袋去壳即食</li>
+          <li title="">产品类型:&nbsp;${requestScope.commodity.commodityParam.type}</li>
+          <li title="">原料产地:&nbsp;${requestScope.commodity.commodityParam.product_area}</li>
+          <li title="">产地:&nbsp;${requestScope.commodity.commodityParam.product_place}</li>
+          <li title="">配料表:&nbsp;${requestScope.commodity.commodityParam.ingredients}</li>
+          <li title="">产品规格:&nbsp;${requestScope.commodity.commodityParam.product_specification}</li>
+          <li title="">保质期:&nbsp;${requestScope.commodity.commodityParam.expiration_date}</li>
+          <li title="">产品标准号:&nbsp;${requestScope.commodity.commodityParam.standard_number}</li>
+          <li title="">生产许可证编号：&nbsp;${requestScope.commodity.commodityParam.license_number}</li>
+          <li title="">储存方法：&nbsp;${requestScope.commodity.commodityParam.storage_method} </li>
+          <li title="">食用方法：&nbsp;${requestScope.commodity.commodityParam.usage}</li>
         </ul>
         <div class="clear"></div>
       </div>
