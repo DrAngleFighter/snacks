@@ -18,8 +18,5 @@
 		<br>
 		<input type="submit" value="上传"><br>
 	</form>
-	
-	<!-- 显示本地磁盘上上传的图片 -->
-	<img  src="/img/sp01.jpg">
 </body>
 </html>

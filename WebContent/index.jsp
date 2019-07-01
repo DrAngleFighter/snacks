@@ -470,7 +470,7 @@
 								<li>
 									<div class="list ">
 										<a href="FindCommodityServlet?commodity_id=${commodity.commodity_id}">
-											<img src="images/${commodity.img} " />
+											<img src="/img/${commodity.img}"/>
 											<div class="pro-title ">${commodity.cname}</div>
 											<span class="e-price ">${commodity.promotional_price}</span>
 										</a>

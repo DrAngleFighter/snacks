@@ -68,7 +68,7 @@
 									});
 								});
 							</script>
-      <div class="tb-booth tb-pic tb-s310"> <a href="images/01.jpg"><img src="images/${requestScope.commodity.img}" alt="细节展示放大镜特效" rel="images/01.jpg" class="jqzoom" /></a> </div>
+      <div class="tb-booth tb-pic tb-s310"> <a href="images/01.jpg"><img src="/img/${requestScope.commodity.img}" alt="细节展示放大镜特效" rel="images/01.jpg" class="jqzoom" /></a> </div>
       <ul class="tb-thumb" id="thumblist">
         <li class="tb-selected">
           <div class="tb-pic tb-s40"> <a href="#"><img src="images/01_small.jpg" mid="images/01_mid.jpg" big="images/01.jpg"></a> </div>
