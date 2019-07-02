@@ -180,7 +180,7 @@
 		var quantity = $("#text_box").val(); // 数量 
 		// 口味编号
 		var fid = $("#flavor_id").val();
-		alert("商品编号"+cid+"；数量"+quantity+";口味编号："+fid);
+		location.href="AddCartServlet?quantity=" + quantity + "&fid=" + fid +"&cid=" + cid;
 	}
 	function getFid(fid) {
 		$("#flavor_id").val(fid);
