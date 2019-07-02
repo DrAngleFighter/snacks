@@ -30,7 +30,7 @@
       <div class="menu-hd MyShangcheng"><a href="person/index.jsp" target="_top">个人中心</a></div>
     </div>
     <div class="topMessage mini-cart">
-      <div class="menu-hd"><a id="mc-menu-hd" href="shopcart.jsp" target="_top"><span>购物车</span></a></div>
+      <div class="menu-hd"><a id="mc-menu-hd" href="FindCartByUidServlet" target="_top"><span>购物车</span></a></div>
     </div>
 
     </div>

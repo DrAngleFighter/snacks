@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.icss.snacks.entity.CartVo;
+import com.icss.snacks.entity.Address;
 import com.icss.snacks.entity.User;
-import com.icss.snacks.service.CartService;
+import com.icss.snacks.service.AddressService;
 
 /**
- * Servlet implementation class FindCartByUidServlet
+ * Servlet implementation class PayServlet
  */
-@WebServlet("/FindCartByUidServlet")
-public class FindCartByUidServlet extends HttpServlet {
+@WebServlet("/PayServlet")
+public class PayServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindCartByUidServlet() {
+    public PayServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,21 +39,20 @@ public class FindCartByUidServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// 接受页面传递的参数
 		User user = (User) request.getSession().getAttribute("user");
-		
-		CartService cartService = new CartService();
-		List<CartVo> list = null;
-		
+		List<Address> list = null;
+		//调用业务层方法进行处理
+		AddressService addressService = new AddressService();
 		try {
-			list = cartService.findCartListByUid(user.getUid());
+			list = addressService.findAddressByUid(user.getUid());
 		} catch (Exception e) {
 			request.getRequestDispatcher("error.jsp").forward(request, response);
+			return;
 		}
-		
-		// 根据结果处理视图
-		request.setAttribute("cartVoList", list);
-		request.getRequestDispatcher("shopcart.jsp").forward(request, response);
+		//根据处理结果跳转页面
+		request.setAttribute("addressList", list);
+		request.getRequestDispatcher("pay.jsp").forward(request, response);
 	}
 
 }

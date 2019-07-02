@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,96 +33,55 @@
 						<ul>
 							<div class="per-border"></div>
 							
-							
-							<li class="user-addresslist defaultAddr">
-
-								<div class="address-left">
-									<div class="user DefaultAddr">
-
-										<span class="buy-address-detail">   
-                   <span class="buy-user">艾迪 </span>
-										<span class="buy-phone">15888888888</span>
-										</span>
-									</div>
-									<div class="default-address DefaultAddr">
-										<span class="buy-line-title buy-line-title-type">收货地址：</span>
-										<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">洪山</span>区
-										<span class="street">雄楚大道666号(中南财经政法大学)</span>
-										</span>
-
-										</span>
-									</div>
-									<div class="default-address DefaultAddr">
-										<span class="buy-line-title buy-line-title-type">邮编：</span>
-										<span class="buy--address-detail">
-											102200
-										</span>
-									</div>
-									<ins class="deftip">默认地址</ins>
-								</div>
-								<div class="address-right">
-									<a href="person/address.jsp">
-										<span class="am-icon-angle-right am-icon-lg"></span></a>
-								</div>
-								<div class="clear"></div>
-
-								<div class="new-addr-btn">
-									<a href="#" class="hidden">设为默认</a>
-									<span class="new-addr-bar hidden">|</span>
-									<a href="#">编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
-								</div>
-
-							</li>
+							<c:forEach items="${requestScope.addressList}" var="address">
+								<c:if test="${address.state==1}">
+									<li class="user-addresslist defaultAddr">
+								</c:if>
+								<c:if test="${address.state==0}">
+									<li class="user-addresslist">
+								</c:if>
+									<div class="address-left">
+										<div class="user DefaultAddr">
 	
-    <li class="user-addresslist ">
-
-								<div class="address-left">
-									<div class="user DefaultAddr">
-
-										<span class="buy-address-detail">   
-                   <span class="buy-user">艾迪 </span>
-										<span class="buy-phone">15888888888</span>
-										</span>
-									</div>
-									<div class="default-address DefaultAddr">
-										<span class="buy-line-title buy-line-title-type">收货地址：</span>
-										<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">洪山</span>区
-										<span class="street">雄楚大道666号(中南财经政法大学)</span>
-										</span>
-
-										</span>
-									</div>
-									<div class="default-address DefaultAddr">
-										<span class="buy-line-title buy-line-title-type">邮编：</span>
-										<span class="buy--address-detail">
-											102200
-										</span>
-									</div>
-									<ins class="deftip">默认地址</ins>
-								</div>
-								<div class="address-right">
-									<a href="person/address.jsp">
-										<span class="am-icon-angle-right am-icon-lg"></span></a>
-								</div>
-								<div class="clear"></div>
-
-								<div class="new-addr-btn">
-									<a href="#" class="hidden">设为默认</a>
-									<span class="new-addr-bar hidden">|</span>
-									<a href="#">编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
-								</div>
-
-							</li>						
+											<span class="buy-address-detail">   
+	                   						<span class="buy-user">${address.name}</span>
+											<span class="buy-phone">${address.phone}</span>
+											</span>
+										</div>
+										<div class="default-address DefaultAddr">
+											<span class="buy-line-title buy-line-title-type">收货地址：</span>
+											<span class="buy--address-detail">
+									   		<span class="province">
+									   			${address.full_address}
+									   		</span>
+											</span>
+	
+											</span>
+										</div>
+										<div class="default-address DefaultAddr">
+											<span class="buy-line-title buy-line-title-type">邮编：</span>
+											<span class="buy--address-detail">
+												${address.zip_code}
+											</span>
+										</div>
+										<ins class="deftip">默认地址</ins>
+										</div>
+										<div class="address-right">
+											<a href="person/address.jsp">
+												<span class="am-icon-angle-right am-icon-lg"></span></a>
+										</div>
+										<div class="clear"></div>
+		
+										<div class="new-addr-btn">
+											<a href="#" class="hidden">设为默认</a>
+											<span class="new-addr-bar hidden">|</span>
+											<a href="#">编辑</a>
+											<span class="new-addr-bar">|</span>
+											<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
+										</div>
+	
+									</li>
+							</c:forEach>
 							
 							<div class="per-border"></div>
 							

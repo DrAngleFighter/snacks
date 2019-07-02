@@ -151,7 +151,7 @@
 							<strong class="price">¥<em id="J_Total">0.00</em></strong>
 						</div>
 						<div class="btn-area">
-							<a href="pay.jsp" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
+							<a href="PayServlet" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
 								<span>结&nbsp;算</span></a>
 						</div>
 					</div>
