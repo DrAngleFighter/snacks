@@ -15,6 +15,7 @@ import com.icss.snacks.util.DbFactory;
  *
  */
 public class AddressDao {
+	
 	public Integer Add(Address address) throws Exception{
 		Integer row=0;
 		Connection connection = DbFactory.openConnection();
@@ -30,6 +31,8 @@ public class AddressDao {
 		ps.close();
 		return row;
 	}
+	
+	
 	public Integer Update(Address address) throws Exception{
 		Integer row = 0;
 		Connection connection = DbFactory.openConnection();
@@ -48,6 +51,8 @@ public class AddressDao {
 		ps.close();
 		return row;
 	}
+	
+	
 	public Integer Delete(Integer address_id) throws Exception{
 		Integer row = 0;
 		//1.连接数据库
@@ -65,6 +70,8 @@ public class AddressDao {
 		ps.close();
 		return row;
 	}
+	
+	
 	public Address findAddressByAddress_id(Integer address_id) throws Exception{
 		 /**
 		  * 查询用户详情
@@ -86,7 +93,7 @@ public class AddressDao {
 			address.setUid(rs.getInt("uid"));
 			address.setFull_address(rs.getString("full_address"));
 			address.setPhone(rs.getString("phone"));
-			address.setZip_code(rs.getString("Zip_code"));
+			address.setZip_code(rs.getString("zip_code"));
 			address.setName(rs.getString("name"));
 			address.setState(rs.getInt("state"));
 		}
@@ -95,6 +102,8 @@ public class AddressDao {
 		ps.close();
 		return address;
 	 }
+	
+	
 	public List<Address> findAllAddressList() throws Exception{
 		 List<Address> addressList = new ArrayList<Address>();
 		//1.连接数据库
@@ -111,7 +120,7 @@ public class AddressDao {
 			address.setUid(rs.getInt("uid"));
 			address.setFull_address(rs.getString("full_address"));
 			address.setPhone(rs.getString("phone"));
-			address.setZip_code(rs.getString("Zip_code"));
+			address.setZip_code(rs.getString("zip_code"));
 			address.setName(rs.getString("name"));
 			address.setState(rs.getInt("state"));
 			
@@ -123,6 +132,8 @@ public class AddressDao {
 		ps.close();
 		return addressList;
 	 }
+	
+	
 	public Integer findAddressCount() throws Exception{
 		 Integer count = 0;
 		//1.连接数据库
@@ -142,6 +153,38 @@ public class AddressDao {
 		ps.close();
 		 return count;
 	 }
+	
+	
+	public List<Address> findAddressByUid(Integer uid) throws Exception{
+		List<Address> list = new ArrayList<Address>();
+		//1.连接数据库
+		Connection connection = DbFactory.openConnection();
+		//2.编写sql语句  添加语句
+		String sql = "select * from tb_address where uid=?";
+		//3.创建执行sql的对象
+		PreparedStatement ps = connection.prepareStatement(sql);
+		//4.设置占位符的值
+		ps.setInt(1, uid);
+		//5.执行sql，返回结果集
+		ResultSet rs = ps.executeQuery();
+		//6.将结果集中数据提取到对象的属性中
+		while(rs.next()) {
+			Address address = new Address();
+			address.setUid(rs.getInt("uid"));
+			address.setFull_address(rs.getString("full_address"));
+			address.setPhone(rs.getString("phone"));
+			address.setZip_code(rs.getString("zip_code"));
+			address.setName(rs.getString("name"));
+			address.setState(rs.getInt("state"));
+			list.add(address);
+		}
+		//6.释放资源
+		rs.close();
+		ps.close();
+		return list;
+	 }
+	
+	
 	public static void main(String[] args) throws Exception{
 //		Address address = new Address();
 //		AddressDao addressDao = new AddressDao();

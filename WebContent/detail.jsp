@@ -130,9 +130,9 @@
                   <div class="cart-title">口味</div>
 
     				<ul>
-                 	  <c:forEach items="${requestScope.flavor}" var="flavor">
-       			    		<li class="sku-line">${flavor.fname}<i></i></li>
-				   		      </c:forEach>
+                 	  	<c:forEach items="${requestScope.flavor}" var="flavor">
+       			    		<li class="sku-line" onclick="getFid(${flavor.fid})">${flavor.fname}<i></i></li>
+				   		</c:forEach>
     				</ul>
                 </div>
                 <div class="theme-options">
@@ -168,13 +168,27 @@
         <div class="clearfix tb-btn tb-btn-buy theme-login"> <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="pay.jsp">立即购买</a> </div>
       </li>
       <li>
-        <div class="clearfix tb-btn tb-btn-basket theme-login"> <a id="LikBasket" title="加入购物车" href="shopcart.jsp"><i></i>加入购物车</a> </div>
+        <div class="clearfix tb-btn tb-btn-basket theme-login"> <a id="LikBasket" title="加入购物车" href="javascript:addCart(${requestScope.commodity.commodity_id })"><i></i>加入购物车</a> </div>
       </li>
     </div>
   </div>
   <div class="clear"></div>
 </div>
+<script type="text/javascript">
+	function addCart(cid) {
+		// 商品编号 cid
+		var quantity = $("#text_box").val(); // 数量 
+		// 口味编号
+		var fid = $("#flavor_id").val();
+		location.href="AddCartServlet?quantity=" + quantity + "&fid=" + fid +"&cid=" + cid;
+	}
+	function getFid(fid) {
+		$("#flavor_id").val(fid);
+	}
 
+</script>
+
+<input type="hidden" id="flavor_id" value="0"></input>
 
 <!-- introduce-->
 

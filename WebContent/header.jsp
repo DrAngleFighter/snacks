@@ -24,13 +24,13 @@
   </ul>
   <ul class="message-r">
     <div class="topMessage home">
-      <div class="menu-hd"><a href="index.jsp" target="_top" class="h">商城首页</a></div>
+      <div class="menu-hd"><a href="LatestCommdityServlet" target="_top" class="h">商城首页</a></div>
     </div>
     <div class="topMessage my-shangcheng">
       <div class="menu-hd MyShangcheng"><a href="person/index.jsp" target="_top">个人中心</a></div>
     </div>
     <div class="topMessage mini-cart">
-      <div class="menu-hd"><a id="mc-menu-hd" href="shopcart.jsp" target="_top"><span>购物车</span></a></div>
+      <div class="menu-hd"><a id="mc-menu-hd" href="FindCartByUidServlet" target="_top"><span>购物车</span></a></div>
     </div>
 
     </div>
@@ -42,7 +42,7 @@
     <li><img src="images/logobig1.png" /></li>
   </div>
   <div class="search-bar pr">
-    <form action="search.jsp">
+    <form action="search.jsp" target="_top" method="post">
       <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
       <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
     </form>

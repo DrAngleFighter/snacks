@@ -9,22 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.icss.snacks.entity.Category;
-import com.icss.snacks.entity.Commodity;
-import com.icss.snacks.service.CategoryService;
-import com.icss.snacks.service.CommodityService;
+import com.icss.snacks.entity.CartVo;
+import com.icss.snacks.entity.User;
+import com.icss.snacks.service.CartService;
 
 /**
- * Servlet implementation class LatestCommdityServelet
+ * Servlet implementation class FindCartByUidServlet
  */
-@WebServlet("/LatestCommdityServelet")
-public class LatestCommdityServelet extends HttpServlet {
+@WebServlet("/FindCartByUidServlet")
+public class FindCartByUidServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LatestCommdityServelet() {
+    public FindCartByUidServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +32,6 @@ public class LatestCommdityServelet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
@@ -41,26 +39,21 @@ public class LatestCommdityServelet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		CommodityService commodityService = new CommodityService();
-		List<Commodity> commodityList = null;
-		CategoryService categoryService = new CategoryService();
-		List<Category> categoryList = null;
+		User user = (User) request.getSession().getAttribute("user");
+		
+		CartService cartService = new CartService();
+		List<CartVo> list = null;
 		
 		try {
-			commodityList = commodityService.findLatestCommodityList();
-			categoryList = categoryService.findAllCategory();
+			list = cartService.findCartListByUid(user.getUid());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			request.getRequestDispatcher("error.jsp").forward(request, response);
-			return;
-		} 
+		}
 		
-		request.setAttribute("commodityList", commodityList);
-		request.setAttribute("categoryList", categoryList);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-		
+		// 根据结果处理视图
+		request.setAttribute("cartVoList", list);
+		request.getRequestDispatcher("shopcart.jsp").forward(request, response);
 	}
 
 }

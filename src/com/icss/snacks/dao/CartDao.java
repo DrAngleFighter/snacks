@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.icss.snacks.entity.Cart;
+import com.icss.snacks.entity.CartVo;
 import com.icss.snacks.util.DbFactory;
 
 /**
@@ -90,6 +91,21 @@ public class CartDao {
 		// 5. 执行SQL返回受影响的行数
 		row = ps.executeUpdate();
 		// 6. 释放资源
+		ps.close();
+		return row;
+	}
+	
+	
+	public Integer updateQuantity(Cart cart) throws Exception {
+		Integer row = 0;
+		Connection connection = DbFactory.openConnection();
+		String sql = "UPDATE tb_cart SET quantity = quantity+? WHERE fid = ? and commodity_id = ? and uid = ?";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, cart.getQuantity());
+		ps.setInt(2, cart.getFid());
+		ps.setInt(3, cart.getCommodity_id());
+		ps.setInt(4, cart.getUid());
+		row = ps.executeUpdate();
 		ps.close();
 		return row;
 	}
@@ -185,13 +201,63 @@ public class CartDao {
 		return count;
 	}
 	
-	public static void main (String[] args) throws Exception {
-		Cart cart = new Cart();
-		cart.setFid(12);
-		cart.setCommodity_id(15);
-		cart.setQuantity(134);
-		cart.setUid(1);
-		System.out.println(new CartDao().add(cart));
+	
+	public List<CartVo> findCartListByUid(Integer uid) throws Exception {
+		List<CartVo> cartVoList = new ArrayList<CartVo>();
+		// 1. 连接数据库
+		Connection connection = DbFactory.openConnection();
+		// 2. 编写SQL语句
+		String sql = "SELECT c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " + 
+					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " + 
+					"INNER JOIN tb_flavor f ON f.fid = cart.fid " + 
+					"WHERE cart.uid = ?";
+		// 3. 创建执行SQL对象，添加到集合中
+		PreparedStatement ps = connection.prepareStatement(sql);
+		// 4. 设置占位符的值
+		ps.setInt(1, uid);
+		// 5. 执行SQL，返回结果集
+		ResultSet rs = ps.executeQuery();
+		// 6. 循环后去用户对象，添加到集合中
+		while (rs.next()) {
+			CartVo cartVo = new CartVo();
+			cartVo.setCname(rs.getString("cname"));
+			cartVo.setFname(rs.getString("fname"));
+			cartVo.setQuantity(rs.getInt("quantity"));
+			cartVo.setImg(rs.getString("img"));
+			cartVo.setPromotional_price(rs.getDouble("promotional_price"));
+			cartVoList.add(cartVo);
+		}
+		// 7. 释放资源
+		rs.close();
+		ps.close();
+		return cartVoList;
 	}
 	
+	
+	public Integer findQuantity(Cart cart) throws Exception {
+		Integer count = 0;		
+		Connection connection = DbFactory.openConnection();
+		String sql = "select COUNT(*) from tb_cart cart where uid = ? and fid = ? and commodity_id = ?";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, cart.getUid());
+		ps.setInt(2, cart.getFid());
+		ps.setInt(3, cart.getCommodity_id());
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			count = rs.getInt(1);
+		}
+		rs.close();
+		ps.close();
+		return count;
+	}
+	
+//	public static void main (String[] args) throws Exception {
+//		Cart cart = new Cart();
+//		cart.setFid(12);
+//		cart.setCommodity_id(15);
+//		cart.setQuantity(134);
+//		cart.setUid(1);
+//		System.out.println(new CartDao().add(cart));
+//	}
+//	
 }

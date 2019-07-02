@@ -46,7 +46,7 @@
 								<div class="am-cf">
 									<input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm">
 								</div>
-<div align="right"><a href="register.jsp" style="font-size:13px;">还没有账号，注册一个</a></div>
+<div align="right"><a href="UserRegisterServlet" style="font-size:13px;">还没有账号，注册一个</a></div>
          
 				</div>
                 </form>

@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,6 +59,7 @@
 							</div>
 							<div class="clear"></div>
 							<div class="bundle-main">
+							<c:forEach items="${requestScope.cartVoList }" var="cartVo">								
 								<ul class="item-content clearfix">
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
@@ -67,75 +69,16 @@
 									</li>
 									<li class="td td-item">
 										<div class="item-pic">
-											<a href="detail.jsp" target="_blank" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="images/02.jpg" width="80" height="80" class="itempic J_ItemImg"></a>
-										</div>
-										<div class="item-info">
-											<div class="item-basic-info">
-												<a href="detail.jsp" target="_blank" class="item-title J_MakePoint" data-point="tbcart.8.11">良品铺子 手剥松子218g 坚果炒货 巴西松子</a>
-											</div>
-										
-											<div class="item-props">
-												<span class="sku-line">口味：原味</span>
-											</div>
-											
-										</div>
-									</li>
-									<li class="td td-price">
-										<div class="item-price price-promo-promo">
-											<div class="price-content">
-												<div class="price-line">
-													<em class="price-original">78.00</em>
-												</div>
-												<div class="price-line">
-													<em class="J_Price price-now" tabindex="0">39.00</em>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="td td-amount">
-										<div class="amount-wrapper ">
-											<div class="item-amount ">
-												<div class="sl">
-													<input class="min am-btn" name="" type="button" value="-" />
-													<input class="text_box" name="" type="text" value="3" style="width:30px;" />
-													<input class="add am-btn" name="" type="button" value="+" />
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="td td-sum">
-										<div class="td-inner">
-											<em tabindex="0" class="J_ItemSum number">117.00</em>
-										</div>
-									</li>
-									<li class="td td-op">
-										<div class="td-inner">
-											<a href="javascript:;" data-point-url="#" class="delete">
-                  删除</a>
-										</div>
-									</li>
-								</ul>
-								
-	<ul class="item-content clearfix">
-									<li class="td td-chk">
-										<div class="cart-checkbox ">
-											<input class="check" id="J_CheckBox_170037950254" name="items[]" value="170037950254" type="checkbox">
-											
-										</div>
-									</li>
-									<li class="td td-item">
-										<div class="item-pic">
 											<a href="#" target="_blank" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="images/02.jpg" width="80" height="80"  class="itempic J_ItemImg"></a>
+												<img src="/img/${cartVo.img }" width="80" height="80"  class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
-												<a href="#" target="_blank" class="item-title J_MakePoint" data-point="tbcart.8.11">良品铺子 手剥松子218g 坚果炒货 巴西松子</a>
+												<a href="#" target="_blank" class="item-title J_MakePoint" data-point="tbcart.8.11">${cartVo.cname }</a>
 											</div>
 										
 											<div class="item-props">
-												<span class="sku-line">口味：辛辣</span>
+												<span class="sku-line">${cartVo.fname }</span>
 											</div>
 											
 										</div>
@@ -147,7 +90,7 @@
 													<em class="price-original">78.00</em>
 												</div>
 												<div class="price-line">
-													<em class="J_Price price-now" tabindex="0">39.00</em>
+													<em class="J_Price price-now" tabindex="0">${cartVo.promotional_price }</em>
 												</div>
 											</div>
 										</div>
@@ -157,7 +100,7 @@
 											<div class="item-amount ">
 												<div class="sl">
 													<input class="min am-btn" name="" type="button" value="-" />
-													<input class="text_box" name="" type="text" value="3" style="width:30px;" />
+													<input class="text_box" name="" type="text" value="${cartVo.quantity }" style="width:30px;" />
 													<input class="add am-btn" name="" type="button" value="+" />
 												</div>
 											</div>
@@ -165,7 +108,7 @@
 									</li>
 									<li class="td td-sum">
 										<div class="td-inner">
-											<em tabindex="0" class="J_ItemSum number">117.00</em>
+											<em tabindex="0" class="J_ItemSum number">${cartVo.quantity*cartVo.promotional_price }</em>
 										</div>
 									</li>
 									<li class="td td-op">
@@ -174,7 +117,8 @@
                   删除</a>
 										</div>
 									</li>
-								</ul>							
+								</ul>	
+							</c:forEach>						
 							</div>
 						</div>
 					</tr>
@@ -207,7 +151,7 @@
 							<strong class="price">¥<em id="J_Total">0.00</em></strong>
 						</div>
 						<div class="btn-area">
-							<a href="pay.jsp" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
+							<a href="PayServlet" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
 								<span>结&nbsp;算</span></a>
 						</div>
 					</div>
