@@ -12,20 +12,30 @@ public class CartService {
 	private CartDao cartDao = new CartDao();
 	
 	public Integer addCart(Cart cart) throws Exception {
-		Integer row = 0;
-		
-		try {
-			row = cartDao.add(cart);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			DbFactory.closeConnection();
+		int row=0;
+		if(cartDao.findQuantity(cart) >= 1) {
+			try {
+				row = cartDao.updateQuantity(cart);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				DbFactory.closeConnection();
+			}
+			return row;
+		}else {
+			try {
+				row = cartDao.add(cart);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				DbFactory.closeConnection();
+			}
+			return row;
 		}
-		
-		return row;
 	}
-	
+
 	
 	public List<CartVo> findCartListByUid(Integer uid) throws Exception {
 		

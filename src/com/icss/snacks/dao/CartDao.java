@@ -96,6 +96,21 @@ public class CartDao {
 	}
 	
 	
+	public Integer updateQuantity(Cart cart) throws Exception {
+		Integer row = 0;
+		Connection connection = DbFactory.openConnection();
+		String sql = "UPDATE tb_cart SET quantity = quantity+? WHERE fid = ? and commodity_id = ? and uid = ?";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, cart.getQuantity());
+		ps.setInt(2, cart.getFid());
+		ps.setInt(3, cart.getCommodity_id());
+		ps.setInt(4, cart.getUid());
+		row = ps.executeUpdate();
+		ps.close();
+		return row;
+	}
+	
+	
 	/**
 	 * 
 	 * @param cart_id
@@ -218,6 +233,23 @@ public class CartDao {
 		return cartVoList;
 	}
 	
+	
+	public Integer findQuantity(Cart cart) throws Exception {
+		Integer count = 0;		
+		Connection connection = DbFactory.openConnection();
+		String sql = "select COUNT(*) from tb_cart cart where uid = ? and fid = ? and commodity_id = ?";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, cart.getUid());
+		ps.setInt(2, cart.getFid());
+		ps.setInt(3, cart.getCommodity_id());
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			count = rs.getInt(1);
+		}
+		rs.close();
+		ps.close();
+		return count;
+	}
 	
 //	public static void main (String[] args) throws Exception {
 //		Cart cart = new Cart();
