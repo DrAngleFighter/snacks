@@ -15,16 +15,16 @@ import com.icss.snacks.service.CategoryService;
 import com.icss.snacks.service.CommodityService;
 
 /**
- * Servlet implementation class LatestCommdityServelet
+ * Servlet implementation class LatestCommdityServlet
  */
-@WebServlet("/LatestCommdityServelet")
-public class LatestCommdityServelet extends HttpServlet {
+@WebServlet("/LatestCommdityServlet")
+public class LatestCommdityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LatestCommdityServelet() {
+    public LatestCommdityServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

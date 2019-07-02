@@ -60,7 +60,7 @@ public class UserLoginServlet extends HttpServlet {
 			request.getRequestDispatcher("back/index.jsp").forward(request, response);
 		} else {
 			request.getSession().setAttribute("user", user);  // 一次会话多次请求多次响应
-			request.getRequestDispatcher("LatestCommdityServelet").forward(request, response);
+			request.getRequestDispatcher("LatestCommdityServlet").forward(request, response);
 		}
 		
 	}

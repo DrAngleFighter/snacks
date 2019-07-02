@@ -156,7 +156,7 @@ public class CommodityParamDao {
 		//6.สอทลืสิด
 		rs.close();
 		ps.close();
-		 return count;
+		return count;
 	 }
 	public static void main(String[] args) throws Exception{
 		CommodityParam CommodityParam = new CommodityParam();
