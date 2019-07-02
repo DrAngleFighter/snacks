@@ -197,20 +197,20 @@ public class FlavorDao {
 	}
 	
 public static void main (String[] args) throws Exception {
+//		
+//		Flavor flavor = new Flavor();
+//		flavor.setFname("Пр");
+//		
 		
-		Flavor flavor = new Flavor();
-		flavor.setFname("Пр");
-		
-		
-		FlavorDao flavorDao = new FlavorDao();
+//		FlavorDao flavorDao = new FlavorDao();
 //		System.out.println(flavorDao.add(flavor));
 //		System.out.println(flavorDao.delete(16));
 //		flavor = flavorDao.findByFlavorid(2);
 //		System.out.println(flavor);
-		flavor.setFid(15);
-		flavor.setFname("update");
+//		flavor.setFid(15);
+//		flavor.setFname("update");
 //		System.out.println(flavor);
-		System.out.println(flavorDao.update(flavor));
+//		System.out.println(flavorDao.update(flavor));
 //		System.out.println(flavorDao.findAll());
 //		System.out.println(flavorDao.findByFlavorid(2));
 //		System.out.println(flavorDao.findCount());
