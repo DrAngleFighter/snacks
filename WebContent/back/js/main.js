@@ -9,22 +9,22 @@
     
     // iframe  链接
     $(".UserManagement").click(function(){
-        $(".AccountManagement_c_iframe iframe").attr("src","userlist.jsp")
+        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/back/userlist.jsp")
     })
     $(".KindManagement").click(function(){
-        $(".AccountManagement_c_iframe iframe").attr("src","kindlist.jsp")
+        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/back/kindlist.jsp")
     })
     $(".BrandManagement").click(function(){
-        $(".AccountManagement_c_iframe iframe").attr("src","brandlist.jsp")
+        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/back/brandlist.jsp")
     })
     $(".FoodManagement").click(function(){
-        $(".AccountManagement_c_iframe iframe").attr("src","../FindCommodityByPageServlet")
+        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/FindCommodityByPageServlet")
     })
     $(".OrdersManagement").click(function(){
-        $(".AccountManagement_c_iframe iframe").attr("src","orderlist.jsp")
+        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/back/orderlist.jsp")
     })
     $(".AccountManagement").click(function(){
-        $(".AccountManagement_c_iframe iframe").attr("src","accountlist.jsp")
+        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/back/accountlist.jsp")
     })
 
 	// pull page   翻页

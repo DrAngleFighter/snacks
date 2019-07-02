@@ -55,6 +55,9 @@ public class UserLoginServlet extends HttpServlet {
 		if(user == null) {
 			request.setAttribute("msg", "用户名或密码错误");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
+		} else if (user.getUsername().equals("admin")) {
+			request.getSession().setAttribute("user", user);  // 一次会话多次请求多次响应
+			request.getRequestDispatcher("back/index.jsp").forward(request, response);
 		} else {
 			request.getSession().setAttribute("user", user);  // 一次会话多次请求多次响应
 			request.getRequestDispatcher("LatestCommdityServelet").forward(request, response);

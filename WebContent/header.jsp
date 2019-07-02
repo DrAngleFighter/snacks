@@ -42,7 +42,7 @@
     <li><img src="images/logobig1.png" /></li>
   </div>
   <div class="search-bar pr">
-    <form action="search.jsp">
+    <form action="search.jsp" target="_top" method="post">
       <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
       <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
     </form>
