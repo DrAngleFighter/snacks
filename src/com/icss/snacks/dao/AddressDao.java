@@ -96,7 +96,6 @@ public class AddressDao {
 			address.setZip_code(rs.getString("zip_code"));
 			address.setName(rs.getString("name"));
 			address.setState(rs.getInt("state"));
-			address.setAddress_id(rs.getInt("address_id"));
 		}
 		//6.释放资源
 		rs.close();
@@ -124,7 +123,6 @@ public class AddressDao {
 			address.setZip_code(rs.getString("zip_code"));
 			address.setName(rs.getString("name"));
 			address.setState(rs.getInt("state"));
-			address.setAddress_id(rs.getInt("address_id"));
 			
 			
 			addressList.add(address);
@@ -178,7 +176,6 @@ public class AddressDao {
 			address.setZip_code(rs.getString("zip_code"));
 			address.setName(rs.getString("name"));
 			address.setState(rs.getInt("state"));
-			address.setAddress_id(rs.getInt("address_id"));
 			list.add(address);
 		}
 		//6.释放资源

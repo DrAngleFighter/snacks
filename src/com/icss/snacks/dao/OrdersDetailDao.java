@@ -16,17 +16,17 @@ import com.icss.snacks.util.DbFactory;
  */
 public class OrdersDetailDao {
 
-	public int addOrderDetail(OrdersDetail ordersDetail) throws Exception{
+	public int addod(OrdersDetail orders_detail) throws Exception{
 		int row = 0;
 		Connection connection = DbFactory.openConnection();
 		String sql = "insert into tb_orders_detail(commodity_id,quantity,price,fid,brand_id,oid) values(?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(sql)	;
-        ps.setInt(1, ordersDetail.getCommodity_id());
-        ps.setInt(2, ordersDetail.getQuantity());
-        ps.setDouble(3, ordersDetail.getPrice());
-        ps.setInt(4, ordersDetail.getFid());
-        ps.setInt(5, ordersDetail.getBrand_id());
-        ps.setString(6, ordersDetail.getOid());
+        ps.setInt(1, orders_detail.getCommodity_id());
+        ps.setInt(2, orders_detail.getQuantity());
+        ps.setDouble(3, orders_detail.getPrice());
+        ps.setInt(4, orders_detail.getFid());
+        ps.setInt(5, orders_detail.getBrand_id());
+        ps.setString(6, orders_detail.getOid());
         row = ps.executeUpdate();
         ps.close();
 		return row;}

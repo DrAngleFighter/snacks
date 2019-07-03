@@ -33,17 +33,14 @@
 						<ul>
 							<div class="per-border"></div>
 							
-<c:forEach items="${requestScope.addressList}" var="address" varStatus="status">
-
+							<c:forEach items="${requestScope.addressList}" var="address">
 								<c:if test="${address.state==1}">
-								<c:set var="aa" value="${status.index}"></c:set>
 									<li class="user-addresslist defaultAddr">
 								</c:if>
 								<c:if test="${address.state==0}">
 									<li class="user-addresslist">
 								</c:if>
-									<div class="address-left" onclick="sendAddress(${status.index},${address.address_id})">
-									 <div id="address${status.index }">
+									<div class="address-left">
 										<div class="user DefaultAddr">
 	
 											<span class="buy-address-detail">   
@@ -58,11 +55,9 @@
 									   			${address.full_address}
 									   		</span>
 											</span>
-											
-											</span>
-	                                  
-										</div>
 	
+											</span>
+										</div>
 										<div class="default-address DefaultAddr">
 											<span class="buy-line-title buy-line-title-type">邮编：</span>
 											<span class="buy--address-detail">
@@ -84,19 +79,9 @@
 											<span class="new-addr-bar">|</span>
 											<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
 										</div>
-	                                    </li>
-</c:forEach>
-							<input type="hidden" value="${aa }" id="ind">
-							
-							<script>
-							function sendAddress(index,address_id){
-								$("#holyshit268").html($("#address"+index).html());
-								$("#address_id").val(address_id);
-							}
-							$(function(){
-								$("#holyshit268").html($("#address"+$("#ind").val()).html());
-							})
-							</script>
+	
+									</li>
+							</c:forEach>
 							
 							<div class="per-border"></div>
 							
@@ -204,15 +189,11 @@
 							<div class="clear"></div>
 							<div class="pay-total">
 						<!--留言-->
-						<form action="AddOrderServlet" method="post" name="form">
 							<div class="order-extra">
 								<div class="order-user-info">
 									<div id="holyshit257" class="memo">
 										<label>买家留言：</label>
-										<input name="remark" type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close">
-										<input type="hidden" name="total_price" value="${requestScope.totalMoney}">
-										<input type="hidden" name="address_id" id="address_id" value=0>
-										<input type="hidden" name="cartIds"  value="${requestScope.cartIds}">
+										<input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close">
 										<div class="msg hidden J-msg">
 											<p class="error">最多输入50个字符</p>
 										</div>
@@ -258,15 +239,14 @@
 									</div>
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
-											<a id="J_Go" href="javaScript:document.form.submit()" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+											<a id="J_Go" href="success.jsp" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
 										</div>
 									</div>
 									<div class="clear"></div>
-									
 								</div>
 							</div>
 						</div>
-                        </form>
+
 						<div class="clear"></div>
 					</div>
 				</div>

@@ -268,40 +268,6 @@ public class CommodityDao {
 	}
 	
 	
-	
-	public Commodity findCommodityByCartId(int cart_id) throws Exception {
-		Commodity commodity = null;
-		// 1. 连接数据库
-		Connection connection = DbFactory.openConnection();
-		// 2. 编写SQL语句
-		 String sql = "select cart.quantity,cart.commodity_id,cart.fid,c.brand_id,c.promotional_price"
-						 		+" FROM tb_cart cart"
-						 		+" INNER JOIN tb_commodity c on c.commodity_id=cart.commodity_id"
-						 		+" where cart.cart_id=?";
-
-		// 3. 创建执行SQL对象
-		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. 设置占位符的值
-		ps.setInt(1, cart_id);
-		// 5. 执行SQL，返回结果集
-		ResultSet rs = ps.executeQuery();
-		// 6. 将结果集中数据提取到对象属性中
-		if(rs.next()) {
-			commodity = new Commodity();
-			commodity.setCommodity_id(rs.getInt("commodity_id"));
-			commodity.setBrand_id(rs.getInt("brand_id"));
-			commodity.setPromotional_price(rs.getDouble("promotional_price"));
-            commodity.setFid(rs.getInt("fid"));
-            commodity.setQuantity(rs.getInt("quantity"));
-            }
-		// 7. 释放资源
-		rs.close();
-		ps.close();
-		return commodity;
-	}
-	
-	
-	
 	public static void main (String[] args) throws Exception {
 //		Cart cart = new Cart();
 //		cart.setFid(12);
