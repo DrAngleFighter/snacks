@@ -208,7 +208,7 @@
 										<input name="remark" type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close">
 										<input type="hidden" name="total_price" value="${requestScope.totalMoney}">
 										<input type="hidden" name="address_id" id="address_id" value="0">
-										<input type="hidden" name="cardIds" value="${requestScope.cardIds}">
+										<input type="hidden" name="cartIds" value="${requestScope.cartIds}">
 										<div class="msg hidden J-msg">
 											<p class="error">最多输入50个字符</p>
 										</div>

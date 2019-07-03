@@ -22,14 +22,14 @@ public class AddOrderServlet extends HttpServlet {
         Integer address_id = Integer.parseInt(request.getParameter("address_id"));
         String remark = request.getParameter("remark");
         Double total_price = Double.parseDouble(request.getParameter("total_price"));
-        String cardIds = request.getParameter("cardIds");
+        String cartIds = request.getParameter("cartIds");
 
         OrderService orderService = new OrderService();
         AddressService addressService = new AddressService();
 
         Address address = null;
         try {
-            orderService.addOrder(address_id, remark, total_price, uid, cardIds);
+            orderService.addOrder(address_id, remark, total_price, uid, cartIds);
             address = addressService.findAddressByAddressId(address_id);
         } catch (Exception e) {
             request.getRequestDispatcher("error.jsp").forward(request, response);
