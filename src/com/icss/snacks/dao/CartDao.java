@@ -25,20 +25,20 @@ public class CartDao {
 	 */
 	public Integer add(Cart cart) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊý¾Ý¿â
+		// 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àÐ´SQLÓï¾ä Ìí¼ÓÓï¾ä "INSERT "
+		// 2. ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ "INSERT "
 		String sql = "INSERT INTO tb_cart(uid, quantity, fid, commodity_id) VALUE(?, ?, ?, ?)";
-		// 3. ´´½¨Ö´ÐÐSQL¶ÔÏó
+		// 3. ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. ï¿½ï¿½ï¿½ï¿½Õ¼Î»ï¿½ï¿½ï¿½ï¿½Öµ
 		ps.setInt(1, cart.getUid());
 		ps.setInt(2, cart.getQuantity());
 		ps.setInt(3, cart.getFid());
 		ps.setInt(4, cart.getCommodity_id());
-		// 5. Ö´ÐÐSQL·µ»ØÊÜÓ°ÏìµÄÐÐÊý
+		// 5. Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		ps.close();
 		return row;
 	}
@@ -52,17 +52,17 @@ public class CartDao {
 	 */
 	public Integer delete(Integer cart_id) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊý¾Ý¿â
+		// 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àÐ´SQLÓï¾ä
+		// 2. ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
 		String sql = "DELETE FROM tb_cart WHERE cart_id = ?";
-		// 3. ´´½¨Ö´ÐÐSQL¶ÔÏó
+		// 3. ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. ï¿½ï¿½ï¿½ï¿½Õ¼Î»ï¿½ï¿½ï¿½ï¿½Öµ
 		ps.setInt(1, cart_id);
-		// 5. Ö´ÐÐSQL·µ»ØÊÜÓ°ÏìµÄÐÐÊý
+		// 5. Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		ps.close();
 		return row;		
 	}
@@ -76,21 +76,21 @@ public class CartDao {
 	 */
 	public Integer update(Cart cart) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊý¾Ý¿â
+		// 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àÐ´SQLÓï¾ä
+		// 2. ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
 		String sql = "UPDATE tb_cart SET uid = ?, quantity = ?, fid = ?, commodity_id = ? WHERE cart_id = ?";
-		// 3. ´´½¨Ö´ÐÐSQL¶ÔÏó
+		// 3. ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. ï¿½ï¿½ï¿½ï¿½Õ¼Î»ï¿½ï¿½ï¿½ï¿½Öµ
 		ps.setInt(1, cart.getUid());
 		ps.setInt(2, cart.getQuantity());
 		ps.setInt(3, cart.getFid());
 		ps.setInt(4, cart.getCommodity_id());
 		ps.setInt(5, cart.getCart_id());
-		// 5. Ö´ÐÐSQL·µ»ØÊÜÓ°ÏìµÄÐÐÊý
+		// 5. Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		ps.close();
 		return row;
 	}
@@ -119,17 +119,17 @@ public class CartDao {
 	 */
 	public Cart findByCartid(Integer cart_id) throws Exception {
 		Cart cart = null;
-		// 1. Á¬½ÓÊý¾Ý¿â
+		// 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àÐ´SQLÓï¾ä
+		// 2. ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
 		String sql = "SELECT * FROM tb_cart WHERE cart_id=?";
-		// 3. ´´½¨Ö´ÐÐSQL¶ÔÏó
+		// 3. ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. ï¿½ï¿½ï¿½ï¿½Õ¼Î»ï¿½ï¿½ï¿½ï¿½Öµ
 		ps.setInt(1, cart_id);
-		// 5. Ö´ÐÐSQL£¬·µ»Ø½á¹û¼¯
+		// 5. Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½
 		ResultSet rs = ps.executeQuery();
-		// 6. ½«½á¹û¼¯ÖÐÊý¾ÝÌáÈ¡µ½¶ÔÏóÊôÐÔÖÐ
+		// 6. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if(rs.next()) {
 			cart = new Cart();
 			cart.setCart_id(rs.getInt("cart_id"));
@@ -138,7 +138,7 @@ public class CartDao {
 			cart.setFid(rs.getInt("fid"));
 			cart.setCommodity_id(rs.getInt("commodity_id"));
 		}
-		// 7. ÊÍ·Å×ÊÔ´
+		// 7. ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		rs.close();
 		ps.close();
 		return cart;
@@ -151,15 +151,15 @@ public class CartDao {
 	 */
 	public List<Cart> findAll() throws Exception {
 		List<Cart> cartList = new ArrayList<Cart>();
-		// 1. Á¬½ÓÊý¾Ý¿â
+		// 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àÐ´SQLÓï¾ä
+		// 2. ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
 		String sql = "SELECT * FROM tb_cart";
-		// 3. ´´½¨Ö´ÐÐSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖÐ
+		// 3. ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ÐÐSQL£¬·µ»Ø½á¹û¼¯
+		// 4. Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖÐ
+		// 5. Ñ­ï¿½ï¿½ï¿½ï¿½È¥ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		while (rs.next()) {
 			Cart cart = new Cart();
 			cart.setCart_id(rs.getInt("cart_id"));
@@ -169,7 +169,7 @@ public class CartDao {
 			cart.setCommodity_id(rs.getInt("commodity_id"));
 			cartList.add(cart);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		rs.close();
 		ps.close();
 		return cartList;
@@ -183,19 +183,19 @@ public class CartDao {
 	 */
 	public Integer findCount() throws Exception {
 		Integer count = 0;
-		// 1. Á¬½ÓÊý¾Ý¿â
+		// 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àÐ´SQLÓï¾ä
+		// 2. ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
 		String sql = "SELECT COUNT(*) FROM tb_cart";
-		// 3. ´´½¨Ö´ÐÐSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖÐ
+		// 3. ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ÐÐSQL£¬·µ»Ø½á¹û¼¯
+		// 4. Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖÐ
+		// 5. Ñ­ï¿½ï¿½ï¿½ï¿½È¥ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (rs.next()) {
 			count = rs.getInt(1);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		rs.close();
 		ps.close();
 		return count;
@@ -204,20 +204,20 @@ public class CartDao {
 	
 	public List<CartVo> findCartListByUid(Integer uid) throws Exception {
 		List<CartVo> cartVoList = new ArrayList<CartVo>();
-		// 1. Á¬½ÓÊý¾Ý¿â
+		// 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àÐ´SQLÓï¾ä
-		String sql = "SELECT c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " + 
+		// 2. ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
+		String sql = "SELECT cart.cart_id,c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " + 
 					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " + 
 					"INNER JOIN tb_flavor f ON f.fid = cart.fid " + 
 					"WHERE cart.uid = ?";
-		// 3. ´´½¨Ö´ÐÐSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖÐ
+		// 3. ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. ï¿½ï¿½ï¿½ï¿½Õ¼Î»ï¿½ï¿½ï¿½ï¿½Öµ
 		ps.setInt(1, uid);
-		// 5. Ö´ÐÐSQL£¬·µ»Ø½á¹û¼¯
+		// 5. Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½
 		ResultSet rs = ps.executeQuery();
-		// 6. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖÐ
+		// 6. Ñ­ï¿½ï¿½ï¿½ï¿½È¥ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		while (rs.next()) {
 			CartVo cartVo = new CartVo();
 			cartVo.setCname(rs.getString("cname"));
@@ -225,13 +225,59 @@ public class CartDao {
 			cartVo.setQuantity(rs.getInt("quantity"));
 			cartVo.setImg(rs.getString("img"));
 			cartVo.setPromotional_price(rs.getDouble("promotional_price"));
+			cartVo.setCart_id(rs.getInt("cart_id"));
 			cartVoList.add(cartVo);
 		}
-		// 7. ÊÍ·Å×ÊÔ´
+		// 7. ï¿½Í·ï¿½ï¿½ï¿½Ô´
 		rs.close();
 		ps.close();
 		return cartVoList;
 	}
+	
+	
+	public List<CartVo> findCartListByUidAndCartId(Integer uid,String cartIds) throws Exception {
+		List<CartVo> cartVoList = new ArrayList<CartVo>();
+		// 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
+		Connection connection = DbFactory.openConnection();
+		// 2. ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
+		String sql = "SELECT cart.cart_id,c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " + 
+					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " + 
+					"INNER JOIN tb_flavor f ON f.fid = cart.fid " + 
+					"WHERE cart.uid = ? and cart.cart_id in(";
+        String[] cartIdArray = cartIds.split(",");
+        int count = 1;
+        for(String cartid:cartIdArray) {
+        	int cart_id = Integer.parseInt(cartid);
+        	sql+=cart_id;
+        	if(count!=cartIdArray.length) {
+        		sql+=",";
+        	}
+        	count++;
+        }
+        sql+=")";
+
+		PreparedStatement ps = connection.prepareStatement(sql);
+		// 4. ï¿½ï¿½ï¿½ï¿½Õ¼Î»ï¿½ï¿½ï¿½ï¿½Öµ
+		ps.setInt(1, uid);
+		// 5. Ö´ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½
+		ResultSet rs = ps.executeQuery();
+		// 6. Ñ­ï¿½ï¿½ï¿½ï¿½È¥ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		while (rs.next()) {
+			CartVo cartVo = new CartVo();
+			cartVo.setCname(rs.getString("cname"));
+			cartVo.setFname(rs.getString("fname"));
+			cartVo.setQuantity(rs.getInt("quantity"));
+			cartVo.setImg(rs.getString("img"));
+			cartVo.setPromotional_price(rs.getDouble("promotional_price"));
+			cartVo.setCart_id(rs.getInt("cart_id"));
+			cartVoList.add(cartVo);
+		}
+		// 7. ï¿½Í·ï¿½ï¿½ï¿½Ô´
+		rs.close();
+		ps.close();
+		return cartVoList;
+	}
+	
 	
 	
 	public Integer findQuantity(Cart cart) throws Exception {
