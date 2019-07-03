@@ -196,3 +196,4 @@ target/
 
 # custom
 build/*
+.DS_Store
