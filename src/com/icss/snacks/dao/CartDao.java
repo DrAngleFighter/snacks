@@ -50,16 +50,15 @@ public class CartDao {
 	 * @return row
 	 * @throws Exception
 	 */
-	public Integer delete(Integer cart_id) throws Exception {
-		Integer row = 0;
+	public Integer deleteCart(String cartIds) throws Exception {
+		int row = 0;
 		// 1. �������ݿ�
 		Connection connection = DbFactory.openConnection();
 		// 2. ��дSQL���
-		String sql = "DELETE FROM tb_cart WHERE cart_id = ?";
+		String sql = "DELETE FROM tb_cart WHERE cart_id in("+cartIds+")";
 		// 3. ����ִ��SQL����
 		PreparedStatement ps = connection.prepareStatement(sql);
 		// 4. ����ռλ����ֵ
-		ps.setInt(1, cart_id);
 		// 5. ִ��SQL������Ӱ�������
 		row = ps.executeUpdate();
 		// 6. �ͷ���Դ

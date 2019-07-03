@@ -20,7 +20,7 @@ public class OrdersDao {
 	public int addo(Orders orders) throws Exception{
 		int row = 0;
 		Connection connection = DbFactory.openConnection();
-		String sql = "insert into tb_orders(uid,totalprice,ordertime,state,address_id,remark) values(?,?,?,?,?,?)";
+		String sql = "insert into tb_orders(uid,totalprice,ordertime,state,address_id,remark,oid) values(?,?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(sql)	;
         ps.setInt(1, orders.getUid());
         ps.setDouble(2, orders.getTotalprice());
@@ -28,6 +28,7 @@ public class OrdersDao {
         ps.setInt(4, orders.getState());
         ps.setInt(5, orders.getAddress_id());
         ps.setString(6, orders.getRemark());
+        ps.setString(7, orders.getOid());
         row = ps.executeUpdate();
         ps.close();
 		return row;}

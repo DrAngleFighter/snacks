@@ -22,7 +22,28 @@ public class Commodity {
 	private String category_name;
 	private Integer param_id;
 	private CommodityParam commodityParam; // 产品参数 产品和产品参数：一对一（实体）
+	private int quantity;
+    private int fid;
+	
+	
+	public int getQuantity() {
+		return quantity;
+	}
 
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public int getFid() {
+		return fid;
+	}
+
+	public void setFid(int fid) {
+		this.fid = fid;
+	}
+
+	
+	
 	@Override
 	public String toString() {
 		return "Commodity{" +
