@@ -18,7 +18,7 @@ public class AddressService {
 	 * @return list
 	 * @throws Exception
 	 */
-	public List<Address> findAddressByUid(int uid) throws Exception{
+	public List<Address> findAddressByUid(Integer uid) throws Exception{
 		
 		List<Address> list = null;
 		
@@ -34,5 +34,22 @@ public class AddressService {
 		
 	}
 	
-	
+
+	public Address findAddressByAddressId(Integer address_id) throws Exception {
+
+		Address address = null;
+
+		try {
+			address = addressDao.findAddressByAddress_id(address_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbFactory.closeConnection();
+		}
+
+		return address;
+
+	}
+
+
 }

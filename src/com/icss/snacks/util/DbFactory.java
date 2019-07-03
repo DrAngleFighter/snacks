@@ -31,22 +31,22 @@ public class DbFactory {
 	}
 	
 	public static void closeConnection() throws Exception {
-		Connection connection = tl.get();
+		Connection connection = DbFactory.openConnection();
 		connection.close();
 	}
 	
 	public static void beginTransaction() throws Exception {
-		Connection connection = tl.get();
+		Connection connection = DbFactory.openConnection();
 		connection.setAutoCommit(false);
 	}
 	
 	public static void commit() throws Exception {
-		Connection connection = tl.get();
+		Connection connection = DbFactory.openConnection();
 		connection.commit();
 	}
 	
 	public static void rollback() throws Exception {
-		Connection connection = tl.get();
+		Connection connection = DbFactory.openConnection();
 		connection.rollback();
 	}
 

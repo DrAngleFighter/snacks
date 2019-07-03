@@ -16,21 +16,28 @@ import com.icss.snacks.util.DbFactory;
  */
 public class OrdersDao {
 
-
-	public int addo(Orders orders) throws Exception{
+	/**
+	 * Ìí¼Ó¶©µ¥
+	 * @param orders
+	 * @return row
+	 * @throws Exception
+	 */
+	public int addOrders(Orders orders) throws Exception{
 		int row = 0;
 		Connection connection = DbFactory.openConnection();
-		String sql = "insert into tb_orders(uid,totalprice,ordertime,state,address_id,remark) values(?,?,?,?,?,?)";
+		String sql = "INSERT INTO tb_orders(oid, uid, totalprice, ordertime, state, address_id, remark) VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(sql)	;
-        ps.setInt(1, orders.getUid());
-        ps.setDouble(2, orders.getTotalprice());
-        ps.setTimestamp(3, orders.getOrdertime());
-        ps.setInt(4, orders.getState());
-        ps.setInt(5, orders.getAddress_id());
-        ps.setString(6, orders.getRemark());
+        ps.setString(1, orders.getOid());
+        ps.setInt(2, orders.getUid());
+        ps.setDouble(3, orders.getTotalprice());
+        ps.setTimestamp(4, orders.getOrdertime());
+        ps.setInt(5, orders.getState());
+        ps.setInt(6, orders.getAddress_id());
+        ps.setString(7, orders.getRemark());
         row = ps.executeUpdate();
         ps.close();
-		return row;}
+		return row;
+	}
 	
 	
 		
