@@ -129,55 +129,56 @@
 
 							<tr class="item-list">
 								<div class="bundle  bundle-last">
-
-									<div class="bundle-main">
-										<ul class="item-content clearfix">
-											<div class="pay-phone">
-												<li class="td td-item">
-													<div class="item-pic">
-														<a href="#" class="J_MakePoint">
-															<img src="images/kouhong.jpg_80x80.jpg" width="80px" height="80px" class="itempic J_ItemImg"></a>
-													</div>
-													<div class="item-info">
-														<div class="item-basic-info">
-															<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">良品铺子 手剥松子218g 坚果炒货 巴西松子</a>
+									<c:forEach items="${requestScope.cartVoList}" var="cartVo">
+										<div class="bundle-main">
+											<ul class="item-content clearfix">
+												<div class="pay-phone">
+													<li class="td td-item">
+														<div class="item-pic">
+															<a href="#" class="J_MakePoint">
+																<img src="/img/${cartVo.img}" width="80px" height="80px" class="itempic J_ItemImg"></a>
 														</div>
-													</div>
-												</li>
-												<li class="td td-info">
-													<div class="item-props">
-														<span class="sku-line">口味：辛辣</span>
-													</div>
-												</li>
-												<li class="td td-price">
-													<div class="item-price price-promo-promo">
-														<div class="price-content">
-															<em class="J_Price price-now">39.00</em>
+														<div class="item-info">
+															<div class="item-basic-info">
+																<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">${cartVo.cname}</a>
+															</div>
 														</div>
-													</div>
-												</li>
-											</div>
-											<li class="td td-amount">
-												<div class="amount-wrapper ">
-													<div class="item-amount ">
-														<span class="phone-title">购买数量</span>
-														<div class="sl">
-															1
+													</li>
+													<li class="td td-info">
+														<div class="item-props">
+															<span class="sku-line">口味：${cartVo.fname}</span>
 														</div>
-													</div>
+													</li>
+													<li class="td td-price">
+														<div class="item-price price-promo-promo">
+															<div class="price-content">
+																<em class="J_Price price-now">${cartVo.promotional_price}</em>
+															</div>
+														</div>
+													</li>
 												</div>
-											</li>
-											<li class="td td-sum">
-												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number">55.5</em>
-												</div>
-											</li>
-											
+												<li class="td td-amount">
+													<div class="amount-wrapper ">
+														<div class="item-amount ">
+															<span class="phone-title">购买数量</span>
+															<div class="sl">
+																${cartVo.quantity}
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="td td-sum">
+													<div class="td-inner">
+														<em tabindex="0" class="J_ItemSum number">${cartVo.promotional_price * cartVo.quantity}</em>
+													</div>
+												</li>
 
-										</ul>
-										<div class="clear"></div>
 
-									</div>
+											</ul>
+											<div class="clear"></div>
+
+										</div>
+									</c:forEach>
 							</tr>
 							<div class="clear"></div>
 							</div>
@@ -208,7 +209,7 @@
 									<div class="box">
 										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
 											<span class="price g_price ">
-                                    <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">55.5</em>
+                                    <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">${requestScope.totalMoney}</em>
 											</span>
 										</div>
 										<div align="left">

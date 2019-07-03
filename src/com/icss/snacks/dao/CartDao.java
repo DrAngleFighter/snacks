@@ -18,8 +18,7 @@ import com.icss.snacks.util.DbFactory;
 public class CartDao {
 
 	/**
-	 * 
-	 * @param Cart
+	 *
 	 * @return row
 	 * @throws Exception
 	 */
@@ -207,7 +206,7 @@ public class CartDao {
 		// 1. 连接数据库
 		Connection connection = DbFactory.openConnection();
 		// 2. 编写SQL语句
-		String sql = "SELECT c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " + 
+		String sql = "SELECT cart.cart_id, c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " +
 					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " + 
 					"INNER JOIN tb_flavor f ON f.fid = cart.fid " + 
 					"WHERE cart.uid = ?";
@@ -225,6 +224,7 @@ public class CartDao {
 			cartVo.setQuantity(rs.getInt("quantity"));
 			cartVo.setImg(rs.getString("img"));
 			cartVo.setPromotional_price(rs.getDouble("promotional_price"));
+			cartVo.setCart_id(rs.getInt("cart_id"));
 			cartVoList.add(cartVo);
 		}
 		// 7. 释放资源
@@ -232,7 +232,51 @@ public class CartDao {
 		ps.close();
 		return cartVoList;
 	}
-	
+
+
+	public List<CartVo> findCartListByUidAndCartId(Integer uid, String cartIds) throws Exception {
+		List<CartVo> cartVoList = new ArrayList<CartVo>();
+		// 1. 连接数据库
+		Connection connection = DbFactory.openConnection();
+		// 2. 编写SQL语句
+		String sql = "SELECT cart.cart_id, c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " +
+					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " +
+					"INNER JOIN tb_flavor f ON f.fid = cart.fid " +
+					"WHERE cart.uid = ? AND cart.cart_id in (";
+
+		String[] cartIdArray = cartIds.split(",");
+		for (int i = 0; i < cartIdArray.length; i ++) {
+			Integer cart_id = Integer.parseInt(cartIdArray[i]);
+			sql += cart_id;
+			if (i != cartIdArray.length - 1) {
+				sql += ", ";
+			}
+		}
+		sql += ")";
+		// 3. 创建执行SQL对象，添加到集合中
+		PreparedStatement ps = connection.prepareStatement(sql);
+		// 4. 设置占位符的值
+		ps.setInt(1, uid);
+		// 5. 执行SQL，返回结果集
+		ResultSet rs = ps.executeQuery();
+		// 6. 循环后去用户对象，添加到集合中
+		while (rs.next()) {
+			CartVo cartVo = new CartVo();
+			cartVo.setCname(rs.getString("cname"));
+			cartVo.setFname(rs.getString("fname"));
+			cartVo.setQuantity(rs.getInt("quantity"));
+			cartVo.setImg(rs.getString("img"));
+			cartVo.setPromotional_price(rs.getDouble("promotional_price"));
+			cartVo.setCart_id(rs.getInt("cart_id"));
+			cartVoList.add(cartVo);
+		}
+		// 7. 释放资源
+		rs.close();
+		ps.close();
+		return cartVoList;
+	}
+
+
 	
 	public Integer findQuantity(Cart cart) throws Exception {
 		Integer count = 0;		
