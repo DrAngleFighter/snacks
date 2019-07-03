@@ -63,7 +63,20 @@ public class CartDao {
 		row = ps.executeUpdate();
 		// 6. ÊÍ·Å×ÊÔ´
 		ps.close();
-		return row;		
+		return row;
+	}
+
+
+	public Integer deleteCart(String cartIds) throws Exception {
+
+		Integer row = 0;
+		Connection connection = DbFactory.openConnection();
+		String sql = "DELETE FROM tb_cart WHERE cart_id IN("+ cartIds +") ";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		row = ps.executeUpdate();
+		ps.close();
+		return row;
+
 	}
 	
 	
