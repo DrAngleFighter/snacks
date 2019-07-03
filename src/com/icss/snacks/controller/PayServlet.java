@@ -62,6 +62,7 @@ public class PayServlet extends HttpServlet {
 		request.setAttribute("addressList", list);
 		request.setAttribute("cartVoList", cartVoList);
 		request.setAttribute("totalMoney", totalMoney);
+		request.setAttribute("cardIds", cartIds);
 		request.getRequestDispatcher("pay.jsp").forward(request, response);
 	}
 

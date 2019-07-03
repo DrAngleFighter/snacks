@@ -11,7 +11,7 @@ import java.sql.DriverManager;
  */
 public class DbFactory {
 
-	private static ThreadLocal<Connection> tl = new ThreadLocal<Connection>();
+	private static final ThreadLocal<Connection> tl = new ThreadLocal<Connection>();
 	
 	/**
 	 * @return connection
