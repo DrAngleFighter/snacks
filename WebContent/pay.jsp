@@ -129,31 +129,30 @@
 
 							<tr class="item-list">
 								<div class="bundle  bundle-last">
-								
-                                <c:forEach items="${requestScope.cartVoList }" var="cv">
+
 									<div class="bundle-main">
 										<ul class="item-content clearfix">
 											<div class="pay-phone">
 												<li class="td td-item">
 													<div class="item-pic">
 														<a href="#" class="J_MakePoint">
-															<img src="/img/${cv.img }" width="80px" height="80px" class="itempic J_ItemImg"></a>
+															<img src="images/kouhong.jpg_80x80.jpg" width="80px" height="80px" class="itempic J_ItemImg"></a>
 													</div>
 													<div class="item-info">
 														<div class="item-basic-info">
-															<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">${cv.cname }</a>
+															<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">良品铺子 手剥松子218g 坚果炒货 巴西松子</a>
 														</div>
 													</div>
 												</li>
 												<li class="td td-info">
 													<div class="item-props">
-														<span class="sku-line">口味：${cv.fname }</span>
+														<span class="sku-line">口味：辛辣</span>
 													</div>
 												</li>
 												<li class="td td-price">
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
-															<em class="J_Price price-now">${cv.promotional_price}</em>
+															<em class="J_Price price-now">39.00</em>
 														</div>
 													</div>
 												</li>
@@ -163,23 +162,22 @@
 													<div class="item-amount ">
 														<span class="phone-title">购买数量</span>
 														<div class="sl">
-															${cv.quantity}
+															1
 														</div>
 													</div>
 												</div>
 											</li>
 											<li class="td td-sum">
 												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number">${cv.promotional_price*cv.quantity}</em>
+													<em tabindex="0" class="J_ItemSum number">55.5</em>
 												</div>
 											</li>
+											
+
 										</ul>
-										
-										
 										<div class="clear"></div>
 
 									</div>
-									</c:forEach>
 							</tr>
 							<div class="clear"></div>
 							</div>
@@ -210,7 +208,7 @@
 									<div class="box">
 										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
 											<span class="price g_price ">
-                                    <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">${requestScope.totalMoney}</em>
+                                    <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">55.5</em>
 											</span>
 										</div>
 										<div align="left">

@@ -7,17 +7,7 @@ public class CartVo {
 	private String cname;
 	private double promotional_price;
 	private String img;
-	private int cart_id;
 	
-	
-	
-	public int getCart_id() {
-		return cart_id;
-	}
-	public void setCart_id(int cart_id) {
-		this.cart_id = cart_id;
-	}
-
 	
 	public Integer getQuantity() {
 		return quantity;

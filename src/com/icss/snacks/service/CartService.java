@@ -53,20 +53,4 @@ public class CartService {
 	}
 	
 	
-public List<CartVo> findCartListByUidAndCartId(Integer uid,String cartIds) throws Exception {
-		
-		List<CartVo> list = null;
-		try {
-			list = cartDao.findCartListByUidAndCartId(uid,cartIds);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			DbFactory.closeConnection();
-		}
-		return list;
-		
-	}
-	
-	
 }
