@@ -1,6 +1,8 @@
 package com.icss.snacks.controller;
 
+import com.icss.snacks.entity.Address;
 import com.icss.snacks.entity.User;
+import com.icss.snacks.service.AddressService;
 import com.icss.snacks.service.OrderService;
 
 import javax.servlet.ServletException;
@@ -23,13 +25,19 @@ public class AddOrderServlet extends HttpServlet {
         String cardIds = request.getParameter("cardIds");
 
         OrderService orderService = new OrderService();
+        AddressService addressService = new AddressService();
 
+        Address address = null;
         try {
             orderService.addOrder(address_id, remark, total_price, uid, cardIds);
+            address = addressService.findAddressByAddressId(address_id);
         } catch (Exception e) {
-            e.printStackTrace();
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+            return;
         }
 
+        request.setAttribute("total_price", total_price);
+        request.setAttribute("address", address);
         request.getRequestDispatcher("success.jsp").forward(request, response);
     }
 

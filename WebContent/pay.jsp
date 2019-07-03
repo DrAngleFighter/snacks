@@ -89,7 +89,6 @@
 							<script>
 								function sendAddress(index, address_id) {
 									$("#holyshit268").html($("#address"+index).html());
-									alert(address_id)
 									$("#address_id").val(address_id);
 								}
 								$(function () {
