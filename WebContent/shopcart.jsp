@@ -64,7 +64,7 @@
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
 											<input onclick="getTotalMoney(${status.index})" class="check" id="check${status.index}" name="items" value="${cartVo.quantity*cartVo.promotional_price }" type="checkbox">
-											<input type="text" value="${cartVo.cart_id}" hidden="true">
+											<input type="hidden" value="${cartVo.cart_id}">
 										</div>
 									</li>
 									<li class="td td-item">
