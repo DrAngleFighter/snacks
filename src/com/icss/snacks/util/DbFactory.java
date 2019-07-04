@@ -21,7 +21,7 @@ public class DbFactory {
 		Connection connection = tl.get();
 		if(connection == null || connection.isClosed()) {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			final String DB_URL = "jdbc:mysql://10.0.9.35:3306/snacks";
+			final String DB_URL = "jdbc:mysql://10.0.9.35/snacks";
 			final String USER_NAME = "root";
 			final String PASSWORD = "root";
 			connection = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
@@ -31,22 +31,22 @@ public class DbFactory {
 	}
 	
 	public static void closeConnection() throws Exception {
-		Connection connection = tl.get();
+		Connection connection = DbFactory.openConnection();
 		connection.close();
 	}
 	
 	public static void beginTransaction() throws Exception {
-		Connection connection = tl.get();
+		Connection connection = DbFactory.openConnection();
 		connection.setAutoCommit(false);
 	}
 	
 	public static void commit() throws Exception {
-		Connection connection = tl.get();
+		Connection connection = DbFactory.openConnection();
 		connection.commit();
 	}
 	
 	public static void rollback() throws Exception {
-		Connection connection = tl.get();
+		Connection connection = DbFactory.openConnection();
 		connection.rollback();
 	}
 

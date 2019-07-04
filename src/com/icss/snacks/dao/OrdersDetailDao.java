@@ -12,15 +12,22 @@ import com.icss.snacks.util.DbFactory;
 /**
  * 
  * @author phr
+ * @author zly
  *
  */
 public class OrdersDetailDao {
 
-	public int addod(OrdersDetail orders_detail) throws Exception{
+	/**
+	 * ÃÌº”∂©µ•œÍ«È
+	 * @param orders_detail
+	 * @return row
+	 * @throws Exception
+	 */
+	public int addOrderDetail(OrdersDetail orders_detail) throws Exception{
 		int row = 0;
 		Connection connection = DbFactory.openConnection();
-		String sql = "insert into tb_orders_detail(commodity_id,quantity,price,fid,brand_id,oid) values(?,?,?,?,?,?)";
-        PreparedStatement ps = connection.prepareStatement(sql)	;
+		String sql = "insert into tb_orders_detail(commodity_id, quantity, price, fid, brand_id, oid) values(?, ?, ?, ?, ?, ?)";
+        PreparedStatement ps = connection.prepareStatement(sql);
         ps.setInt(1, orders_detail.getCommodity_id());
         ps.setInt(2, orders_detail.getQuantity());
         ps.setDouble(3, orders_detail.getPrice());

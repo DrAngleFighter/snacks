@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.icss.snacks.entity.Orders;
+import com.icss.snacks.entity.User;
 import com.icss.snacks.util.DbFactory;
 
 /**
@@ -16,21 +17,28 @@ import com.icss.snacks.util.DbFactory;
  */
 public class OrdersDao {
 
-
-	public int addo(Orders orders) throws Exception{
+	/**
+	 * 添加订单
+	 * @param orders
+	 * @return row
+	 * @throws Exception
+	 */
+	public int addOrders(Orders orders) throws Exception{
 		int row = 0;
 		Connection connection = DbFactory.openConnection();
-		String sql = "insert into tb_orders(uid,totalprice,ordertime,state,address_id,remark) values(?,?,?,?,?,?)";
+		String sql = "INSERT INTO tb_orders(oid, uid, totalprice, ordertime, state, address_id, remark) VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(sql)	;
-        ps.setInt(1, orders.getUid());
-        ps.setDouble(2, orders.getTotalprice());
-        ps.setTimestamp(3, orders.getOrdertime());
-        ps.setInt(4, orders.getState());
-        ps.setInt(5, orders.getAddress_id());
-        ps.setString(6, orders.getRemark());
+        ps.setString(1, orders.getOid());
+        ps.setInt(2, orders.getUid());
+        ps.setDouble(3, orders.getTotalprice());
+        ps.setTimestamp(4, orders.getOrdertime());
+        ps.setInt(5, orders.getState());
+        ps.setInt(6, orders.getAddress_id());
+        ps.setString(7, orders.getRemark());
         row = ps.executeUpdate();
         ps.close();
-		return row;}
+		return row;
+	}
 	
 	
 		
@@ -72,6 +80,7 @@ public class OrdersDao {
 	        	orders = new Orders();
 	        	orders.setOid(rs.getString("oid"));
 	        	orders.setUid(rs.getInt("uid"));
+	        	orders.setOrdertime(rs.getTimestamp("ordertime"));
 	        	orders.setTotalprice(rs.getDouble("totalprice"));
 	        	orders.setState(rs.getInt("state"));
 	        	orders.setAddress_id(rs.getInt("address_id"));
@@ -84,7 +93,7 @@ public class OrdersDao {
 		}
 		
 	public List<Orders> findAllList() throws Exception{
-		List<Orders> orderList =new ArrayList<Orders>();
+		List<Orders> ordersList =new ArrayList<Orders>();
 		Connection connection = DbFactory.openConnection();
 		String sql = "select * from tb_orders";
         PreparedStatement ps = connection.prepareStatement(sql)	;
@@ -95,18 +104,69 @@ public class OrdersDao {
         	orders = new Orders();
         	orders.setOid(rs.getString("oid"));
         	orders.setUid(rs.getInt("uid"));
+        	orders.setOrdertime(rs.getTimestamp("ordertime"));
         	orders.setTotalprice(rs.getDouble("totalprice"));
         	orders.setState(rs.getInt("state"));
         	orders.setAddress_id(rs.getInt("address_id"));
         	orders.setRemark(rs.getString("remark"));
-        	orderList.add(orders);
+        	ordersList.add(orders);
         }
         ps.close();		
         rs.close();		
-		return orderList;
+		return ordersList;
 	}
 		
 
+	public List<Orders> findOrdersListByPage(Integer currentPage, Integer pageSize) throws Exception {
+		List<Orders> ordersList = new ArrayList<Orders>();
+		// 1. 连接数据库
+		Connection connection = DbFactory.openConnection();
+		// 2. 编写SQL语句
+		String sql = "select o.oid,o.ordertime,o.state,o.remark from tb_orders o limit ?,?";
+		// 3. 创建执行SQL对象，添加到集合中
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, (currentPage - 1) * pageSize);
+		ps.setInt(2, pageSize);
+		// 4. 执行SQL，返回结果集
+		ResultSet rs = ps.executeQuery();
+		// 5. 循环后去用户对象，添加到集合中
+		while (rs.next()) {
+			Orders orders = new Orders();
+        	orders = new Orders();
+        	orders.setOid(rs.getString("oid"));
+        	orders.setOrdertime(rs.getTimestamp("ordertime"));
+        	orders.setState(rs.getInt("state"));
+        	orders.setRemark(rs.getString("remark"));
+        	ordersList.add(orders);
+		}
+		// 6. 释放资源
+		rs.close();
+		ps.close();
+		return ordersList;
+	}
+	
+	
+	public Integer findOrdersCount() throws Exception {
+		Integer count = 0;
+		// 1. 连接数据库
+		Connection connection = DbFactory.openConnection();
+		// 2. 编写SQL语句
+		String sql = "SELECT COUNT(*) FROM tb_orders";
+		// 3. 创建执行SQL对象，添加到集合中
+		PreparedStatement ps = connection.prepareStatement(sql);
+		// 4. 执行SQL，返回结果集
+		ResultSet rs = ps.executeQuery();
+		// 5. 循环后去用户对象，添加到集合中
+		if (rs.next()) {
+			count = rs.getInt(1);
+		}
+		// 6. 释放资源
+		rs.close();
+		ps.close();
+		return count;
+	}
+	
+	
 	}
 	
 

@@ -21,11 +21,13 @@ public class Commodity {
 	private String brand_name;
 	private String category_name;
 	private Integer param_id;
+	private Integer quantity;
+	private Integer fid;
 	private CommodityParam commodityParam; // 产品参数 产品和产品参数：一对一（实体）
 
 	@Override
 	public String toString() {
-		return "Commodity{" +
+		return "Commodity[" +
 				"commodity_id=" + commodity_id +
 				", category_id=" + category_id +
 				", brand_id=" + brand_id +
@@ -37,26 +39,37 @@ public class Commodity {
 				", createtime=" + createtime +
 				", brand_name='" + brand_name + '\'' +
 				", category_name='" + category_name + '\'' +
-				", praram_id=" + param_id +
+				", param_id=" + param_id +
+				", quantity=" + quantity +
+				", fid=" + fid +
 				", commodityParam=" + commodityParam +
-				'}';
+				']';
 	}
 
+	public Integer getFid() {
+		return fid;
+	}
+	public void setFid(Integer fid) {
+		this.fid = fid;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 	public Integer getParam_id() {
 		return param_id;
 	}
-
 	public void setParam_id(Integer praram_id) {
 		this.param_id = praram_id;
 	}
 	public CommodityParam getCommodityParam() {
 		return commodityParam;
 	}
-
 	public void setCommodityParam(CommodityParam commodityParam) {
 		this.commodityParam = commodityParam;
 	}
-
 	public String getBrand_name() {
 		return brand_name;
 	}

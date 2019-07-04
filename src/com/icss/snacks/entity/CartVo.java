@@ -7,8 +7,26 @@ public class CartVo {
 	private String cname;
 	private double promotional_price;
 	private String img;
-	
-	
+	private Integer cart_id; //¹ºÎï³µ±àºÅ
+
+	@Override
+	public String toString() {
+		return "CartVo[" +
+				"quantity=" + quantity +
+				", fname='" + fname + '\'' +
+				", cname='" + cname + '\'' +
+				", promotional_price=" + promotional_price +
+				", img='" + img + '\'' +
+				", cart_id=" + cart_id +
+				']';
+	}
+
+	public Integer getCart_id() {
+		return cart_id;
+	}
+	public void setCart_id(Integer cart_id) {
+		this.cart_id = cart_id;
+	}
 	public Integer getQuantity() {
 		return quantity;
 	}
@@ -39,10 +57,6 @@ public class CartVo {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	@Override
-	public String toString() {
-		return "CartVo [quantity=" + quantity + ", fname=" + fname + ", cname=" + cname + ", promotional_price="
-				+ promotional_price + ", img=" + img + "]";
-	}
+
 	
 }

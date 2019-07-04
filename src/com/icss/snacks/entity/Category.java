@@ -17,12 +17,12 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category{" +
+		return "Category[" +
 				"category_id=" + category_id +
 				", category_parentid=" + category_parentid +
 				", name='" + name + '\'' +
 				", subCategoryList=" + subCategoryList +
-				'}';
+				']';
 	}
 
 	public List<Category> getSubCategoryList() {

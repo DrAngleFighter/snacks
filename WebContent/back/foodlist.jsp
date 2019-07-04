@@ -18,7 +18,7 @@
                 </h3>
                 <div class="AM_ct text_center">
                     <div class="AM_ct_in">
-                        <a href="foodadd.jsp"><div class="add_btn df_btn fl" id="add_column_btn">添加</div></a>
+                        <a href="back/foodadd.jsp"><div class="add_btn df_btn fl" id="add_column_btn">添加</div></a>
                     </div>
                 </div>
 
