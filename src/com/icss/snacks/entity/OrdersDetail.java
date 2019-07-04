@@ -60,7 +60,7 @@ public class OrdersDetail {
 
 	@Override
 	public String toString() {
-		return "OrdersDetail{" +
+		return "OrdersDetail[" +
 				"detail_id=" + detail_id +
 				", commodity_id=" + commodity_id +
 				", quantity=" + quantity +
@@ -68,6 +68,6 @@ public class OrdersDetail {
 				", fid=" + fid +
 				", brand_id=" + brand_id +
 				", oid='" + oid + '\'' +
-				'}';
+				']';
 	}
 }

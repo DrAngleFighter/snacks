@@ -27,9 +27,9 @@ public class OrderService {
         OrdersDetailDao ordersDetailDao = new OrdersDetailDao();
         CommodityDao commodityDao = new CommodityDao();
         try {
-            DbFactory.beginTransaction(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            DbFactory.beginTransaction(); // ¿ªÆôÊÂÎñ-ÉèÖÃÊÖ¶¯¿ØÖÆÊÂÎñ
 
-            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            // ¶©µ¥±íµÄÌí¼Ó
             String oid = UUID.randomUUID().toString();
             Orders orders = new Orders();
             orders.setOid(oid);
@@ -46,10 +46,10 @@ public class OrderService {
             String[] idArray = cartIds.split(",");
             List<OrdersDetail> ordersDetailList = new ArrayList<OrdersDetail>();
             for (int i = 0; i < idArray.length; i ++){
-                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï³µï¿½ï¿½Å²ï¿½Ñ¯
+                // µ÷·½·¨-Í¨¹ý¹ºÎï³µ±àºÅ²éÑ¯
                 Integer cart_id = Integer.parseInt(idArray[i]);
                 Commodity commodity = commodityDao.findByCommodityByCartId(cart_id);
-                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                // ¶©µ¥±íµÄÌí¼Ó
                 OrdersDetail ordersDetail = new OrdersDetail();
                 ordersDetail.setBrand_id(commodity.getBrand_id());
                 ordersDetail.setCommodity_id(commodity.getCommodity_id());
@@ -61,7 +61,7 @@ public class OrderService {
                 ordersDetailList.add(ordersDetail);
             }
 
-            // ï¿½ï¿½ï¿½ï³µï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
+            // ¹ºÎï³µ±íµÄÉ¾³ý
             cartDao.deleteCart(cartIds);
             orders.setOrdersDetailList(ordersDetailList);
             logger.info(orders);
@@ -69,9 +69,9 @@ public class OrderService {
             orders.setOrdersDetailList(ordersDetailList);
             logger.info(orders);
 
-            DbFactory.commit(); // ï¿½ï¿½ï¿½ï¿½ï¿½á½»
+            DbFactory.commit(); // ÊÂÎñÌá½»
         } catch (Exception e) {
-            DbFactory.rollback(); // ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½
+            DbFactory.rollback(); // ÊÂÎñ»Ø¹ö
             e.printStackTrace();
         } finally {
             DbFactory.closeConnection();
