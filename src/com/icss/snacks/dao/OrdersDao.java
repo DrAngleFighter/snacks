@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.icss.snacks.entity.Orders;
+import com.icss.snacks.entity.User;
 import com.icss.snacks.util.DbFactory;
 
 /**
@@ -79,6 +80,7 @@ public class OrdersDao {
 	        	orders = new Orders();
 	        	orders.setOid(rs.getString("oid"));
 	        	orders.setUid(rs.getInt("uid"));
+	        	orders.setOrdertime(rs.getTimestamp("ordertime"));
 	        	orders.setTotalprice(rs.getDouble("totalprice"));
 	        	orders.setState(rs.getInt("state"));
 	        	orders.setAddress_id(rs.getInt("address_id"));
@@ -91,7 +93,7 @@ public class OrdersDao {
 		}
 		
 	public List<Orders> findAllList() throws Exception{
-		List<Orders> orderList =new ArrayList<Orders>();
+		List<Orders> ordersList =new ArrayList<Orders>();
 		Connection connection = DbFactory.openConnection();
 		String sql = "select * from tb_orders";
         PreparedStatement ps = connection.prepareStatement(sql)	;
@@ -102,18 +104,57 @@ public class OrdersDao {
         	orders = new Orders();
         	orders.setOid(rs.getString("oid"));
         	orders.setUid(rs.getInt("uid"));
+        	orders.setOrdertime(rs.getTimestamp("ordertime"));
         	orders.setTotalprice(rs.getDouble("totalprice"));
         	orders.setState(rs.getInt("state"));
         	orders.setAddress_id(rs.getInt("address_id"));
         	orders.setRemark(rs.getString("remark"));
-        	orderList.add(orders);
+        	ordersList.add(orders);
         }
         ps.close();		
         rs.close();		
-		return orderList;
+		return ordersList;
 	}
 		
 
+	public List<Orders> findOrdersListByPage(Integer currentPage, Integer pageSize) throws Exception {
+		List<Orders> ordersList = new ArrayList<Orders>();
+		Connection connection = DbFactory.openConnection();
+		String sql = "select o.oid,o.ordertime,o.state,o.remark from tb_orders o limit ?,?";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, (currentPage - 1) * pageSize);
+		ps.setInt(2, pageSize);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			Orders orders = new Orders();
+        	orders = new Orders();
+        	orders.setOid(rs.getString("oid"));
+        	orders.setOrdertime(rs.getTimestamp("ordertime"));
+        	orders.setState(rs.getInt("state"));
+        	orders.setRemark(rs.getString("remark"));
+        	ordersList.add(orders);
+		}
+		rs.close();
+		ps.close();
+		return ordersList;
+	}
+	
+	
+	public Integer findOrdersCount() throws Exception {
+		Integer count = 0;
+		Connection connection = DbFactory.openConnection();
+		String sql = "SELECT COUNT(*) FROM tb_orders";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			count = rs.getInt(1);
+		}
+		rs.close();
+		ps.close();
+		return count;
+	}
+	
+	
 	}
 	
 

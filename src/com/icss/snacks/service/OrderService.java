@@ -8,8 +8,7 @@ import com.icss.snacks.entity.Commodity;
 import com.icss.snacks.entity.Orders;
 import com.icss.snacks.entity.OrdersDetail;
 import com.icss.snacks.util.DbFactory;
-import org.apache.log4j.Logger;
-
+import com.icss.snacks.util.PageUtil;
 import org.apache.log4j.Logger;
 
 import java.sql.Timestamp;
@@ -77,5 +76,34 @@ public class OrderService {
             DbFactory.closeConnection();
         }
     }
+    
+    
+    
+	public PageUtil<Orders> findOrdersByPage(Integer currentPage, Integer pageSize) throws Exception {
+		// TODO Auto-generated method stub
+        OrdersDao ordersDao = new OrdersDao();
+		PageUtil<Orders> pageUtil = new PageUtil<Orders>();
+		List<Orders> list = null;
+		Integer count = 0;
+		
+		try {
+			count = ordersDao.findOrdersCount();
+			list = ordersDao.findOrdersListByPage(currentPage, pageSize);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DbFactory.closeConnection();
+		}
+		
+		Integer totalPage = count % pageSize == 0 ? count / pageSize : count / pageSize +  1;
+		
+		pageUtil.setCount(count);
+		pageUtil.setCurrentPage(currentPage);
+		pageUtil.setList(list);
+		pageUtil.setTotalPage(totalPage);
+		return pageUtil;
+	}
+    
 
 }

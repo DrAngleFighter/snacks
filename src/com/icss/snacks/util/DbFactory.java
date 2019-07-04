@@ -21,7 +21,7 @@ public class DbFactory {
 		Connection connection = tl.get();
 		if(connection == null || connection.isClosed()) {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			final String DB_URL = "jdbc:mysql://localhost:3306/snacks";
+			final String DB_URL = "jdbc:mysql://localhost/snacks";
 			final String USER_NAME = "root";
 			final String PASSWORD = "root";
 			connection = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
