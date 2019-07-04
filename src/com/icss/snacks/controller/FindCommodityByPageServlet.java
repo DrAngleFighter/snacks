@@ -39,7 +39,7 @@ public class FindCommodityByPageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// ½ÓÊÜÒ³ÃæÌá½»²ÎÊı
+		// æ¥å—é¡µé¢æäº¤å‚æ•°
 		String currentPage = request.getParameter("currentPage");
 		Integer pageSize = 6;
 		Integer page = 0;
@@ -50,7 +50,7 @@ public class FindCommodityByPageServlet extends HttpServlet {
 		}
 		
 		
-		// µ÷ÓÃÒµÎñ²ã·½·¨½øĞĞ´¦Àí
+		// è°ƒç”¨ä¸šåŠ¡å±‚æ–¹æ³•è¿›è¡Œå¤„ç†
 		CommodityService commodityService = new CommodityService();
 		PageUtil<Commodity> pageUtil = null; 
 		try {
@@ -60,7 +60,7 @@ public class FindCommodityByPageServlet extends HttpServlet {
 		}
 		
 		
-		// ¸ù¾İ·½·¨´¦Àí½á¹û½øĞĞÌø×ª
+		// æ ¹æ®æ–¹æ³•å¤„ç†ç»“æœè¿›è¡Œè·³è½¬
 		request.setAttribute("pageUtil", pageUtil);
 		request.getRequestDispatcher("back/foodlist.jsp").forward(request, response);
 		

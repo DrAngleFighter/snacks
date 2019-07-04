@@ -23,19 +23,19 @@ public class UserDao {
 	 */
 	public Integer register(User user) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä Ìí¼ÓÓï¾ä "INSERT "
+		// 2. ç¼–å†™SQLè¯­å¥ æ·»åŠ è¯­å¥ "INSERT "
 		String sql = "INSERT INTO tb_user(username, password, regtime) VALUE(?, ?, ?)";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setString(1, user.getUsername());
 		ps.setString(2, user.getPassword());
 		ps.setTimestamp(3, user.getRegtime());
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -48,17 +48,17 @@ public class UserDao {
 	 */
 	public Integer deleteUser(Integer uid) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "DELETE FROM tb_user WHERE uid=?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, uid);
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;		
 	}
@@ -71,22 +71,22 @@ public class UserDao {
 	 */
 	public Integer updateUser(User user) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "UPDATE tb_user SET username = ? , password = ?, phone = ?, sex = ?, email = ? WHERE uid = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setString(1, user.getUsername());
 		ps.setString(2, user.getPassword());
 		ps.setString(3, user.getPhone());
 		ps.setString(4, user.getGender());
 		ps.setString(5, user.getEmail());
 		ps.setInt(6, user.getUid());
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -99,17 +99,17 @@ public class UserDao {
 	 */
 	public User findUserByUid(Integer uid) throws Exception {
 		User user = null;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_user WHERE uid=?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, uid);
-		// 5. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 5. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 6. ½«½á¹û¼¯ÖĞÊı¾İÌáÈ¡µ½¶ÔÏóÊôĞÔÖĞ
+		// 6. å°†ç»“æœé›†ä¸­æ•°æ®æå–åˆ°å¯¹è±¡å±æ€§ä¸­
 		if(rs.next()) {
 			user = new User();
 			user.setUid(rs.getInt("uid"));
@@ -121,7 +121,7 @@ public class UserDao {
 			user.setGender(rs.getString("sex"));
 			user.setUsername(rs.getString("username"));
 		}
-		// 7. ÊÍ·Å×ÊÔ´
+		// 7. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return user;
@@ -136,15 +136,15 @@ public class UserDao {
 	 */
 	public List<User> findAllUserList() throws Exception {
 		List<User> userList = new ArrayList<User>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_user";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			User user = new User();
 			user.setUid(rs.getInt("uid"));
@@ -157,7 +157,7 @@ public class UserDao {
 			user.setUsername(rs.getString("username"));
 			userList.add(user);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return userList;
@@ -171,19 +171,19 @@ public class UserDao {
 	 */
 	public Integer findUserCount() throws Exception {
 		Integer count = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT COUNT(*) FROM tb_user";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		if (rs.next()) {
 			count = rs.getInt(1);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return count;

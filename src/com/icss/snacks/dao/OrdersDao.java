@@ -17,7 +17,7 @@ import com.icss.snacks.util.DbFactory;
 public class OrdersDao {
 
 	/**
-	 * ÃÌº”∂©µ•
+	 * Ê∑ªÂä†ËÆ¢Âçï
 	 * @param orders
 	 * @return row
 	 * @throws Exception

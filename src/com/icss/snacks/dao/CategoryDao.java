@@ -24,18 +24,18 @@ public class CategoryDao {
 	 */
 	public Integer add(Category category) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä Ìí¼ÓÓï¾ä "INSERT "
+		// 2. ç¼–å†™SQLè¯­å¥ æ·»åŠ è¯­å¥ "INSERT "
 		String sql = "INSERT INTO tb_category(category_parentid, name) VALUE(?, ?)";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, category.getCategory_parentid());
 		ps.setString(2, category.getName());
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -48,17 +48,17 @@ public class CategoryDao {
 	 */
 	public Integer delete(Integer category_id) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "DELETE FROM tb_category WHERE category_id = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, category_id);
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;		
 	}
@@ -71,19 +71,19 @@ public class CategoryDao {
 	 */
 	public Integer update(Category category) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "UPDATE tb_category SET category_parentid = ?, name = ? WHERE category_id = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, category.getCategory_parentid());
 		ps.setString(2, category.getName());
 		ps.setInt(3, category.getCategory_id());
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -97,24 +97,24 @@ public class CategoryDao {
 	 */
 	public Category findByCategoryid(Integer category_id) throws Exception {
 		Category category = null;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_category WHERE category_id=?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, category_id);
-		// 5. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 5. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 6. ½«½á¹û¼¯ÖĞÊı¾İÌáÈ¡µ½¶ÔÏóÊôĞÔÖĞ
+		// 6. å°†ç»“æœé›†ä¸­æ•°æ®æå–åˆ°å¯¹è±¡å±æ€§ä¸­
 		if(rs.next()) {
 			category = new Category();
 			category.setCategory_id(rs.getInt("category_id"));
 			category.setCategory_parentid(rs.getInt("category_parentid"));
 			category.setName(rs.getString("name"));
 		}
-		// 7. ÊÍ·Å×ÊÔ´
+		// 7. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return category;
@@ -127,15 +127,15 @@ public class CategoryDao {
 	 */
 	public List<Category> findAll() throws Exception {
 		List<Category> categoryList = new ArrayList<Category>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_category";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			Category category = new Category();
 			category.setCategory_id(rs.getInt("category_id"));
@@ -143,7 +143,7 @@ public class CategoryDao {
 			category.setName(rs.getString("name"));
 			categoryList.add(category);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return categoryList;
@@ -157,19 +157,19 @@ public class CategoryDao {
 	 */
 	public Integer findCount() throws Exception {
 		Integer count = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT COUNT(*) FROM tb_category";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		if (rs.next()) {
 			count = rs.getInt(1);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return count;
@@ -177,17 +177,17 @@ public class CategoryDao {
 
 	public List<Category> findByParentId(Integer parent_id) throws Exception {
 		List<Category> categoryList = new ArrayList<Category>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_category WHERE category_parentid = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, parent_id);
-		// 5. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 5. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 6. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 6. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			Category category = new Category();
 			category.setCategory_id(rs.getInt("category_id"));
@@ -195,7 +195,7 @@ public class CategoryDao {
 			category.setName(rs.getString("name"));
 			categoryList.add(category);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return categoryList;

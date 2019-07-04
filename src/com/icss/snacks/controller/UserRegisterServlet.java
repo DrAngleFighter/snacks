@@ -40,11 +40,11 @@ public class UserRegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		//½ÓÊÕÒ³ÃæÌá½»µÄ²ÎÊı
+		//æ¥æ”¶é¡µé¢æäº¤çš„å‚æ•°
 		String name = request.getParameter("username");
 		String pwd = request.getParameter("password");
 		
-		//µ÷ÓÃÒµÎñ·½·¨½øĞĞ´¦Àí
+		//è°ƒç”¨ä¸šåŠ¡æ–¹æ³•è¿›è¡Œå¤„ç†
 		UserService userservice = new UserService();
 		int row;
 		User user = new User();
@@ -58,9 +58,9 @@ public class UserRegisterServlet extends HttpServlet {
 			return;
 		}
 		
-		//¸ù¾İ´¦Àí½á¹û½øĞĞÏàÓ¦Ìø×ª
+		//æ ¹æ®å¤„ç†ç»“æœè¿›è¡Œç›¸åº”è·³è½¬
 		if(row == 0) {
-			request.setAttribute("msg", "×¢²áÊ§°Ü");
+			request.setAttribute("msg", "æ³¨å†Œå¤±è´¥");
 			request.getRequestDispatcher("register.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("login.jsp").forward(request, response);

@@ -51,7 +51,7 @@ public class FindCartByUidServlet extends HttpServlet {
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 		
-		// 根据结果处理视图
+		// 鏍规嵁缁撴灉澶勭悊瑙嗗浘
 		request.setAttribute("cartVoList", list);
 		request.getRequestDispatcher("shopcart.jsp").forward(request, response);
 	}

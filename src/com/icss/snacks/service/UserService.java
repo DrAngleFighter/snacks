@@ -10,7 +10,7 @@ public class UserService {
 	
 	
 	/**
-	 * 	用户登录
+	 * 	鐢ㄦ埛鐧诲綍
 	 * @param username
 	 * @param pwd
 	 * @return
@@ -31,7 +31,7 @@ public class UserService {
 	
 	
 	/**
-	 *	用户注册
+	 *	鐢ㄦ埛娉ㄥ唽
 	 * @param user
 	 * @return
 	 * @throws Exception

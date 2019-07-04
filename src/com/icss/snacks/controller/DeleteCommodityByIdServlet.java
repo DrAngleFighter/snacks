@@ -37,20 +37,20 @@ public class DeleteCommodityByIdServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//½ÓÊÜÒ³ÃæÌá½»µÄ²ÎÊı
+		//æ¥å—é¡µé¢æäº¤çš„å‚æ•°
 		String commodity_id = request.getParameter("commodity_id");
 		Integer id = 0;
 		if (commodity_id != null) {
 			id = Integer.parseInt(commodity_id);
 		}
-		//µ÷ÓÃÒµÎñ²ãµÄ·½·¨
+		//è°ƒç”¨ä¸šåŠ¡å±‚çš„æ–¹æ³•
 		CommodityService commodityService = new CommodityService();
 		try {
 			commodityService.deleteCommodityById(id);
 		} catch (Exception e) {
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
-		//¸ù¾İ´¦Àí½á¹û½øĞĞÏàÓ¦µÄÌø×ª
+		//æ ¹æ®å¤„ç†ç»“æœè¿›è¡Œç›¸åº”çš„è·³è½¬
 		request.getRequestDispatcher("FindCommodityByPageServlet").forward(request, response);
 	}
 

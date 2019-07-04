@@ -24,13 +24,13 @@ public class CommodityDao {
 	 */
 	public Integer add(Commodity commodity) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä Ìí¼ÓÓï¾ä "INSERT "
+		// 2. ç¼–å†™SQLè¯­å¥ æ·»åŠ è¯­å¥ "INSERT "
 		String sql = "INSERT INTO tb_commodity(category_id, brand_id, cname, promotional_price, original_price, description, img, createtime, param_id) VALUE(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, commodity.getCategory_id());
 		ps.setInt(2, commodity.getBrand_id());
 		ps.setString(3, commodity.getCname());
@@ -40,9 +40,9 @@ public class CommodityDao {
 		ps.setString(7, commodity.getImg());
 		ps.setTimestamp(8, commodity.getCreatetime());
 		ps.setInt(9, commodity.getParam_id());
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -55,17 +55,17 @@ public class CommodityDao {
 	 */
 	public Integer delete(Integer commodity_id) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "DELETE FROM tb_commodity WHERE commodity_id = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, commodity_id);
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;		
 	}
@@ -79,13 +79,13 @@ public class CommodityDao {
 	 */
 	public Integer update(Commodity commodity) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "UPDATE tb_commodity SET category_id = ?, brand_id = ?, cname = ?, promotional_price = ?, original_price = ?, description = ?, img = ?, createtime = ?, param_id = ? WHERE commodity_id = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, commodity.getCategory_id());
 		ps.setInt(2, commodity.getBrand_id());
 		ps.setString(3, commodity.getCname());
@@ -97,9 +97,9 @@ public class CommodityDao {
 		ps.setInt(9, commodity.getParam_id());
 		ps.setInt(10, commodity.getCommodity_id());
 
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -112,17 +112,17 @@ public class CommodityDao {
 	 */
 	public Commodity findByCommodityid(Integer commodity_id) throws Exception {
 		Commodity commodity = null;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_commodity WHERE commodity_id=?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, commodity_id);
-		// 5. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 5. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 6. ½«½á¹û¼¯ÖĞÊı¾İÌáÈ¡µ½¶ÔÏóÊôĞÔÖĞ
+		// 6. å°†ç»“æœé›†ä¸­æ•°æ®æå–åˆ°å¯¹è±¡å±æ€§ä¸­
 		if(rs.next()) {
 			commodity = new Commodity();
 			commodity.setCommodity_id(rs.getInt("commodity_id"));
@@ -136,7 +136,7 @@ public class CommodityDao {
 			commodity.setCreatetime(rs.getTimestamp("createtime"));
 			commodity.setParam_id(rs.getInt("param_id"));
 		}
-		// 7. ÊÍ·Å×ÊÔ´
+		// 7. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return commodity;
@@ -144,21 +144,21 @@ public class CommodityDao {
 
 	public Commodity findByCommodityByCartId(Integer cart_id) throws Exception {
 		Commodity commodity = null;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "select cart.quantity,cart.commodity_id,cart.fid,c.brand_id,c.promotional_price"
 					+" FROM tb_cart cart"
 					+" INNER JOIN tb_commodity c on c.commodity_id=cart.commodity_id"
 					+" where cart.cart_id=?";
 
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, cart_id);
-		// 5. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 5. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 6. ½«½á¹û¼¯ÖĞÊı¾İÌáÈ¡µ½¶ÔÏóÊôĞÔÖĞ
+		// 6. å°†ç»“æœé›†ä¸­æ•°æ®æå–åˆ°å¯¹è±¡å±æ€§ä¸­
 		if(rs.next()) {
 			commodity = new Commodity();
 			commodity.setCommodity_id(rs.getInt("commodity_id"));
@@ -167,7 +167,7 @@ public class CommodityDao {
 			commodity.setQuantity(rs.getInt("quantity"));
 			commodity.setFid(rs.getInt("fid"));
 		}
-		// 7. ÊÍ·Å×ÊÔ´
+		// 7. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return commodity;
@@ -181,15 +181,15 @@ public class CommodityDao {
 	 */
 	public List<Commodity> findAllCommodityList() throws Exception {
 		List<Commodity> commodityList = new ArrayList<Commodity>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_commodity";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			Commodity commodity = new Commodity();
 			commodity.setCommodity_id(rs.getInt("commodity_id"));
@@ -204,7 +204,7 @@ public class CommodityDao {
 			commodity.setParam_id(rs.getInt("param_id"));
 			commodityList.add(commodity);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return commodityList;
@@ -213,19 +213,19 @@ public class CommodityDao {
 	
 	public Integer findCommodityCount() throws Exception {
 		Integer count = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT COUNT(*) FROM tb_commodity";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		if (rs.next()) {
 			count = rs.getInt(1);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return count;
@@ -233,15 +233,15 @@ public class CommodityDao {
 	
 	public List<Commodity> findLatestCommodityList() throws Exception {
 		List<Commodity> commodityList = new ArrayList<Commodity>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_commodity ORDER BY createtime DESC LIMIT 0, 12";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			Commodity commodity = new Commodity();
 			commodity.setCommodity_id(rs.getInt("commodity_id"));
@@ -255,7 +255,7 @@ public class CommodityDao {
 			commodity.setCreatetime(rs.getTimestamp("createtime"));
 			commodityList.add(commodity);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return commodityList;
@@ -264,19 +264,19 @@ public class CommodityDao {
 	
 	public List<Commodity> findAllCommodityListByPage(Integer currentPage, Integer pageSize) throws Exception {
 		List<Commodity> commodityList = new ArrayList<Commodity>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT c.*, b. NAME brand_name,	ca. NAME category_name FROM tb_commodity c "
 		 			+ "INNER JOIN tb_brand b ON b.brand_id = c.brand_id "
 		 			+"INNER JOIN tb_category ca ON ca.category_id = c.category_id limit ?,?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ps.setInt(1, (currentPage - 1) * pageSize);
 		ps.setInt(2, pageSize);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			Commodity commodity = new Commodity();
 			commodity.setCommodity_id(rs.getInt("commodity_id"));
@@ -292,7 +292,7 @@ public class CommodityDao {
 			commodity.setCategory_name(rs.getString("category_name"));
 			commodityList.add(commodity);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return commodityList;

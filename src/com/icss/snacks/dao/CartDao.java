@@ -24,20 +24,20 @@ public class CartDao {
 	 */
 	public Integer add(Cart cart) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä Ìí¼ÓÓï¾ä "INSERT "
+		// 2. ç¼–å†™SQLè¯­å¥ æ·»åŠ è¯­å¥ "INSERT "
 		String sql = "INSERT INTO tb_cart(uid, quantity, fid, commodity_id) VALUE(?, ?, ?, ?)";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, cart.getUid());
 		ps.setInt(2, cart.getQuantity());
 		ps.setInt(3, cart.getFid());
 		ps.setInt(4, cart.getCommodity_id());
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -51,17 +51,17 @@ public class CartDao {
 	 */
 	public Integer delete(Integer cart_id) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "DELETE FROM tb_cart WHERE cart_id = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, cart_id);
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -88,21 +88,21 @@ public class CartDao {
 	 */
 	public Integer update(Cart cart) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "UPDATE tb_cart SET uid = ?, quantity = ?, fid = ?, commodity_id = ? WHERE cart_id = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, cart.getUid());
 		ps.setInt(2, cart.getQuantity());
 		ps.setInt(3, cart.getFid());
 		ps.setInt(4, cart.getCommodity_id());
 		ps.setInt(5, cart.getCart_id());
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -131,17 +131,17 @@ public class CartDao {
 	 */
 	public Cart findByCartid(Integer cart_id) throws Exception {
 		Cart cart = null;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_cart WHERE cart_id=?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, cart_id);
-		// 5. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 5. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 6. ½«½á¹û¼¯ÖĞÊı¾İÌáÈ¡µ½¶ÔÏóÊôĞÔÖĞ
+		// 6. å°†ç»“æœé›†ä¸­æ•°æ®æå–åˆ°å¯¹è±¡å±æ€§ä¸­
 		if(rs.next()) {
 			cart = new Cart();
 			cart.setCart_id(rs.getInt("cart_id"));
@@ -150,7 +150,7 @@ public class CartDao {
 			cart.setFid(rs.getInt("fid"));
 			cart.setCommodity_id(rs.getInt("commodity_id"));
 		}
-		// 7. ÊÍ·Å×ÊÔ´
+		// 7. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return cart;
@@ -163,15 +163,15 @@ public class CartDao {
 	 */
 	public List<Cart> findAll() throws Exception {
 		List<Cart> cartList = new ArrayList<Cart>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_cart";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			Cart cart = new Cart();
 			cart.setCart_id(rs.getInt("cart_id"));
@@ -181,7 +181,7 @@ public class CartDao {
 			cart.setCommodity_id(rs.getInt("commodity_id"));
 			cartList.add(cart);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return cartList;
@@ -195,19 +195,19 @@ public class CartDao {
 	 */
 	public Integer findCount() throws Exception {
 		Integer count = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT COUNT(*) FROM tb_cart";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		if (rs.next()) {
 			count = rs.getInt(1);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return count;
@@ -216,20 +216,20 @@ public class CartDao {
 	
 	public List<CartVo> findCartListByUid(Integer uid) throws Exception {
 		List<CartVo> cartVoList = new ArrayList<CartVo>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT cart.cart_id, c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " +
 					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " + 
 					"INNER JOIN tb_flavor f ON f.fid = cart.fid " + 
 					"WHERE cart.uid = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, uid);
-		// 5. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 5. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 6. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 6. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			CartVo cartVo = new CartVo();
 			cartVo.setCname(rs.getString("cname"));
@@ -240,7 +240,7 @@ public class CartDao {
 			cartVo.setCart_id(rs.getInt("cart_id"));
 			cartVoList.add(cartVo);
 		}
-		// 7. ÊÍ·Å×ÊÔ´
+		// 7. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return cartVoList;
@@ -249,9 +249,9 @@ public class CartDao {
 
 	public List<CartVo> findCartListByUidAndCartId(Integer uid, String cartIds) throws Exception {
 		List<CartVo> cartVoList = new ArrayList<CartVo>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT cart.cart_id, c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " +
 					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " +
 					"INNER JOIN tb_flavor f ON f.fid = cart.fid " +
@@ -266,13 +266,13 @@ public class CartDao {
 			}
 		}
 		sql += ")";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, uid);
-		// 5. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 5. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 6. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 6. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			CartVo cartVo = new CartVo();
 			cartVo.setCname(rs.getString("cname"));
@@ -283,7 +283,7 @@ public class CartDao {
 			cartVo.setCart_id(rs.getInt("cart_id"));
 			cartVoList.add(cartVo);
 		}
-		// 7. ÊÍ·Å×ÊÔ´
+		// 7. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return cartVoList;

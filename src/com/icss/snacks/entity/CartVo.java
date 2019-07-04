@@ -7,7 +7,7 @@ public class CartVo {
 	private String cname;
 	private double promotional_price;
 	private String img;
-	private Integer cart_id; //¹ºÎï³µ±àºÅ
+	private Integer cart_id; //è´­ç‰©è½¦ç¼–å·
 
 	@Override
 	public String toString() {

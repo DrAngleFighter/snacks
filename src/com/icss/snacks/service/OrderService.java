@@ -27,9 +27,9 @@ public class OrderService {
         OrdersDetailDao ordersDetailDao = new OrdersDetailDao();
         CommodityDao commodityDao = new CommodityDao();
         try {
-            DbFactory.beginTransaction(); // ¿ªÆôÊÂÎñ-ÉèÖÃÊÖ¶¯¿ØÖÆÊÂÎñ
+            DbFactory.beginTransaction(); // å¼€å¯äº‹åŠ¡-è®¾ç½®æ‰‹åŠ¨æ§åˆ¶äº‹åŠ¡
 
-            // ¶©µ¥±íµÄÌí¼Ó
+            // è®¢å•è¡¨çš„æ·»åŠ 
             String oid = UUID.randomUUID().toString();
             Orders orders = new Orders();
             orders.setOid(oid);
@@ -46,10 +46,10 @@ public class OrderService {
             String[] idArray = cartIds.split(",");
             List<OrdersDetail> ordersDetailList = new ArrayList<OrdersDetail>();
             for (int i = 0; i < idArray.length; i ++){
-                // µ÷·½·¨-Í¨¹ı¹ºÎï³µ±àºÅ²éÑ¯
+                // è°ƒæ–¹æ³•-é€šè¿‡è´­ç‰©è½¦ç¼–å·æŸ¥è¯¢
                 Integer cart_id = Integer.parseInt(idArray[i]);
                 Commodity commodity = commodityDao.findByCommodityByCartId(cart_id);
-                // ¶©µ¥±íµÄÌí¼Ó
+                // è®¢å•è¡¨çš„æ·»åŠ 
                 OrdersDetail ordersDetail = new OrdersDetail();
                 ordersDetail.setBrand_id(commodity.getBrand_id());
                 ordersDetail.setCommodity_id(commodity.getCommodity_id());
@@ -61,7 +61,7 @@ public class OrderService {
                 ordersDetailList.add(ordersDetail);
             }
 
-            // ¹ºÎï³µ±íµÄÉ¾³ı
+            // è´­ç‰©è½¦è¡¨çš„åˆ é™¤
             cartDao.deleteCart(cartIds);
             orders.setOrdersDetailList(ordersDetailList);
             logger.info(orders);
@@ -69,9 +69,9 @@ public class OrderService {
             orders.setOrdersDetailList(ordersDetailList);
             logger.info(orders);
 
-            DbFactory.commit(); // ÊÂÎñÌá½»
+            DbFactory.commit(); // äº‹åŠ¡æäº¤
         } catch (Exception e) {
-            DbFactory.rollback(); // ÊÂÎñ»Ø¹ö
+            DbFactory.rollback(); // äº‹åŠ¡å›æ»š
             e.printStackTrace();
         } finally {
             DbFactory.closeConnection();

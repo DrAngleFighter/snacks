@@ -10,7 +10,7 @@ import com.icss.snacks.entity.Address;
 import com.icss.snacks.util.DbFactory;
 
 /**
- * µØÖ·Êı¾İ²ã
+ * åœ°å€æ•°æ®å±‚
  * @author yww
  *
  */
@@ -55,18 +55,18 @@ public class AddressDao {
 	
 	public Integer Delete(Integer address_id) throws Exception{
 		Integer row = 0;
-		//1.Á¬½ÓÊı¾İ¿â
+		//1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "delete from tb_address where address_id=?";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.ÉèÖÃÕ¼Î»·ûµÄÖµ
+		//4.è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, address_id);
 		
-		//5.Ö´ĞĞsql·µ»ØÊÜÓ°ÏìĞĞÊı
+		//5.æ‰§è¡Œsqlè¿”å›å—å½±å“è¡Œæ•°
 		row = ps.executeUpdate();
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -74,20 +74,20 @@ public class AddressDao {
 	
 	public Address findAddressByAddress_id(Integer address_id) throws Exception{
 		 /**
-		  * ²éÑ¯ÓÃ»§ÏêÇé
+		  * æŸ¥è¯¢ç”¨æˆ·è¯¦æƒ…
 		  */
 		 Address address = null;
-		 //1.Á¬½ÓÊı¾İ¿â
+		 //1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "select * from tb_address where address_id=?";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.ÉèÖÃÕ¼Î»·ûµÄÖµ
+		//4.è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, address_id);
-		//5.Ö´ĞĞsql£¬·µ»Ø½á¹û¼¯
+		//5.æ‰§è¡Œsqlï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		//6.½«½á¹û¼¯ÖĞÊı¾İÌáÈ¡µ½¶ÔÏóµÄÊôĞÔÖĞ
+		//6.å°†ç»“æœé›†ä¸­æ•°æ®æå–åˆ°å¯¹è±¡çš„å±æ€§ä¸­
 		if(rs.next()) {
 			address = new Address();
 			address.setUid(rs.getInt("uid"));
@@ -98,7 +98,7 @@ public class AddressDao {
 			address.setState(rs.getInt("state"));
 			address.setAddress_id(rs.getInt("address_id"));
 		}
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return address;
@@ -107,15 +107,15 @@ public class AddressDao {
 	
 	public List<Address> findAllAddressList() throws Exception{
 		 List<Address> addressList = new ArrayList<Address>();
-		//1.Á¬½ÓÊı¾İ¿â
+		//1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "select * from tb_address";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.Ö´ĞĞsql£¬·µ»Ø½á¹û¼¯
+		//4.æ‰§è¡Œsqlï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		//5.Ñ­»·»ñÈ¡ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		//5.å¾ªç¯è·å–ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while(rs.next()) {
 			Address address = new Address();
 			address.setUid(rs.getInt("uid"));
@@ -128,7 +128,7 @@ public class AddressDao {
 			
 			addressList.add(address);
 		}
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return addressList;
@@ -137,19 +137,19 @@ public class AddressDao {
 	
 	public Integer findAddressCount() throws Exception{
 		 Integer count = 0;
-		//1.Á¬½ÓÊı¾İ¿â
+		//1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "select count(*) from tb_address";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.Ö´ĞĞsql£¬·µ»Ø½á¹û¼¯
+		//4.æ‰§è¡Œsqlï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		//5.´Ó¼¯ºÏÖĞÌáÈ¡Êı¾İ
+		//5.ä»é›†åˆä¸­æå–æ•°æ®
 		if(rs.next()) {
 			count = rs.getInt(1);
 		}
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		 return count;
@@ -158,17 +158,17 @@ public class AddressDao {
 	
 	public List<Address> findAddressByUid(Integer uid) throws Exception{
 		List<Address> list = new ArrayList<Address>();
-		//1.Á¬½ÓÊı¾İ¿â
+		//1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "select * from tb_address where uid=?";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.ÉèÖÃÕ¼Î»·ûµÄÖµ
+		//4.è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, uid);
-		//5.Ö´ĞĞsql£¬·µ»Ø½á¹û¼¯
+		//5.æ‰§è¡Œsqlï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		//6.½«½á¹û¼¯ÖĞÊı¾İÌáÈ¡µ½¶ÔÏóµÄÊôĞÔÖĞ
+		//6.å°†ç»“æœé›†ä¸­æ•°æ®æå–åˆ°å¯¹è±¡çš„å±æ€§ä¸­
 		while(rs.next()) {
 			Address address = new Address();
 			address.setUid(rs.getInt("uid"));
@@ -180,7 +180,7 @@ public class AddressDao {
 			address.setAddress_id(rs.getInt("address_id"));
 			list.add(address);
 		}
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return list;

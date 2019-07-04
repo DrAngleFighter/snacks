@@ -18,7 +18,7 @@ public class Orders {
 	private Timestamp ordertime;
 	private Integer state;
 	private Integer address_id;
-	private List<OrdersDetail> ordersDetailList; // 订单和订单详情：一对多
+	private List<OrdersDetail> ordersDetailList; // 璁㈠崟鍜岃鍗曡鎯咃細涓�瀵瑰
 
 	public List<OrdersDetail> getOrdersDetailList() {
 		return ordersDetailList;

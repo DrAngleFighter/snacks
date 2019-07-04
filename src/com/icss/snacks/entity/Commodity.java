@@ -23,7 +23,7 @@ public class Commodity {
 	private Integer param_id;
 	private Integer quantity;
 	private Integer fid;
-	private CommodityParam commodityParam; // 产品参数 产品和产品参数：一对一（实体）
+	private CommodityParam commodityParam; // 浜у搧鍙傛暟 浜у搧鍜屼骇鍝佸弬鏁帮細涓�瀵逛竴锛堝疄浣擄級
 
 	@Override
 	public String toString() {
