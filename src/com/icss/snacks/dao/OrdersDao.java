@@ -119,17 +119,12 @@ public class OrdersDao {
 
 	public List<Orders> findOrdersListByPage(Integer currentPage, Integer pageSize) throws Exception {
 		List<Orders> ordersList = new ArrayList<Orders>();
-		// 1. �������ݿ�
 		Connection connection = DbFactory.openConnection();
-		// 2. ��дSQL���
 		String sql = "select o.oid,o.ordertime,o.state,o.remark from tb_orders o limit ?,?";
-		// 3. ����ִ��SQL�������ӵ�������
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ps.setInt(1, (currentPage - 1) * pageSize);
 		ps.setInt(2, pageSize);
-		// 4. ִ��SQL�����ؽ����
 		ResultSet rs = ps.executeQuery();
-		// 5. ѭ����ȥ�û��������ӵ�������
 		while (rs.next()) {
 			Orders orders = new Orders();
         	orders = new Orders();
@@ -139,7 +134,6 @@ public class OrdersDao {
         	orders.setRemark(rs.getString("remark"));
         	ordersList.add(orders);
 		}
-		// 6. �ͷ���Դ
 		rs.close();
 		ps.close();
 		return ordersList;
@@ -148,19 +142,13 @@ public class OrdersDao {
 	
 	public Integer findOrdersCount() throws Exception {
 		Integer count = 0;
-		// 1. �������ݿ�
 		Connection connection = DbFactory.openConnection();
-		// 2. ��дSQL���
 		String sql = "SELECT COUNT(*) FROM tb_orders";
-		// 3. ����ִ��SQL�������ӵ�������
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ִ��SQL�����ؽ����
 		ResultSet rs = ps.executeQuery();
-		// 5. ѭ����ȥ�û��������ӵ�������
 		if (rs.next()) {
 			count = rs.getInt(1);
 		}
-		// 6. �ͷ���Դ
 		rs.close();
 		ps.close();
 		return count;

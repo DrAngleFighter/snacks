@@ -21,7 +21,7 @@
                     <ul class="list_h">
                         <li class="b20"><label><input type="checkbox" name=""><span>姓名</span></label></li>
                         <li class="b20"><label>性别</label></li>
-                        <li class="b20"><label>生日</label></li>
+                        <li class="b20"><label>注册时间</label></li>
                         <li class="b20"><label>电话</label></li>
                         <li class="b60"><label>操作</label></li>
                     </ul>

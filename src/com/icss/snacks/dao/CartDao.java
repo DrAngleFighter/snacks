@@ -218,11 +218,7 @@ public class CartDao {
 		List<CartVo> cartVoList = new ArrayList<CartVo>();
 		// 1. 连接数据库
 		Connection connection = DbFactory.openConnection();
-<<<<<<< HEAD
 		// 2. 编写SQL语句
-=======
-		// 2. ��дSQL���
->>>>>>> 3a9ce3c4781ab9423d4c2b7ca3f236c5bf41ddee
 		String sql = "SELECT cart.cart_id, c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " +
 					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " + 
 					"INNER JOIN tb_flavor f ON f.fid = cart.fid " + 
