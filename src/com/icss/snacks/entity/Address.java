@@ -9,7 +9,7 @@ package com.icss.snacks.entity;
 public class Address {
 
 	private Integer address_id;
-	private Integer uid; // ÓÃ»§±àºÅ
+	private Integer uid; // ç”¨æˆ·ç¼–å·
 	private String full_address;
 	private String phone;
 	private String zip_code;

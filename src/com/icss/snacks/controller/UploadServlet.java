@@ -39,20 +39,20 @@ public class UploadServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ÉèÖÃÇëÇó²ÎÊı±àÂë¸ñÊ½£¨½â¾öpostÇëÇóÂÒÂëÎÊÌâ£©
+		//è®¾ç½®è¯·æ±‚å‚æ•°ç¼–ç æ ¼å¼ï¼ˆè§£å†³postè¯·æ±‚ä¹±ç é—®é¢˜ï¼‰
 		request.setCharacterEncoding("GBK");
 		try {
-			//ÊµÀı»¯×é¼ş
+			//å®ä¾‹åŒ–ç»„ä»¶
 			SmartUpload smartUpload = new SmartUpload();
-			//³õÊ¼»¯
+			//åˆå§‹åŒ–
 			smartUpload.initialize(getServletConfig(), request, response);
-			//ÉÏ´«
+			//ä¸Šä¼ 
 			smartUpload.upload();
-			//»ñÈ¡ÉÏ´«µÄÎÄ¼şÁĞ±í
+			//è·å–ä¸Šä¼ çš„æ–‡ä»¶åˆ—è¡¨
 			Files files = smartUpload.getFiles();
-			//»ñÈ¡ÉÏ´«µÄÍ¼Æ¬ÎÄ¼ş
+			//è·å–ä¸Šä¼ çš„å›¾ç‰‡æ–‡ä»¶
 			File file = files.getFile(0);
-			//±£´æÎÄ¼ş
+			//ä¿å­˜æ–‡ä»¶
 			file.saveAs("d:/img/"+file.getFileName());
 			
 			

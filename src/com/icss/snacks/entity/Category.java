@@ -13,16 +13,16 @@ public class Category {
 	private Integer category_id;
 	private Integer category_parentid;
 	private String name;
-	private List<Category> subCategoryList; // 父类别和子类别一对多
+	private List<Category> subCategoryList; // 鐖剁被鍒拰瀛愮被鍒竴瀵瑰
 
 	@Override
 	public String toString() {
-		return "Category{" +
+		return "Category[" +
 				"category_id=" + category_id +
 				", category_parentid=" + category_parentid +
 				", name='" + name + '\'' +
 				", subCategoryList=" + subCategoryList +
-				'}';
+				']';
 	}
 
 	public List<Category> getSubCategoryList() {

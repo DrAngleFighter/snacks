@@ -17,7 +17,6 @@ public class CartService {
 			try {
 				row = cartDao.updateQuantity(cart);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
 				DbFactory.closeConnection();
@@ -27,7 +26,6 @@ public class CartService {
 			try {
 				row = cartDao.add(cart);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
 				DbFactory.closeConnection();
@@ -43,7 +41,6 @@ public class CartService {
 		try {
 			list = cartDao.findCartListByUid(uid);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DbFactory.closeConnection();
@@ -51,6 +48,21 @@ public class CartService {
 		return list;
 		
 	}
-	
+
+
+	public List<CartVo> findCartListByUidAndCartId(Integer uid, String cartIds) throws Exception {
+
+		List<CartVo> list = null;
+
+		try {
+			list = cartDao.findCartListByUidAndCartId(uid, cartIds);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbFactory.closeConnection();
+		}
+
+		return list;
+	}
 	
 }

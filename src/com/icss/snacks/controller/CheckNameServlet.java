@@ -52,7 +52,7 @@ public class CheckNameServlet extends HttpServlet {
 		
 		String str = "";
 		if (user != null) {
-			str = "该账户已存在";
+			str = "璇ヨ处鎴峰凡瀛樺湪";
 		}
 		PrintWriter out = response.getWriter();
 		out.print(str);

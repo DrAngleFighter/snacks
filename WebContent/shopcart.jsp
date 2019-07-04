@@ -59,12 +59,12 @@
 							</div>
 							<div class="clear"></div>
 							<div class="bundle-main">
-							<c:forEach items="${requestScope.cartVoList }" var="cartVo">								
+							<c:forEach items="${requestScope.cartVoList }" var="cartVo" varStatus="status">
 								<ul class="item-content clearfix">
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
-											<input class="check" id="J_CheckBox_170037950254" name="items[]" value="170037950254" type="checkbox">
-											
+											<input onclick="getTotalMoney(${status.index})" class="check" id="check${status.index}" name="items" value="${cartVo.quantity*cartVo.promotional_price }" type="checkbox">
+											<input type="hidden" value="${cartVo.cart_id}">
 										</div>
 									</li>
 									<li class="td td-item">
@@ -117,8 +117,36 @@
                   删除</a>
 										</div>
 									</li>
-								</ul>	
-							</c:forEach>						
+								</ul>
+
+							</c:forEach>
+							<script type="text/javascript">
+								var totalMoney = 0;
+								function getTotalMoney(index) {
+									// alert(($('#chech'+index)).attr("checked")=="checked")
+									if ($("#check"+index).attr("checked")=="checked"){
+										totalMoney = parseFloat(totalMoney) + parseFloat($("#check"+index).val());
+									} else {
+										totalMoney = parseFloat(totalMoney) - parseFloat($("#check"+index).val());
+									}
+									$("#J_Total").html(totalMoney);
+									// alert(totalMoney);
+									$("#J_SelectedItemsCount").html($("[name='items']:checked").length);
+								}
+								function js() {
+									var totalMoney = $("#J_Total").html();
+									var cartId = ""; //勾选的购物车编号
+									$.each($("[name='items']:checked"), function () {
+										//购物车编号
+										cartId = cartId + $(this).next().val()+",";
+									})
+									if (totalMoney!=0) {
+										location.href="PayServlet?totalMoney="+totalMoney+"&cartId="+cartId;
+									} else {
+										alert("请选择商品后结算")
+									}
+								}
+							</script>
 							</div>
 						</div>
 					</tr>
@@ -151,7 +179,7 @@
 							<strong class="price">¥<em id="J_Total">0.00</em></strong>
 						</div>
 						<div class="btn-area">
-							<a href="PayServlet" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
+							<a href="javascript:js()" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
 								<span>结&nbsp;算</span></a>
 						</div>
 					</div>

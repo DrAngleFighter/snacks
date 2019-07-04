@@ -7,21 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.icss.snacks.entity.Commodity;
-import com.icss.snacks.service.CommodityService;
+import com.icss.snacks.entity.User;
+import com.icss.snacks.service.UserService;
 import com.icss.snacks.util.PageUtil;
 
 /**
- * Servlet implementation class FindCommodityByPageServlet
+ * Servlet implementation class FindAdminByPageServlet
  */
-@WebServlet("/FindCommodityByPageServlet")
-public class FindCommodityByPageServlet extends HttpServlet {
+@WebServlet("/FindAdminByPageServlet")
+public class FindAdminByPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindCommodityByPageServlet() {
+    public FindAdminByPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,9 +38,9 @@ public class FindCommodityByPageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// 接受页面提交参数
-		String currentPage = request.getParameter("currentPage");
+		// TODO Auto-generated method stub
+		String currentPage = null;
+		currentPage = request.getParameter("currentPage");
 		Integer pageSize = 6;
 		Integer page = 0;
 		if (currentPage == null) {
@@ -51,20 +51,19 @@ public class FindCommodityByPageServlet extends HttpServlet {
 		
 		
 		// 调用业务层方法进行处理
-		CommodityService commodityService = new CommodityService();
-		PageUtil<Commodity> pageUtil = null; 
+		UserService userService = new UserService();
+		PageUtil<User> pageUtil = null; 
 		try {
-			pageUtil = commodityService.findAllCommodityByPage(page, pageSize);
+			pageUtil = userService.findAdminByPage(page, pageSize);
 		} catch (Exception e) {
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 		
 		
 		// 根据方法处理结果进行跳转
+
 		request.setAttribute("pageUtil", pageUtil);
-		request.getRequestDispatcher("back/foodlist.jsp").forward(request, response);
-		
-		
-	}
+		request.getRequestDispatcher("back/accountlist.jsp").forward(request, response);
+		}
 
 }

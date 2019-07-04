@@ -24,17 +24,17 @@ public class FlavorDao {
 	 */
 	public Integer add(Flavor flavor) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä Ìí¼ÓÓï¾ä "INSERT "
+		// 2. ç¼–å†™SQLè¯­å¥ æ·»åŠ è¯­å¥ "INSERT "
 		String sql = "INSERT INTO tb_flavor(fname) VALUE(?)";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setString(1, flavor.getFname());
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -47,17 +47,17 @@ public class FlavorDao {
 	 */
 	public Integer delete(Integer fid) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "DELETE FROM tb_flavor WHERE fid = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, fid);
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;		
 	}
@@ -71,18 +71,18 @@ public class FlavorDao {
 	 */
 	public Integer update(Flavor flavor) throws Exception {
 		Integer row = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "UPDATE tb_flavor SET fname = ? WHERE fid = ?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setString(1, flavor.getFname());
 		ps.setInt(2, flavor.getFid());
-		// 5. Ö´ĞĞSQL·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+		// 5. æ‰§è¡ŒSQLè¿”å›å—å½±å“çš„è¡Œæ•°
 		row = ps.executeUpdate();
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
@@ -96,23 +96,23 @@ public class FlavorDao {
 	 */
 	public Flavor findByFlavorid(Integer fid) throws Exception {
 		Flavor flavor = null;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_flavor WHERE fid=?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
+		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, fid);
-		// 5. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 5. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 6. ½«½á¹û¼¯ÖĞÊı¾İÌáÈ¡µ½¶ÔÏóÊôĞÔÖĞ
+		// 6. å°†ç»“æœé›†ä¸­æ•°æ®æå–åˆ°å¯¹è±¡å±æ€§ä¸­
 		if(rs.next()) {
 			flavor = new Flavor();
 			flavor.setFid(rs.getInt("fid"));
 			flavor.setFname(rs.getString("fname"));
 		}
-		// 7. ÊÍ·Å×ÊÔ´
+		// 7. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return flavor;
@@ -125,22 +125,22 @@ public class FlavorDao {
 	 */
 	public List<Flavor> findAll() throws Exception {
 		List<Flavor> flavorList = new ArrayList<Flavor>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_flavor";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			Flavor flavor = new Flavor();
 			flavor.setFid(rs.getInt("fid"));
 			flavor.setFname(rs.getString("fname"));
 			flavorList.add(flavor);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return flavorList;
@@ -153,19 +153,19 @@ public class FlavorDao {
 	 */
 	public Integer findCount() throws Exception {
 		Integer count = 0;
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT COUNT(*) FROM tb_flavor";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		if (rs.next()) {
 			count = rs.getInt(1);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return count;
@@ -174,23 +174,23 @@ public class FlavorDao {
 
 	public List<Flavor> findFlavorListByCid(int cid) throws Exception {
 		List<Flavor> flavorList = new ArrayList<Flavor>();
-		// 1. Á¬½ÓÊı¾İ¿â
+		// 1. è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		// 2. ±àĞ´SQLÓï¾ä
+		// 2. ç¼–å†™SQLè¯­å¥
 		String sql = "SELECT * FROM tb_flavor INNER JOIN tb_flavor_commodity ON tb_flavor.fid = tb_flavor_commodity.fid AND tb_flavor_commodity.commodity_id=?";
-		// 3. ´´½¨Ö´ĞĞSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ps.setInt(1, cid);
-		// 4. Ö´ĞĞSQL£¬·µ»Ø½á¹û¼¯
+		// 4. æ‰§è¡ŒSQLï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		// 5. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		// 5. å¾ªç¯åå»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while (rs.next()) {
 			Flavor flavor = new Flavor();
 			flavor.setFid(rs.getInt("fid"));
 			flavor.setFname(rs.getString("fname"));
 			flavorList.add(flavor);
 		}
-		// 6. ÊÍ·Å×ÊÔ´
+		// 6. é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return flavorList;
@@ -199,7 +199,7 @@ public class FlavorDao {
 public static void main (String[] args) throws Exception {
 //		
 //		Flavor flavor = new Flavor();
-//		flavor.setFname("¿à");
+//		flavor.setFname("è‹¦");
 //		
 		
 //		FlavorDao flavorDao = new FlavorDao();

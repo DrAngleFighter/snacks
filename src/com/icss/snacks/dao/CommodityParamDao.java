@@ -9,7 +9,7 @@ import java.util.List;
 import com.icss.snacks.entity.CommodityParam;
 import com.icss.snacks.util.DbFactory;
 /**
- * ÉÌÆ·²ÎÊı±íÊı¾İ²ã
+ * å•†å“å‚æ•°è¡¨æ•°æ®å±‚
  * @author yww
  *
  */
@@ -59,37 +59,37 @@ public class CommodityParamDao {
 	}
 	public int Delete(int CommodityParam_id) throws Exception{
 		int row = 0;
-		//1.Á¬½ÓÊı¾İ¿â
+		//1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "delete from tb_commodity_param where param_id=?";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.ÉèÖÃÕ¼Î»·ûµÄÖµ
+		//4.è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, CommodityParam_id);
 		
-		//5.Ö´ĞĞsql·µ»ØÊÜÓ°ÏìĞĞÊı
+		//5.æ‰§è¡Œsqlè¿”å›å—å½±å“è¡Œæ•°
 		row = ps.executeUpdate();
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
 	public CommodityParam findCommodityParamByCommodityParam_id(int CommodityParam_id) throws Exception{
 		 /**
-		  * ²éÑ¯ÓÃ»§ÏêÇé
+		  * æŸ¥è¯¢ç”¨æˆ·è¯¦æƒ…
 		  */
 		 CommodityParam CommodityParam = null;
-		 //1.Á¬½ÓÊı¾İ¿â
+		 //1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "select * from tb_commodity_param where param_id=?";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.ÉèÖÃÕ¼Î»·ûµÄÖµ
+		//4.è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, CommodityParam_id);
-		//5.Ö´ĞĞsql£¬·µ»Ø½á¹û¼¯
+		//5.æ‰§è¡Œsqlï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		//6.½«½á¹û¼¯ÖĞÊı¾İÌáÈ¡µ½¶ÔÏóµÄÊôĞÔÖĞ
+		//6.å°†ç»“æœé›†ä¸­æ•°æ®æå–åˆ°å¯¹è±¡çš„å±æ€§ä¸­
 		if(rs.next()) {
 			CommodityParam = new CommodityParam();
 			CommodityParam.setType(rs.getString("type"));
@@ -103,22 +103,22 @@ public class CommodityParamDao {
 			CommodityParam.setLicense_number(rs.getString("license_ number"));
 			CommodityParam.setIngredients(rs.getString("ingredients"));
 		}
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return CommodityParam;
 	 }
 	public List<CommodityParam> findAllCommodityParamList() throws Exception{
 		 List<CommodityParam> CommodityParamList = new ArrayList<CommodityParam>();
-		//1.Á¬½ÓÊı¾İ¿â
+		//1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "select * from tb_commodity_param";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.Ö´ĞĞsql£¬·µ»Ø½á¹û¼¯
+		//4.æ‰§è¡Œsqlï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		//5.Ñ­»·»ñÈ¡ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		//5.å¾ªç¯è·å–ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while(rs.next()) {
 			CommodityParam CommodityParam = new CommodityParam();
 			CommodityParam = new CommodityParam();
@@ -134,26 +134,26 @@ public class CommodityParamDao {
 			CommodityParam.setIngredients(rs.getString("ingredients"));
 			CommodityParamList.add(CommodityParam);
 		}
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return CommodityParamList;
 	 }
 	public int findCommodityParamCount() throws Exception{
 		 int count = 0;
-		//1.Á¬½ÓÊı¾İ¿â
+		//1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "select count(*) from tb_commodity_param";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.Ö´ĞĞsql£¬·µ»Ø½á¹û¼¯
+		//4.æ‰§è¡Œsqlï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		//5.´Ó¼¯ºÏÖĞÌáÈ¡Êı¾İ
+		//5.ä»é›†åˆä¸­æå–æ•°æ®
 		if(rs.next()) {
 			count = rs.getInt(1);
 		}
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return count;
@@ -170,7 +170,7 @@ public class CommodityParamDao {
 		CommodityParam.setStorage_method("storage_method");
 		CommodityParam.setStandard_number("standard_number");
 		CommodityParam.setLicense_number("license_number");
-		CommodityParam.setIngredients("Ô­²ÄÁÏ");
+		CommodityParam.setIngredients("åŸææ–™");
 		int row = CommodityParamDao.add(CommodityParam);
 		System.out.println(row);
 		

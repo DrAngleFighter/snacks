@@ -1,5 +1,6 @@
 package com.icss.snacks.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.icss.snacks.dao.CommodityDao;
@@ -34,7 +35,7 @@ public class CommodityService {
 		Commodity commodity = null;
 		try {
 			commodity = commodityDao.findByCommodityid(cid);
-			CommodityParam commodityParam = new CommodityParamDao().findCommodityParamByCommodityParam_id(commodity.getParam_id()); //Í¨¹ıÖ÷¼ü£¨commodity Íâ¼ü£©²éÑ¯²úÆ·²ÎÊıÏêÇé
+			CommodityParam commodityParam = new CommodityParamDao().findCommodityParamByCommodityParam_id(commodity.getParam_id()); //é€šè¿‡ä¸»é”®ï¼ˆcommodity å¤–é”®ï¼‰æŸ¥è¯¢äº§å“å‚æ•°è¯¦æƒ…
 			commodity.setCommodityParam(commodityParam);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,6 +71,18 @@ public class CommodityService {
 		pageUtil.setTotalPage(totalPage);
 		return pageUtil;
 		
+	}
+
+	public List<Commodity> findAllCommodityList() throws Exception {
+		List<Commodity> commodityList = new ArrayList<Commodity>();
+		try {
+			commodityList = commodityDao.findAllCommodityList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DbFactory.closeConnection();
+		}
+		return commodityList;
 	}
 	
 	

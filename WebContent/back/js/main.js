@@ -9,7 +9,7 @@
     
     // iframe  链接
     $(".UserManagement").click(function(){
-        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/back/userlist.jsp")
+        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/FindUserByPageServlet")
     })
     $(".KindManagement").click(function(){
         $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/back/kindlist.jsp")
@@ -21,10 +21,10 @@
         $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/FindCommodityByPageServlet")
     })
     $(".OrdersManagement").click(function(){
-        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/back/orderlist.jsp")
+        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/FindOrdersByPageServlet")
     })
     $(".AccountManagement").click(function(){
-        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/back/accountlist.jsp")
+        $(".AccountManagement_c_iframe iframe").attr("src",contextPath+"/FindAdminByPageServlet")
     })
 
 	// pull page   翻页

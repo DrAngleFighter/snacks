@@ -42,19 +42,19 @@ public class FindCommodityServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// ½ÓÊÕÒ³ÃæÌá½»µÄ²ÎÊı
+		// æ¥æ”¶é¡µé¢æäº¤çš„å‚æ•°
 		String commodity_id = request.getParameter("commodity_id");
 		Integer id = 0;
 		if (commodity_id != null && !"".equals(commodity_id)) {
 			id = Integer.parseInt(commodity_id);
 		}
-		// µ÷ÓÃÒµÎñ²ã·½·¨½øĞĞ´¦Àí		
+		// è°ƒç”¨ä¸šåŠ¡å±‚æ–¹æ³•è¿›è¡Œå¤„ç†		
 		CommodityService commodityService = new CommodityService();
 		Commodity commodity = null; 
 		
 		
 
-		// µ÷ÓÃÒµÎñ²ã·½·¨½øĞĞ´¦Àí	
+		// è°ƒç”¨ä¸šåŠ¡å±‚æ–¹æ³•è¿›è¡Œå¤„ç†	
 		FlavorService flavorService = new FlavorService();
 		List<Flavor> list = null;
 		
@@ -70,7 +70,7 @@ public class FindCommodityServlet extends HttpServlet {
 		
 		
 		
-		// ¸ù¾İ´¦Àí
+		// æ ¹æ®å¤„ç†
 		request.setAttribute("commodity", commodity);
 		request.setAttribute("flavor", list);
 		request.getRequestDispatcher("detail.jsp").forward(request, response);

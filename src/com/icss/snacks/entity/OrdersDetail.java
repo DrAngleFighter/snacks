@@ -57,10 +57,17 @@ public class OrdersDetail {
 	public void setOid(String oid) {
 		this.oid = oid;
 	}
+
 	@Override
 	public String toString() {
-		return "OrdersDetail [detail_id=" + detail_id + ", commodity_id=" + commodity_id + ", quantity=" + quantity
-				+ ", price=" + price + ", fid=" + fid + ", brand_id=" + brand_id + ", oid=" + oid + "]";
+		return "OrdersDetail[" +
+				"detail_id=" + detail_id +
+				", commodity_id=" + commodity_id +
+				", quantity=" + quantity +
+				", price=" + price +
+				", fid=" + fid +
+				", brand_id=" + brand_id +
+				", oid='" + oid + '\'' +
+				']';
 	}
-	
 }

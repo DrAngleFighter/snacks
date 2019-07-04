@@ -3,14 +3,14 @@ package com.icss.snacks.util;
 import java.util.List;
 /**
  * @author whn
- * ·ÖÒ³¹¤¾ßÀà
+ * åˆ†é¡µå·¥å…·ç±»
  */
 public class PageUtil<T> {
 	
-	private Integer currentPage;//µ±Ç°Ò³Âë
-	private Integer totalPage;//×ÜÒ³Êı £º×Ü¼ÇÂ¼Êı%Ã¿Ò³ÏÔÊ¾==0?×Ü¼ÇÂ¼Êı/Ã¿Ò³ÏÔÊ¾:×Ü¼ÇÂ¼Êı/Ã¿Ò³ÏÔÊ¾+1
-	private Integer count;//×Ü¼ÇÂ¼Êı
-	private List<T> list;//Êı¾İ¼¯ºÏ
+	private Integer currentPage;//å½“å‰é¡µç 
+	private Integer totalPage;//æ€»é¡µæ•° ï¼šæ€»è®°å½•æ•°%æ¯é¡µæ˜¾ç¤º==0?æ€»è®°å½•æ•°/æ¯é¡µæ˜¾ç¤º:æ€»è®°å½•æ•°/æ¯é¡µæ˜¾ç¤º+1
+	private Integer count;//æ€»è®°å½•æ•°
+	private List<T> list;//æ•°æ®é›†åˆ
 	
 	public Integer getCurrentPage() {
 		return currentPage;

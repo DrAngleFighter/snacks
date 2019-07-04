@@ -16,7 +16,7 @@ public class User {
 	private String gender;
 	private String email;
 	private Timestamp regtime;
-	private Integer account_id; // ÕË»§±àºÅ£¨Íâ¼ü1£©
+	private Integer account_id; // è´¦æˆ·ç¼–å·ï¼ˆå¤–é”®1ï¼‰
 	
 	
 	public Integer getUid() {

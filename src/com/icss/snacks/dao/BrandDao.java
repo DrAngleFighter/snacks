@@ -10,7 +10,7 @@ import com.icss.snacks.entity.Brand;
 import com.icss.snacks.util.DbFactory;
 
 /**
- * Æ·ÅÆÊı¾İ²ã
+ * å“ç‰Œæ•°æ®å±‚
  * @author yww
  *
  */
@@ -48,37 +48,37 @@ public class BrandDao {
 	}
 	public Integer Delete(Integer brand_id) throws Exception{
 		Integer row = 0;
-		//1.Á¬½ÓÊı¾İ¿â
+		//1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "delete from tb_brand where brand_id=?";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.ÉèÖÃÕ¼Î»·ûµÄÖµ
+		//4.è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, brand_id);
 		
-		//5.Ö´ĞĞsql·µ»ØÊÜÓ°ÏìĞĞÊı
+		//5.æ‰§è¡Œsqlè¿”å›å—å½±å“è¡Œæ•°
 		row = ps.executeUpdate();
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		ps.close();
 		return row;
 	}
 	public Brand findBrandByBrand_id(Integer brand_id) throws Exception{
 		 /**
-		  * ²éÑ¯ÓÃ»§ÏêÇé
+		  * æŸ¥è¯¢ç”¨æˆ·è¯¦æƒ…
 		  */
 		 Brand brand = null;
-		 //1.Á¬½ÓÊı¾İ¿â
+		 //1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "select * from tb_brand where brand_id=?";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.ÉèÖÃÕ¼Î»·ûµÄÖµ
+		//4.è®¾ç½®å ä½ç¬¦çš„å€¼
 		ps.setInt(1, brand_id);
-		//5.Ö´ĞĞsql£¬·µ»Ø½á¹û¼¯
+		//5.æ‰§è¡Œsqlï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		//6.½«½á¹û¼¯ÖĞÊı¾İÌáÈ¡µ½¶ÔÏóµÄÊôĞÔÖĞ
+		//6.å°†ç»“æœé›†ä¸­æ•°æ®æå–åˆ°å¯¹è±¡çš„å±æ€§ä¸­
 		if(rs.next()) {
 			brand = new Brand();
 			brand.setAddress(rs.getString("address"));
@@ -87,22 +87,22 @@ public class BrandDao {
 			brand.setName(rs.getString("name"));
 			brand.setState(rs.getString("state"));
 		}
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return brand;
 	 }
 	public List<Brand> findAllBrandList() throws Exception{
 		 List<Brand> brandList = new ArrayList<Brand>();
-		//1.Á¬½ÓÊı¾İ¿â
+		//1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "select * from tb_brand";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.Ö´ĞĞsql£¬·µ»Ø½á¹û¼¯
+		//4.æ‰§è¡Œsqlï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		//5.Ñ­»·»ñÈ¡ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖĞ
+		//5.å¾ªç¯è·å–ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		while(rs.next()) {
 			Brand brand = new Brand();
 			brand.setAddress(rs.getString("address"));
@@ -114,26 +114,26 @@ public class BrandDao {
 			
 			brandList.add(brand);
 		}
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		return brandList;
 	 }
 	public Integer findBrandCount() throws Exception{
 		Integer count = 0;
-		//1.Á¬½ÓÊı¾İ¿â
+		//1.è¿æ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
-		//2.±àĞ´sqlÓï¾ä  Ìí¼ÓÓï¾ä
+		//2.ç¼–å†™sqlè¯­å¥  æ·»åŠ è¯­å¥
 		String sql = "select count(*) from tb_brand";
-		//3.´´½¨Ö´ĞĞsqlµÄ¶ÔÏó
+		//3.åˆ›å»ºæ‰§è¡Œsqlçš„å¯¹è±¡
 		PreparedStatement ps = connection.prepareStatement(sql);
-		//4.Ö´ĞĞsql£¬·µ»Ø½á¹û¼¯
+		//4.æ‰§è¡Œsqlï¼Œè¿”å›ç»“æœé›†
 		ResultSet rs = ps.executeQuery();
-		//5.´Ó¼¯ºÏÖĞÌáÈ¡Êı¾İ
+		//5.ä»é›†åˆä¸­æå–æ•°æ®
 		if(rs.next()) {
 			count = rs.getInt(1);
 		}
-		//6.ÊÍ·Å×ÊÔ´
+		//6.é‡Šæ”¾èµ„æº
 		rs.close();
 		ps.close();
 		 return count;

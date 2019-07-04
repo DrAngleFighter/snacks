@@ -53,13 +53,13 @@ public class UserLoginServlet extends HttpServlet {
 		}
 		
 		if(user == null) {
-			request.setAttribute("msg", "ÓÃ»§Ãû»òÃÜÂë´íÎó");
+			request.setAttribute("msg", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else if (user.getUsername().equals("admin")) {
-			request.getSession().setAttribute("user", user);  // Ò»´Î»á»°¶à´ÎÇëÇó¶à´ÎÏìÓ¦
+			request.getSession().setAttribute("user", user);  // ä¸€æ¬¡ä¼šè¯å¤šæ¬¡è¯·æ±‚å¤šæ¬¡å“åº”
 			request.getRequestDispatcher("back/index.jsp").forward(request, response);
 		} else {
-			request.getSession().setAttribute("user", user);  // Ò»´Î»á»°¶à´ÎÇëÇó¶à´ÎÏìÓ¦
+			request.getSession().setAttribute("user", user);  // ä¸€æ¬¡ä¼šè¯å¤šæ¬¡è¯·æ±‚å¤šæ¬¡å“åº”
 			request.getRequestDispatcher("LatestCommdityServlet").forward(request, response);
 		}
 		

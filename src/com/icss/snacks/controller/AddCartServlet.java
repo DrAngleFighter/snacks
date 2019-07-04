@@ -38,11 +38,11 @@ public class AddCartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// ½ÓÊÕÒ³Ãæ´«µÝ²ÎÊý
+		// æŽ¥æ”¶é¡µé¢ä¼ é€’å‚æ•°
 		String cid = request.getParameter("cid");
-		// ¿ÚÎ¶±àºÅ
+		// å£å‘³ç¼–å·
 		String fid = request.getParameter("fid");
-		// ÊýÁ¿
+		// æ•°é‡
 		String qua = request.getParameter("quantity");
 		
 		User user = (User) request.getSession().getAttribute("user");
@@ -65,7 +65,7 @@ public class AddCartServlet extends HttpServlet {
 			return;
 		}
 
-		// ¸ù¾Ý´¦Àí½á¹ûÑ¡ÔñÏàÓ¦µÄÊÓÍ¼ - Ìí¼Ó -> ¿´µ½×Ô¼ºµÄ¹ºÎï³µÁÐ±í
+		// æ ¹æ®å¤„ç†ç»“æžœé€‰æ‹©ç›¸åº”çš„è§†å›¾ - æ·»åŠ  -> çœ‹åˆ°è‡ªå·±çš„è´­ç‰©è½¦åˆ—è¡¨
 		request.getRequestDispatcher("FindCartByUidServlet").forward(request, response);
 		
 	}

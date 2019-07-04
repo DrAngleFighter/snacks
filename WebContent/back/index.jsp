@@ -40,7 +40,7 @@
 
         <div class="main_fx">
             <div class="AccountManagement_c_iframe">
-                <iframe id="MainFrame" src="${contextPath}/back/userlist.jsp"></iframe>
+                <iframe id="MainFrame" src="${contextPath}/FindUserByPageServlet"></iframe>
             </div>
         </div>
     </div>

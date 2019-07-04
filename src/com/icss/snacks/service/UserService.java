@@ -1,8 +1,12 @@
 package com.icss.snacks.service;
 
+import java.util.List;
+
 import com.icss.snacks.dao.UserDao;
+import com.icss.snacks.entity.Commodity;
 import com.icss.snacks.entity.User;
 import com.icss.snacks.util.DbFactory;
+import com.icss.snacks.util.PageUtil;
 
 public class UserService {
 
@@ -10,7 +14,7 @@ public class UserService {
 	
 	
 	/**
-	 * 	用户登录
+	 * 	鐢ㄦ埛鐧诲綍
 	 * @param username
 	 * @param pwd
 	 * @return
@@ -31,7 +35,7 @@ public class UserService {
 	
 	
 	/**
-	 *	用户注册
+	 *	鐢ㄦ埛娉ㄥ唽
 	 * @param user
 	 * @return
 	 * @throws Exception
@@ -62,5 +66,57 @@ public class UserService {
 		}
 		return user;
 	}
+
+
+	public PageUtil<User> findAllUserByPage(Integer currentPage, Integer pageSize) throws Exception {
+		// TODO Auto-generated method stub
+		PageUtil<User> pageUtil = new PageUtil<User>();
+		List<User> list = null;
+		Integer count = 0;
+		
+		try {
+			count = userDao.findUserCount();
+			list = userDao.findAllUserListByPage(currentPage, pageSize);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DbFactory.closeConnection();
+		}
+		
+		Integer totalPage = count % pageSize == 0 ? count / pageSize : count / pageSize +  1;
+		
+		pageUtil.setCount(count);
+		pageUtil.setCurrentPage(currentPage);
+		pageUtil.setList(list);
+		pageUtil.setTotalPage(totalPage);
+		return pageUtil;
+	}
+	
+	public PageUtil<User> findAdminByPage(Integer currentPage, Integer pageSize) throws Exception {
+		// TODO Auto-generated method stub
+		PageUtil<User> pageUtil = new PageUtil<User>();
+		List<User> list = null;
+		Integer count = 0;
+		
+		try {
+			count = userDao.findUserCount();
+			list = userDao.findAdminListByPage(currentPage, pageSize);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DbFactory.closeConnection();
+		}
+		
+		Integer totalPage = count % pageSize == 0 ? count / pageSize : count / pageSize +  1;
+		
+		pageUtil.setCount(count);
+		pageUtil.setCurrentPage(currentPage);
+		pageUtil.setList(list);
+		pageUtil.setTotalPage(totalPage);
+		return pageUtil;
+	}
+	
 
 }
