@@ -9,12 +9,20 @@ import com.icss.snacks.entity.Orders;
 import com.icss.snacks.entity.OrdersDetail;
 import com.icss.snacks.util.DbFactory;
 
+import org.apache.log4j.Logger;
+
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+
 
 public class OrderService {
 
     public void addOrder(Integer address_id, String remark, Double total_price, Integer uid, String cartIds) throws Exception {
+
+        Logger logger = Logger.getLogger(this.getClass().getName());
+
         CartDao cartDao = new CartDao();
         OrdersDao ordersDao = new OrdersDao();
         OrdersDetailDao ordersDetailDao = new OrdersDetailDao();
@@ -37,6 +45,7 @@ public class OrderService {
             cartIds = cartIds.substring(0, cartIds.length() - 1);
 
             String[] idArray = cartIds.split(",");
+            List<OrdersDetail> ordersDetailList = new ArrayList<OrdersDetail>();
             for (int i = 0; i < idArray.length; i ++){
                 // 调方法-通过购物车编号查询
                 Integer cart_id = Integer.parseInt(idArray[i]);
@@ -50,10 +59,13 @@ public class OrderService {
                 ordersDetail.setPrice(commodity.getPromotional_price());
                 ordersDetail.setQuantity(commodity.getQuantity());
                 ordersDetailDao.addOrderDetail(ordersDetail);
+                ordersDetailList.add(ordersDetail);
             }
 
             // 购物车表的删除
             cartDao.deleteCart(cartIds);
+            orders.setOrdersDetailList(ordersDetailList);
+            logger.info(orders);
 
             DbFactory.commit(); // 事务提交
         } catch (Exception e) {

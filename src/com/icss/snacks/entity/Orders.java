@@ -1,6 +1,7 @@
 package com.icss.snacks.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * 
@@ -12,11 +13,22 @@ public class Orders {
 	private String oid;
 	private Integer uid;
 	private Double totalprice;
+
 	private String remark;
 	private Timestamp ordertime;
 	private Integer state;
 	private Integer address_id;
-	
+	private List<OrdersDetail> ordersDetailList;
+
+
+	public List<OrdersDetail> getOrdersDetailList() {
+		return ordersDetailList;
+	}
+
+	public void setOrdersDetailList(List<OrdersDetail> ordersDetailList) {
+		this.ordersDetailList = ordersDetailList;
+	}
+
 	public String getOid() {
 		return oid;
 	}
@@ -59,11 +71,18 @@ public class Orders {
 	public void setAddress_id(Integer address_id) {
 		this.address_id = address_id;
 	}
+
 	@Override
 	public String toString() {
-		return "Orders [oid=" + oid + ", uid=" + uid + ", totalprice=" + totalprice + ", remark=" + remark
-				+ ", ordertime=" + ordertime + ", state=" + state + ", address_id=" + address_id + "]";
+		return "Orders{" +
+				"oid='" + oid + '\'' +
+				", uid=" + uid +
+				", totalprice=" + totalprice +
+				", remark='" + remark + '\'' +
+				", ordertime=" + ordertime +
+				", state=" + state +
+				", address_id=" + address_id +
+				", ordersDetailList=" + ordersDetailList +
+				'}';
 	}
-	
-	
 }
