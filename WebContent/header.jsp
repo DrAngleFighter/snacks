@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +20,12 @@
 <div class="am-container header">
   <ul class="message-l">
     <div class="topMessage">
-      <div class="menu-hd"> <a href="login.jsp" target="_top" class="h">亲，请登录</a> <a href="register.jsp" target="_top">免费注册</a> </div>
+      <c:if test="${sessionScope.user == null}">
+        <div class="menu-hd"> <a href="login.jsp" target="_top" class="h">亲，请登录</a> <a href="register.jsp" target="_top">免费注册</a> </div>
+      </c:if>
+      <c:if test="${sessionScope.user != null}">
+        <div>欢迎 <a href="person/index.jsp" target="_top">${sessionScope.user.username}</a> <a href="UserLogoutServlet" target="_top">退出登录</a></div>
+      </c:if>
     </div>
   </ul>
   <ul class="message-r">
