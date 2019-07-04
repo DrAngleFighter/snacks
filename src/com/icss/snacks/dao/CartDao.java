@@ -221,7 +221,7 @@ public class CartDao {
 <<<<<<< HEAD
 		// 2. ç¼–å†™SQLè¯­å¥
 =======
-		// 2. ±àÐ´SQLÓï¾ä
+		// 2. ï¿½ï¿½Ð´SQLï¿½ï¿½ï¿½
 >>>>>>> 3a9ce3c4781ab9423d4c2b7ca3f236c5bf41ddee
 		String sql = "SELECT cart.cart_id, c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " +
 					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " + 
@@ -253,15 +253,9 @@ public class CartDao {
 
 	public List<CartVo> findCartListByUidAndCartId(Integer uid, String cartIds) throws Exception {
 		List<CartVo> cartVoList = new ArrayList<CartVo>();
-<<<<<<< HEAD
 		// 1. è¿žæŽ¥æ•°æ®åº“
 		Connection connection = DbFactory.openConnection();
 		// 2. ç¼–å†™SQLè¯­å¥
-=======
-		// 1. Á¬½ÓÊý¾Ý¿â
-		Connection connection = DbFactory.openConnection();
-		// 2. ±àÐ´SQLÓï¾ä
->>>>>>> 3a9ce3c4781ab9423d4c2b7ca3f236c5bf41ddee
 		String sql = "SELECT cart.cart_id, c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " +
 					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " +
 					"INNER JOIN tb_flavor f ON f.fid = cart.fid " +
@@ -276,7 +270,6 @@ public class CartDao {
 			}
 		}
 		sql += ")";
-<<<<<<< HEAD
 		// 3. åˆ›å»ºæ‰§è¡ŒSQLå¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
 		PreparedStatement ps = connection.prepareStatement(sql);
 		// 4. è®¾ç½®å ä½ç¬¦çš„å€¼
@@ -284,15 +277,6 @@ public class CartDao {
 		// 5. æ‰§è¡ŒSQLï¼Œè¿”å›žç»“æžœé›†
 		ResultSet rs = ps.executeQuery();
 		// 6. å¾ªçŽ¯åŽåŽ»ç”¨æˆ·å¯¹è±¡ï¼Œæ·»åŠ åˆ°é›†åˆä¸­
-=======
-		// 3. ´´½¨Ö´ÐÐSQL¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖÐ
-		PreparedStatement ps = connection.prepareStatement(sql);
-		// 4. ÉèÖÃÕ¼Î»·ûµÄÖµ
-		ps.setInt(1, uid);
-		// 5. Ö´ÐÐSQL£¬·µ»Ø½á¹û¼¯
-		ResultSet rs = ps.executeQuery();
-		// 6. Ñ­»·ºóÈ¥ÓÃ»§¶ÔÏó£¬Ìí¼Óµ½¼¯ºÏÖÐ
->>>>>>> 3a9ce3c4781ab9423d4c2b7ca3f236c5bf41ddee
 		while (rs.next()) {
 			CartVo cartVo = new CartVo();
 			cartVo.setCname(rs.getString("cname"));
@@ -303,11 +287,7 @@ public class CartDao {
 			cartVo.setCart_id(rs.getInt("cart_id"));
 			cartVoList.add(cartVo);
 		}
-<<<<<<< HEAD
 		// 7. é‡Šæ”¾èµ„æº
-=======
-		// 7. ÊÍ·Å×ÊÔ´
->>>>>>> 3a9ce3c4781ab9423d4c2b7ca3f236c5bf41ddee
 		rs.close();
 		ps.close();
 		return cartVoList;
