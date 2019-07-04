@@ -18,17 +18,14 @@ public class Orders {
 	private Timestamp ordertime;
 	private Integer state;
 	private Integer address_id;
-	private List<OrdersDetail> ordersDetailList;
-
+	private List<OrdersDetail> ordersDetailList; // 订单和订单详情：一对多
 
 	public List<OrdersDetail> getOrdersDetailList() {
 		return ordersDetailList;
 	}
-
 	public void setOrdersDetailList(List<OrdersDetail> ordersDetailList) {
 		this.ordersDetailList = ordersDetailList;
 	}
-
 	public String getOid() {
 		return oid;
 	}
@@ -74,7 +71,7 @@ public class Orders {
 
 	@Override
 	public String toString() {
-		return "Orders{" +
+		return "Orders[" +
 				"oid='" + oid + '\'' +
 				", uid=" + uid +
 				", totalprice=" + totalprice +
@@ -83,6 +80,6 @@ public class Orders {
 				", state=" + state +
 				", address_id=" + address_id +
 				", ordersDetailList=" + ordersDetailList +
-				'}';
+				']';
 	}
 }

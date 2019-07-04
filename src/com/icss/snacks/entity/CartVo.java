@@ -11,14 +11,14 @@ public class CartVo {
 
 	@Override
 	public String toString() {
-		return "CartVo{" +
+		return "CartVo[" +
 				"quantity=" + quantity +
 				", fname='" + fname + '\'' +
 				", cname='" + cname + '\'' +
 				", promotional_price=" + promotional_price +
 				", img='" + img + '\'' +
 				", cart_id=" + cart_id +
-				'}';
+				']';
 	}
 
 	public Integer getCart_id() {
