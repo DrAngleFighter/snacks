@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -99,19 +100,20 @@
 
 
 
-
+								<c:forEach items="${requestScope.commodityList}" var="commodity">
 									<li style=" width:206px; height:306px">
 										<div class="i-pic limit">
 											
-											<a href="detail.jsp"><img src="images/imgsearch1.jpg" /></a>
-											<p class="title fl">手剥松子218g 坚果炒货零食新货巴西松子包邮</p>
+											<a href="detail.jsp"><img src="/img/${commodity.img}" /></a>
+											<p class="title fl">${commodity.cname}</p>
 											<p class="price fl">
 												<b>¥</b>
-												<strong>56.90</strong>
+												<strong>${commodity.promotional_price}</strong>
 											</p>
 											
 										</div>
 									</li>
+								</c:forEach>
 	
     
     

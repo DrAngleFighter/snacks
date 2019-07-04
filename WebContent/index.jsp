@@ -260,7 +260,7 @@
 							<h4>最新商品</h4>
 							
 							<span class="more ">
-                    <a class="more-link " href="search.jsp">更多美味</a>
+                    <a class="more-link " href="FindAllCommodityServlet">更多美味</a>
                         </span>
 						</div>
 					</div>

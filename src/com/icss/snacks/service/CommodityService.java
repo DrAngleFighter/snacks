@@ -1,5 +1,6 @@
 package com.icss.snacks.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.icss.snacks.dao.CommodityDao;
@@ -70,6 +71,18 @@ public class CommodityService {
 		pageUtil.setTotalPage(totalPage);
 		return pageUtil;
 		
+	}
+
+	public List<Commodity> findAllCommodityList() throws Exception {
+		List<Commodity> commodityList = new ArrayList<Commodity>();
+		try {
+			commodityList = commodityDao.findAllCommodityList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DbFactory.closeConnection();
+		}
+		return commodityList;
 	}
 	
 	
