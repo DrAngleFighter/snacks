@@ -88,7 +88,7 @@ public class CommodityParam {
 
 	@Override
 	public String toString() {
-		return "CommodityParam{" +
+		return "CommodityParam[" +
 				"param_id=" + param_id +
 				", type='" + type + '\'' +
 				", product_area='" + product_area + '\'' +
@@ -100,6 +100,6 @@ public class CommodityParam {
 				", standard_number='" + standard_number + '\'' +
 				", license_number='" + license_number + '\'' +
 				", ingredients='" + ingredients + '\'' +
-				'}';
+				']';
 	}
 }
