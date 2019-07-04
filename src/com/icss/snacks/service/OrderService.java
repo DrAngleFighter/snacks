@@ -10,10 +10,13 @@ import com.icss.snacks.entity.OrdersDetail;
 import com.icss.snacks.util.DbFactory;
 import org.apache.log4j.Logger;
 
+import org.apache.log4j.Logger;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 
 public class OrderService {
 
@@ -24,9 +27,9 @@ public class OrderService {
         OrdersDetailDao ordersDetailDao = new OrdersDetailDao();
         CommodityDao commodityDao = new CommodityDao();
         try {
-            DbFactory.beginTransaction(); // ¿ªÆôÊÂÎñ-ÉèÖÃÊÖ¶¯¿ØÖÆÊÂÎñ
+            DbFactory.beginTransaction(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-            // ¶©µ¥±íµÄÌí¼Ó
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             String oid = UUID.randomUUID().toString();
             Orders orders = new Orders();
             orders.setOid(oid);
@@ -43,10 +46,10 @@ public class OrderService {
             String[] idArray = cartIds.split(",");
             List<OrdersDetail> ordersDetailList = new ArrayList<OrdersDetail>();
             for (int i = 0; i < idArray.length; i ++){
-                // µ÷·½·¨-Í¨¹ý¹ºÎï³µ±àºÅ²éÑ¯
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï³µï¿½ï¿½Å²ï¿½Ñ¯
                 Integer cart_id = Integer.parseInt(idArray[i]);
                 Commodity commodity = commodityDao.findByCommodityByCartId(cart_id);
-                // ¶©µ¥±íµÄÌí¼Ó
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 OrdersDetail ordersDetail = new OrdersDetail();
                 ordersDetail.setBrand_id(commodity.getBrand_id());
                 ordersDetail.setCommodity_id(commodity.getCommodity_id());
@@ -58,15 +61,17 @@ public class OrderService {
                 ordersDetailList.add(ordersDetail);
             }
 
-            // ¹ºÎï³µ±íµÄÉ¾³ý
+            // ï¿½ï¿½ï¿½ï³µï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
             cartDao.deleteCart(cartIds);
+            orders.setOrdersDetailList(ordersDetailList);
+            logger.info(orders);
 
             orders.setOrdersDetailList(ordersDetailList);
             logger.info(orders);
 
-            DbFactory.commit(); // ÊÂÎñÌá½»
+            DbFactory.commit(); // ï¿½ï¿½ï¿½ï¿½ï¿½á½»
         } catch (Exception e) {
-            DbFactory.rollback(); // ÊÂÎñ»Ø¹ö
+            DbFactory.rollback(); // ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½
             e.printStackTrace();
         } finally {
             DbFactory.closeConnection();

@@ -13,6 +13,7 @@ public class Orders {
 	private String oid;
 	private Integer uid;
 	private Double totalprice;
+
 	private String remark;
 	private Timestamp ordertime;
 	private Integer state;
