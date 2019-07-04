@@ -144,9 +144,15 @@ public class CommodityDao {
 
 	public Commodity findByCommodityByCartId(Integer cart_id) throws Exception {
 		Commodity commodity = null;
+<<<<<<< HEAD
 		// 1. 连接数据库
 		Connection connection = DbFactory.openConnection();
 		// 2. 编写SQL语句
+=======
+		// 1. �������ݿ�
+		Connection connection = DbFactory.openConnection();
+		// 2. ��дSQL���
+>>>>>>> 3a9ce3c4781ab9423d4c2b7ca3f236c5bf41ddee
 		String sql = "select cart.quantity,cart.commodity_id,cart.fid,c.brand_id,c.promotional_price"
 					+" FROM tb_cart cart"
 					+" INNER JOIN tb_commodity c on c.commodity_id=cart.commodity_id"

@@ -218,7 +218,11 @@ public class CartDao {
 		List<CartVo> cartVoList = new ArrayList<CartVo>();
 		// 1. ËøûÊé•Êï∞ÊçÆÂ∫ì
 		Connection connection = DbFactory.openConnection();
+<<<<<<< HEAD
 		// 2. ÁºñÂÜôSQLËØ≠Âè•
+=======
+		// 2. ±‡–¥SQL”Ôæ‰
+>>>>>>> 3a9ce3c4781ab9423d4c2b7ca3f236c5bf41ddee
 		String sql = "SELECT cart.cart_id, c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " +
 					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " + 
 					"INNER JOIN tb_flavor f ON f.fid = cart.fid " + 
@@ -249,9 +253,15 @@ public class CartDao {
 
 	public List<CartVo> findCartListByUidAndCartId(Integer uid, String cartIds) throws Exception {
 		List<CartVo> cartVoList = new ArrayList<CartVo>();
+<<<<<<< HEAD
 		// 1. ËøûÊé•Êï∞ÊçÆÂ∫ì
 		Connection connection = DbFactory.openConnection();
 		// 2. ÁºñÂÜôSQLËØ≠Âè•
+=======
+		// 1. ¡¨Ω” ˝æ›ø‚
+		Connection connection = DbFactory.openConnection();
+		// 2. ±‡–¥SQL”Ôæ‰
+>>>>>>> 3a9ce3c4781ab9423d4c2b7ca3f236c5bf41ddee
 		String sql = "SELECT cart.cart_id, c.cname, c.img, c.promotional_price, f.fname, cart.quantity FROM tb_cart cart " +
 					"INNER JOIN tb_commodity c ON c.commodity_id = cart.commodity_id " +
 					"INNER JOIN tb_flavor f ON f.fid = cart.fid " +
@@ -266,6 +276,7 @@ public class CartDao {
 			}
 		}
 		sql += ")";
+<<<<<<< HEAD
 		// 3. ÂàõÂª∫ÊâßË°åSQLÂØπË±°ÔºåÊ∑ªÂä†Âà∞ÈõÜÂêà‰∏≠
 		PreparedStatement ps = connection.prepareStatement(sql);
 		// 4. ËÆæÁΩÆÂç†‰ΩçÁ¨¶ÁöÑÂÄº
@@ -273,6 +284,15 @@ public class CartDao {
 		// 5. ÊâßË°åSQLÔºåËøîÂõûÁªìÊûúÈõÜ
 		ResultSet rs = ps.executeQuery();
 		// 6. Âæ™ÁéØÂêéÂéªÁî®Êà∑ÂØπË±°ÔºåÊ∑ªÂä†Âà∞ÈõÜÂêà‰∏≠
+=======
+		// 3. ¥¥Ω®÷¥––SQL∂‘œÛ£¨ÃÌº”µΩºØ∫œ÷–
+		PreparedStatement ps = connection.prepareStatement(sql);
+		// 4. …Ë÷√’ºŒª∑˚µƒ÷µ
+		ps.setInt(1, uid);
+		// 5. ÷¥––SQL£¨∑µªÿΩ·π˚ºØ
+		ResultSet rs = ps.executeQuery();
+		// 6. —≠ª∑∫Û»•”√ªß∂‘œÛ£¨ÃÌº”µΩºØ∫œ÷–
+>>>>>>> 3a9ce3c4781ab9423d4c2b7ca3f236c5bf41ddee
 		while (rs.next()) {
 			CartVo cartVo = new CartVo();
 			cartVo.setCname(rs.getString("cname"));
@@ -283,7 +303,11 @@ public class CartDao {
 			cartVo.setCart_id(rs.getInt("cart_id"));
 			cartVoList.add(cartVo);
 		}
+<<<<<<< HEAD
 		// 7. ÈáäÊîæËµÑÊ∫ê
+=======
+		// 7.  Õ∑≈◊ ‘¥
+>>>>>>> 3a9ce3c4781ab9423d4c2b7ca3f236c5bf41ddee
 		rs.close();
 		ps.close();
 		return cartVoList;
