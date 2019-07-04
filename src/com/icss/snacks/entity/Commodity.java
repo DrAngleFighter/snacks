@@ -27,7 +27,7 @@ public class Commodity {
 
 	@Override
 	public String toString() {
-		return "Commodity{" +
+		return "Commodity[" +
 				"commodity_id=" + commodity_id +
 				", category_id=" + category_id +
 				", brand_id=" + brand_id +
@@ -43,7 +43,7 @@ public class Commodity {
 				", quantity=" + quantity +
 				", fid=" + fid +
 				", commodityParam=" + commodityParam +
-				'}';
+				']';
 	}
 
 	public Integer getFid() {
