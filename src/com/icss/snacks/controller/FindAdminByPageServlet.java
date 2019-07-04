@@ -50,7 +50,7 @@ public class FindAdminByPageServlet extends HttpServlet {
 		}
 		
 		
-		// µ÷ÓÃÒµÎñ²ã·½·¨½øĞĞ´¦Àí
+		// è°ƒç”¨ä¸šåŠ¡å±‚æ–¹æ³•è¿›è¡Œå¤„ç†
 		UserService userService = new UserService();
 		PageUtil<User> pageUtil = null; 
 		try {
@@ -60,7 +60,7 @@ public class FindAdminByPageServlet extends HttpServlet {
 		}
 		
 		
-		// ¸ù¾İ·½·¨´¦Àí½á¹û½øĞĞÌø×ª
+		// æ ¹æ®æ–¹æ³•å¤„ç†ç»“æœè¿›è¡Œè·³è½¬
 
 		request.setAttribute("pageUtil", pageUtil);
 		request.getRequestDispatcher("back/accountlist.jsp").forward(request, response);

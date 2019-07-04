@@ -41,7 +41,7 @@ public class FindUserByPageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// ½ÓÊÜÒ³ÃæÌá½»²ÎÊı
+		// æ¥å—é¡µé¢æäº¤å‚æ•°
 				String currentPage = null;
 				currentPage = request.getParameter("currentPage");
 				Integer pageSize = 6;
@@ -53,7 +53,7 @@ public class FindUserByPageServlet extends HttpServlet {
 				}
 				
 				
-				// µ÷ÓÃÒµÎñ²ã·½·¨½øĞĞ´¦Àí
+				// è°ƒç”¨ä¸šåŠ¡å±‚æ–¹æ³•è¿›è¡Œå¤„ç†
 				UserService userService = new UserService();
 				PageUtil<User> pageUtil = null; 
 				try {
@@ -63,7 +63,7 @@ public class FindUserByPageServlet extends HttpServlet {
 				}
 				
 				
-				// ¸ù¾İ·½·¨´¦Àí½á¹û½øĞĞÌø×ª
+				// æ ¹æ®æ–¹æ³•å¤„ç†ç»“æœè¿›è¡Œè·³è½¬
 
 				request.setAttribute("pageUtil", pageUtil);
 				request.getRequestDispatcher("back/userlist.jsp").forward(request, response);

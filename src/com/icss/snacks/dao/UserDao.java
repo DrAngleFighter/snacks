@@ -252,17 +252,12 @@ public class UserDao {
 
 	public List<User> findAllUserListByPage(Integer currentPage, Integer pageSize) throws Exception {
 		List<User> userList = new ArrayList<User>();
-		// 1. 连接数据库
 		Connection connection = DbFactory.openConnection();
-		// 2. 编写SQL语句
 		String sql = "select u.regtime,u.phone,u.username,u.sex from tb_user u limit ?,?";
-		// 3. 创建执行SQL对象，添加到集合中
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ps.setInt(1, (currentPage - 1) * pageSize);
 		ps.setInt(2, pageSize);
-		// 4. 执行SQL，返回结果集
 		ResultSet rs = ps.executeQuery();
-		// 5. 循环后去用户对象，添加到集合中
 		while (rs.next()) {
 			User user = new User();
 			user.setPhone(rs.getString("phone"));
@@ -271,7 +266,6 @@ public class UserDao {
 			user.setUsername(rs.getString("username"));
 			userList.add(user);
 		}
-		// 6. 释放资源
 		rs.close();
 		ps.close();
 		return userList;
@@ -279,17 +273,12 @@ public class UserDao {
 	
 	public List<User> findAdminListByPage(Integer currentPage, Integer pageSize) throws Exception {
 		List<User> userList = new ArrayList<User>();
-		// 1. 连接数据库
 		Connection connection = DbFactory.openConnection();
-		// 2. 编写SQL语句
 		String sql = "select u.password,u.phone,u.username,u.sex from tb_user u where u.username='admin' limit ?,?";
-		// 3. 创建执行SQL对象，添加到集合中
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ps.setInt(1, (currentPage - 1) * pageSize);
 		ps.setInt(2, pageSize);
-		// 4. 执行SQL，返回结果集
 		ResultSet rs = ps.executeQuery();
-		// 5. 循环后去用户对象，添加到集合中
 		while (rs.next()) {
 			User user = new User();
 			user.setPhone(rs.getString("phone"));
@@ -298,7 +287,6 @@ public class UserDao {
 			user.setUsername(rs.getString("username"));
 			userList.add(user);
 		}
-		// 6. 释放资源
 		rs.close();
 		ps.close();
 		return userList;
