@@ -119,6 +119,8 @@ public class BrandDao {
 		ps.close();
 		return brandList;
 	 }
+
+
 	public Integer findBrandCount() throws Exception{
 		Integer count = 0;
 		//1.连接数据库
