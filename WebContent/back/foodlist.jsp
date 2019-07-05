@@ -39,8 +39,8 @@
                                  <li class="b20"><label>${commodity.brand_name }</label></li>
                                   <li class="b20"><label>${commodity.category_name }</label></li>
                                 <li class="b60">
-                            	<a href="foodedit.jsp"><div class="edit_btn df_btn fl text_center">编辑</div></a>
-                        		<a href="javascript:deleteCommodity(${commodity.commodity_id })"><div class="delete_btn df_btn fl text_center">删除</div></a>
+                            	<a href="javascript:deleteCommodity(${commodity.commodity_id })"><div class="edit_btn df_btn fl text_center">编辑</div></a>
+                        		<a href="javascript:js()"><div class="delete_btn df_btn fl text_center">删除</div></a>
                         		</li>
                             </ul>
                       	</c:forEach>
@@ -50,6 +50,7 @@
                     				location.href="${pageContext.request.contextPath }/DeleteCommodityByIdServlet?commodity_id=" + id;
                     			}
                     		}
+                    	
                     	</script>
                        
                     </div>

@@ -7,6 +7,7 @@ import com.icss.snacks.dao.CommodityDao;
 import com.icss.snacks.dao.CommodityParamDao;
 import com.icss.snacks.entity.Commodity;
 import com.icss.snacks.entity.CommodityParam;
+import com.icss.snacks.entity.User;
 import com.icss.snacks.util.DbFactory;
 import com.icss.snacks.util.PageUtil;
 
@@ -91,6 +92,22 @@ public class CommodityService {
 		
 		try {
 			row = commodityDao.delete(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DbFactory.closeConnection();
+		}
+		
+		return row;
+	}
+	
+	
+	public Integer updateCommodityById(Commodity commodity) throws Exception {
+		Integer row = 0;
+		
+		try {
+			row = commodityDao.update(commodity);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
