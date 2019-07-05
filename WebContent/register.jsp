@@ -36,8 +36,8 @@
 										
 							   <div class="user-email">
 							     <input type="text" name="username" id="username" placeholder="请输入邮箱账号" onblur="checkExistName()">
-                 </div>	
-                 <font color ="red" id="usernameMsg"></font>									
+								</div>
+								<font color ="red" id="usernameMsg"></font>
                  <div class="user-pass">
                    <input type="password" name="password" id="userPassword" placeholder="设置密码">
                  </div>										

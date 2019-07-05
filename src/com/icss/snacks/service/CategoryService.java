@@ -4,6 +4,7 @@ import com.icss.snacks.dao.CategoryDao;
 import com.icss.snacks.entity.Category;
 import com.icss.snacks.util.DbFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryService {
@@ -25,5 +26,6 @@ public class CategoryService {
 
         return categories;
     }
+
 
 }
