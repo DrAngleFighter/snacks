@@ -80,6 +80,18 @@ public class UserService {
 		return user;
 	}
 	
+	public void DeleteUserByUid(Integer name) throws Exception {
+
+		try {
+			userDao.deleteUser(name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbFactory.closeConnection();
+		}
+
+	}
+	
 
 
 	public PageUtil<User> findAllUserByPage(Integer currentPage, Integer pageSize) throws Exception {
