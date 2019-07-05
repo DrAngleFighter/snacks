@@ -53,7 +53,7 @@ public class DeleteUserByIdServlet extends HttpServlet {
 			return;
 		}
 		//根据处理结果跳转页面
-		request.getRequestDispatcher("/back/userdetail.jsp").forward(request, response);
+		request.getRequestDispatcher("FindUserByPageServlet").forward(request, response);
 	}
 
 }
