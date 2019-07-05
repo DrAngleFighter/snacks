@@ -34,7 +34,7 @@
                             <li class="b20"><label>${user.regtime}</label></li>
                                    <li class="b20"><label>${user.phone}</label></li>
                             <li class="b60"> 
-                            		<a href="userdetail.jsp" ><div class="edit_btn df_btn fl text_center">详情</div></a>
+                            		<a href="back/userdetail.jsp" ><div class="edit_btn df_btn fl text_center">详情</div></a>
                         			<a href=""><div class="delete_btn df_btn fl text_center">删除</div></a>
                             </li>
                         </ul>
