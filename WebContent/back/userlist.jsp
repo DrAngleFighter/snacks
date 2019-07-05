@@ -63,7 +63,7 @@
 								function js2() {
 									var ID = $("#ID").val();
 									if (ID!=0) {
-										location.href="/back/userdetail.jsp";
+										location.href="DeleteUserByIdServlet?ID="+ID;
 									} else {
 										alert("错误链接了哥")
 									}
