@@ -28,19 +28,48 @@
                     <div class="list_b_c">
                         
                        <c:forEach items = "${requestScope.pageUtil.list}" var="user" varStatus="status">     
-                        <ul class="list_b">
+                        <ul class="list_b" onclick="getid(${user.uid})" >
+                           <input type="hidden" name="ID" id="ID" value="0">
                             <li class="b20"><label><input type="checkbox" name=""><span>${user.username}</span></label></li>
                             <li class="b20"><label>${user.gender}</label></li>
                             <li class="b20"><label>${user.regtime}</label></li>
                                    <li class="b20"><label>${user.phone}</label></li>
                             <li class="b60"> 
-                            		<a href="back/userdetail.jsp" ><div class="edit_btn df_btn fl text_center">详情</div></a>
-                        			<a href=""><div class="delete_btn df_btn fl text_center">删除</div></a>
+                            		<a href="javascript:js()" ><div class="edit_btn df_btn fl text_center">详情</div></a>
+                        			<a href="javascript:js2()"><div class="delete_btn df_btn fl text_center">删除</div></a>
                             </li>
                         </ul>
 	                  </c:forEach>
-
+                
                     </div>
+                            <script type="text/javascript" src="js/jquery.min.js"></script>
+                            <script type="text/javascript">
+								function getid(index) {
+									// alert(($('#chech'+index)).attr("checked")=="checked")
+									$("#ID").val(index);
+								}
+								function js() {
+									var ID = $("#ID").val();
+									if (ID!=0) {
+										location.href="FindUserByIdServlet?ID="+ID;
+									} else {
+										alert("错误链接了哥")
+									}
+								}
+								
+								function js2() {
+									var ID = $("#ID").val();
+									if (ID!=0) {
+										location.href="/back/userdetail.jsp";
+									} else {
+										alert("错误链接了哥")
+									}
+								}
+								
+							</script> 
+                        
+
+ 
 
                     <div class="pull_page">
                         <div class="fl pull_page_up">上一页</div>
