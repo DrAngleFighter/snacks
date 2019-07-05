@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="${contextPath }/back/css/main.css" rel="stylesheet">
 </head>
 <body>
 <!-- 用户管理 -->
@@ -23,18 +23,22 @@
                     <div class="list_b_c" id="release_news_in">
                         <div class="release_news">
                             <div class="news_title">
-                                <label class="text_center">用户名</label>
-                            ：</div>
+                                <label class="text_center">名称</label>
+                                ${user.username}
+                            </div>
                             <div class="news_title">
                                <label class="text_center">性别</label>
-                            ：</div>
+                               ${user.gender}
+                            </div>
                              <div class="news_title">
-                               <label class="text_center">生日</label>
-                            ：</div>
+                               <label class="text_center">email</label>
+                               ${user.email}
+                            </div>
                              <div class="news_title">
-                               <label class="text_center">电话</label>
-                            ：</div> 
-                            <div class="release_news_ok_btn text_center">保存</div>
+                               <label class="text_center">手机</label>
+                               ${user.phone}
+                            </div> 
+                            <a href="FindUserByPageServlet" ><div class="release_news_ok_btn text_center">确定</div>
                         </div>
                     </div>
                 </div>

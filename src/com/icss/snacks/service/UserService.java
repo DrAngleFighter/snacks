@@ -66,6 +66,20 @@ public class UserService {
 		}
 		return user;
 	}
+	
+	
+	public User findUserByUid(Integer name) throws Exception {
+		User user = null;
+		try {
+			user = userDao.findUserByUid(name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbFactory.closeConnection();
+		}
+		return user;
+	}
+	
 
 
 	public PageUtil<User> findAllUserByPage(Integer currentPage, Integer pageSize) throws Exception {
