@@ -195,7 +195,33 @@ public class CategoryDao {
 			category.setName(rs.getString("name"));
 			categoryList.add(category);
 		}
-		// 6. 释放资源
+
+		rs.close();
+		ps.close();
+		return categoryList;
+	}
+	public List<Category> findCategoryListByBrandId(int brand_id) throws Exception {
+		List<Category> categoryList = new ArrayList<Category>();
+		Connection connection = DbFactory.openConnection();
+		String sql = "SELECT DISTINCT" +
+				" category.*" +
+				" FROM" +
+				" `tb_brand` b" +
+				" INNER JOIN `tb_commodity` commodity ON commodity.brand_id = b.brand_id" +
+				" INNER JOIN `tb_category` category ON category.category_id = commodity.category_id AND category.category_parentid = 0" +
+				" WHERE" +
+				" b.brand_id = ?;";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, brand_id);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			Category category = new Category();
+			category.setCategory_id(rs.getInt("category_id"));
+			category.setCategory_parentid(rs.getInt("category_parentid"));
+			category.setName(rs.getString("name"));
+			categoryList.add(category);
+		}
+		
 		rs.close();
 		ps.close();
 		return categoryList;

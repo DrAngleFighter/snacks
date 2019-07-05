@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="${contextPath}/back/css/main.css" rel="stylesheet">
 </head>
 <body>
 <!-- 新闻管理 -->
@@ -19,7 +19,7 @@
                             <option>教务处</option>
                         </select>
                         <input type="text" placeholder="用户名" class="fl" name="">
-                        <div class="search fl"><img src="images/search.png"></div>
+                        <div class="search fl"><img src="${contextPath}/back/images/search.png"></div>
                     </div> 
                 </h3>
                 <div class="list" id="release_news">

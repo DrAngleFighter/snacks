@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="${contextPath}/back/main.css" rel="stylesheet">
 </head>
 <body>
 <!-- 食品管理 -->
@@ -13,7 +13,7 @@
                     <div class="amcl fr">
                      
                         <input type="text" placeholder="食品名" class="fl" name="">
-                        <div class="search fl"><img src="images/search.png"></div>
+                        <div class="search fl"><img src="${contextPath}/back/images/search.png"></div>
                     </div> 
                 </h3>
                 <div class="list" id="release_news">

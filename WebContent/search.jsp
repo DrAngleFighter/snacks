@@ -15,6 +15,7 @@
 
 		<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
+		<script src="js/category.js"></script>
 	</head>
 
 	<body>
@@ -57,16 +58,14 @@
 								<div class="clear"></div>
 								<li class="select-list">
 									<dl id="select1">
-										<dt class="am-badge am-round">品牌</dt>	
-									
+										<dt class="am-badge am-round">品牌</dt>
+
 										 <div class="dd-conent">										
 											<dd class="select-all selected"><a href="#">全部</a></dd>
-											<dd><a href="#">百草味</a></dd>
-											<dd><a href="#">良品铺子</a></dd>
-											<dd><a href="#">新农哥</a></dd>
-											<dd><a href="#">楼兰蜜语</a></dd>
-											<dd><a href="#">口水娃</a></dd>
-											<dd><a href="#">考拉兄弟</a></dd>
+											<c:forEach items="${requestScope.brandList}" var="brand">
+												<dd><a href="#">${brand.name}</a></dd>
+											</c:forEach>
+
 										 </div>
 						
 									</dl>
@@ -76,10 +75,9 @@
 										<dt class="am-badge am-round">种类</dt>
 										<div class="dd-conent">
 											<dd class="select-all selected"><a href="#">全部</a></dd>
-											<dd><a href="#">东北松子</a></dd>
-											<dd><a href="#">巴西松子</a></dd>
-											<dd><a href="#">夏威夷果</a></dd>
-											<dd><a href="#">松子</a></dd>
+												<c:forEach items="${requestScope.categoryList}" var="category">
+													<dd><a href="#">${category.name}</a></dd>
+												</c:forEach>
 										</div>
 									</dl>
 								</li>
@@ -104,24 +102,23 @@
 									<li style=" width:206px; height:306px">
 										<div class="i-pic limit">
 											
-											<a href="detail.jsp"><img src="/img/${commodity.img}" /></a>
+											<a href="FindCommodityServlet?commodity_id=${commodity.commodity_id}">
+												<img src="/img/${commodity.img}" />
+
 											<p class="title fl">${commodity.cname}</p>
 											<p class="price fl">
 												<b>¥</b>
 												<strong>${commodity.promotional_price}</strong>
 											</p>
-											
+											</a>
 										</div>
 									</li>
 								</c:forEach>
-	
-    
-    
-    								
 
 
 
-																				</ul>
+
+								</ul>
 							</div>
 							
 							<div class="clear"></div>
@@ -129,7 +126,8 @@
 							<ul class="am-pagination am-pagination-right">
 								<li class="am-disabled"><a href="#">首页</a></li>
 								<li><a href="#">上一页</a></li>
-								<li><a href="#">下一页</a></li>							<li><a href="#">尾页</a></li>
+								<li><a href="#">下一页</a></li>
+								<li><a href="#">尾页</a></li>
 							</ul>
 
 						</div>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="back/css/main.css" rel="stylesheet">
+    <link href="${contextPath}/back/css/main.css" rel="stylesheet">
 </head>
 <body>
     <!-- 订单管理 -->
@@ -64,6 +64,6 @@
 
 
 </body>
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="${contextPath}/back/js/jquery.js"></script>
+<script type="text/javascript" src="${contextPath}/back/js/main.js"></script>
 </html>

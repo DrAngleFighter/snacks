@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="back/css/main.css" rel="stylesheet">
+	<link href="${contextPath}/back/css/main.css" rel="stylesheet">
 </head>
 <body>
 			<div class="AccountManagement_c " id="AccountManagement_c">
                 <h3>用户管理 
                     <div class="amcl fr">
                         <input type="text" placeholder="用户名" class="fl" name="">
-                        <div class="search fl"><img src="images/search.png"></div>
+                        <div class="search fl"><img src="${contextPath}/back/images/search.png"></div>
                     </div> 
                 </h3>
              
@@ -26,10 +26,7 @@
                         <li class="b60"><label>操作</label></li>
                     </ul>
                     <div class="list_b_c">
-
-	                    
-	                    
-         
+                        
                        <c:forEach items = "${requestScope.pageUtil.list}" var="user" varStatus="status">     
                         <ul class="list_b" onclick="getid(${user.uid})" >
                            <input type="hidden" name="ID" id="ID" value="0">
@@ -99,7 +96,7 @@
             <div class="add_Account_h">
                 <div class="add_Account_h_in">
                     添加账户
-                    <span class="fr add_Account_close"><img src="../images/close.png"></span>
+                    <span class="fr add_Account_close"><img src="${contextPath}/back/images/close.png"></span>
                 </div>
             </div>
             <div class="user_name user_i">
@@ -118,7 +115,7 @@
             <div class="add_Account_h">
                 <div class="add_Account_h_in">
                     编辑账户
-                    <span class="fr add_Account_close"><img src="../images/close.png"></span>
+                    <span class="fr add_Account_close"><img src="${contextPath}/back/images/close.png"></span>
                 </div>
             </div>
             <div class="column_now ">正在编辑 “<span>jiaowuchu</span>”账户</div>
@@ -138,7 +135,7 @@
             <div class="add_Account_h">
                 <div class="add_Account_h_in">
                     删除账户
-                    <span class="fr add_Account_close"><img src="../images/close.png"></span>
+                    <span class="fr add_Account_close"><img src="${contextPath}/back/images/close.png"></span>
                 </div>
             </div>
             <div class="delete_text">确定删除“ <span>jiaopwuchu</span> ”账户吗？</div>
@@ -152,7 +149,7 @@
             <div class="add_Account_h">
                 <div class="add_Account_h_in">
                     账户栏目授权
-                    <span class="fr add_Account_close"><img src="../images/close.png"></span>
+                    <span class="fr add_Account_close"><img src="${contextPath}/back/images/close.png"></span>
                 </div>
             </div>
             <ul>
@@ -178,6 +175,6 @@
     </div>
     
 </body>
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="${contextPath}/back/js/jquery.js"></script>
+<script type="text/javascript" src="${contextPath}/back/js/main.js"></script>
 </html>

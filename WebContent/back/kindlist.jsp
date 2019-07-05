@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="${contextPath}/back/css/main.css" rel="stylesheet">
 </head>
 <body>
     <!-- 类型管理 -->
@@ -12,7 +12,7 @@
                 <h3>类型管理 
                     <div class="amcl fr">
                         <input type="text" placeholder="类型名" class="fl" name="">
-                        <div class="search fl"><img src="images/search.png"></div>
+                        <div class="search fl"><img src="${contextPath}/back/images/search.png"></div>
                     </div> 
                 </h3>
                 <div class="AM_ct text_center">
@@ -72,7 +72,7 @@
             <div class="add_Account_h">
                 <div class="add_Account_h_in">
                     添加栏目
-                    <span class="fr add_Account_close"><img src="../images/close.png"></span>
+                    <span class="fr add_Account_close"><img src="${contextPath}/back/images/close.png"></span>
                 </div>
             </div>
             <div class="user_name user_i">
@@ -91,7 +91,7 @@
             <div class="add_Account_h">
                 <div class="add_Account_h_in">
                     编辑栏目
-                    <span class="fr add_Account_close"><img src="../images/close.png"></span>
+                    <span class="fr add_Account_close"><img src="${contextPath}/back/images/close.png"></span>
                 </div>
             </div>
             <div class="user_name user_i">
@@ -110,7 +110,7 @@
             <div class="add_Account_h">
                 <div class="add_Account_h_in">
                     删除栏目
-                    <span class="fr add_Account_close"><img src="../images/close.png"></span>
+                    <span class="fr add_Account_close"><img src="${contextPath}/back/images/close.png"></span>
                 </div>
             </div>
             <div class="delete_text">确定删除“ <span>jiaopwuchu</span> ”栏目吗？</div>
@@ -120,6 +120,6 @@
 
 
 </body>
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="${contextPath}/back/js/jquery.js"></script>
+<script type="text/javascript" src="${contextPath}/back/js/main.js"></script>
 </html>

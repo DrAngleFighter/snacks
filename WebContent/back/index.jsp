@@ -20,13 +20,16 @@
         <div class="header_in">
             <img src="${contextPath}/back/img/ss.ico">
             <font id="wz">口袋小食管理平台</font>
-            <div class="quit text_center">安全退出</div>
+            <a href="${contextPath}/UserLogoutServlet">
+                <div class="quit text_center">安全退出</div>
+            </a>
+
         </div>
     </div>
 
     <div class="content ">
         <div class="user">
-            <div class="user_status fl text_center">当前用户： <span>管理员001</span></div>
+            <div class="user_status fl text_center">当前用户： <span>${sessionScope.user.username}</span></div>
             <div class="user_location fl">当前： 首页-<span>用户管理</span>  </div>
         </div>
         <div class="nav_side text_center fl">
