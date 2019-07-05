@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -8,17 +9,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
 		<title>个人中心</title>
-
-		<link href="../css/admin.css" rel="stylesheet" type="text/css">
-		<link href="../css/amazeui.css" rel="stylesheet" type="text/css">
-		<link href="../css/personal.css" rel="stylesheet" type="text/css">
-		<link href="../css/vipstyle.css" rel="stylesheet" type="text/css">
-		<script src="../js/jquery.min.js"></script>
-		<script src="../js/amazeui.js"></script>
+		<c:set var="contextPath" value="${pageContext.request.contextPath}" scope="application"/>
+		<script>
+			var contextPath = "${contextPath}";
+		</script>
+		<link href="${contextPath}/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="${contextPath}/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="${contextPath}/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="${contextPath}/css/vipstyle.css" rel="stylesheet" type="text/css">
+		<script src="${contextPath}/js/jquery.min.js"></script>
+		<script src="${contextPath}/js/amazeui.js"></script>
 	</head>
 
 	<body>
-		<iframe src="../header.jsp" width="100%" height="150px" frameborder="0"></iframe>
+		<iframe src="${contextPath}/header.jsp" width="100%" height="150px" frameborder="0"></iframe>
 		<div class="nav-table">
 			<div class="long-title"><span class="all-goods">全部分类</span></div>
 			<div class="nav-cont">
@@ -36,26 +40,26 @@
 								<!--个人信息 -->
 
 								<div class="m-userinfo">
-									<a href="news.jsp">
+									<a href="${contextPath}/person/news.jsp">
 										<div class="tipsBox"><i class="am-icon-envelope"></i></div>
 									</a>
 									<div class="m-baseinfo">
 										<a class="m-pic" href="information.jsp">
-											<img src="../images/getAvatar.do.jpg">
+											<img src="${contextPath}/images/getAvatar.do.jpg">
 										</a>
 										<div class="m-info">
-											<em class="s-name">张小北</em>
+											<em class="s-name">${sessionScope.user.username}</em>
 				<div class="safeText">
 												<div class="progressBar"><span style="left: -95px;" class="progress"></span></div>
 											</div>
 											<div class="m-address">
-												<a href="address.jsp" class="i-trigger">收货地址<i class="am-icon-angle-right" style="padding-left:5px ;"></i></a>
+												<a href="${contextPath}/person/address.jsp" class="i-trigger">收货地址<i class="am-icon-angle-right" style="padding-left:5px ;"></i></a>
 											</div>
 										</div>
 									</div>
 									<div class="m-right">
 										<div class="m-new">
-											<a href="news.jsp"><i class="am-icon-dropbox  am-icon-md" style="padding-right:5px ;"></i>消息盒子</a>
+											<a href="${contextPath}/person/news.jsp"><i class="am-icon-dropbox  am-icon-md" style="padding-right:5px ;"></i>消息盒子</a>
 										</div>
 
 									</div>
@@ -68,13 +72,13 @@
 									</div>
 									
 									<p class="m-wallet">
-										<a href="wallet.jsp">
-											<em class="m-num">0.00</em>
+										<a href="${contextPath}/person/wallet.jsp">
+											<em class="m-num">${requestScope.account.money}</em>
 											<span class="m-title">账户余额</span>
 										</a>
 									</p>
 									<p class="m-bill">
-										<a href="pointnew.jsp">
+										<a href="${contextPath}/person/pointnew.jsp">
 											<em class="m-num">10</em>
 											<span class="m-title">总积分</span>
 										</a>
@@ -91,49 +95,63 @@
 							<div class="m-order">
 								<div class="s-bar">
 									<i class="s-icon"></i>我的订单
-									<a class="i-load-more-item-shadow" href="order.jsp">全部订单</a>
+									<a class="i-load-more-item-shadow" href="${contextPath}/person/order.jsp">全部订单</a>
 								</div>
 								<ul>
-									<li><a href="order.jsp"><i><img src="../images/pay.png"/></i><span>待付款</span></a></li>
-									<li><a href="order.jsp"><i><img src="../images/send.png"/></i><span>待发货<em class="m-num">1</em></span></a></li>
-									<li><a href="order.jsp"><i><img src="../images/receive.png"/></i><span>待收货</span></a></li>
-									<li><a href="order.jsp"><i><img src="../images/comment.png"/></i><span>待评价<em class="m-num">3</em></span></a></li>
-									<li><a href="change.jsp"><i><img src="../images/refund.png"/></i><span>退换货</span></a></li>
+									<li><a href="${contextPath}/person/order.jsp"><i><img src="${contextPath}/images/pay.png"/></i><span>待付款</span></a></li>
+									<li><a href="${contextPath}/person/order.jsp"><i><img src="${contextPath}/images/send.png"/></i><span>待发货<em class="m-num">1</em></span></a></li>
+									<li><a href="${contextPath}/person/order.jsp"><i><img src="${contextPath}/images/receive.png"/></i><span>待收货</span></a></li>
+									<li><a href="${contextPath}/person/order.jsp"><i><img src="${contextPath}/images/comment.png"/></i><span>待评价<em class="m-num">3</em></span></a></li>
+									<li><a href="${contextPath}/person/change.jsp"><i><img src="${contextPath}/images/refund.png"/></i><span>退换货</span></a></li>
 								</ul>
-								<div class="orderContentBox">
-									<div class="orderContent">
-										<div class="orderContentpic">
-											<div class="imgBox">
-												<a href="orderinfo.jsp"><img src="../images/01_small.jpg"></a>
+								<c:forEach items="${requestScope.ordersList}" var="orders" varStatus="status">
+									<div class="orderContentBox">
+										<div class="orderContent">
+											<div class="orderContentpic">
+												<div class="imgBox">
+													<a href="${contextPath}/person/orderinfo.jsp"><img src="${contextPath}/images/01_small.jpg"></a>
+												</div>
 											</div>
-										</div>
-										<div class="detailContent">
-											<a href="orderinfo.jsp" class="delivery">签收</a>
-											<div class="orderID">
-												<span class="time">2016-03-09</span>
-												<span class="splitBorder">|</span>
-												<span class="time">21:52:47</span>
+											<div class="detailContent">
+												<a href="${contextPath}/person/orderinfo.jsp" class="delivery"><span id="state" onload="stateToString(${orders.state})"></span></a>
+												<div class="orderID">
+													<span class="time">${orders.ordertime}</span>
+												</div>
+												<div class="orderID">
+													<span class="num">共 ${status.count}件商品</span>
+												</div>
 											</div>
-											<div class="orderID">
-												<span class="num">共1件商品</span>
-											</div>
-										</div>
-										<div class="state">待评价</div>
-										<div class="price"><span class="sym">¥</span>23.<span class="sym">80</span></div>
+											<div class="state">待评价</div>
+											<div class="price"><span class="sym">¥</span>${orders.totalprice}</div>
 
+										</div>
+										<a href="javascript:void(0);" class="btnPay">再次购买</a>
 									</div>
-									<a href="javascript:void(0);" class="btnPay">再次购买</a>
-								</div>
-
+								</c:forEach>
+								<script type="text/javascript">
+									function stateToString(state) {
+										if (state == 1) {
+											document.getElementById(state).val("待付款");
+										} else if (state == 2) {
+											document.getElementById(state).val("待发货");
+										} else if (state == 3) {
+											document.getElementById(state).val("待收货");
+										}else if (state == 4) {
+											document.getElementById(state).val("待发货");
+										} else {
+											document.getElementById(state).val("错误");
+										}
+									}
+								</script>
 								<div class="orderContentBox">
 									<div class="orderContent">
 										<div class="orderContentpic">
 											<div class="imgBox">
-												<a href="orderinfo.jsp"><img src="../images/01_small.jpg"></a>
+												<a href="orderinfo.jsp"><img src="${contextPath}/images/01_small.jpg"></a>
 											</div>
 										</div>
 										<div class="detailContent">
-											<a href="orderinfo.jsp" class="delivery">派件</a>
+											<a href="${contextPath}/person/orderinfo.jsp" class="delivery">派件</a>
 											<div class="orderID">
 												<span class="time">2016-03-09</span>
 												<span class="splitBorder">|</span>
@@ -156,17 +174,17 @@
 									<i class="s-icon"></i>我的常用
 								</div>
 								<ul>
-									<a href="order.jsp">
+									<a href="${contextPath}/person/order.jsp">
 										<li class="am-u-sm-4"><i class="am-icon-truck am-icon-md"></i>
 											<p>物流查询</p>
 										</li>
 									</a>
-									<a href="collection.jsp">
+									<a href="${contextPath}/person/collection.jsp">
 										<li class="am-u-sm-4"><i class="am-icon-heart am-icon-md"></i>
 											<p>我的收藏</p>
 										</li>
 									</a>
-									<a href="foot.jsp">
+									<a href="${contextPath}/person/foot.jsp">
 										<li class="am-u-sm-4"><i class="am-icon-paw am-icon-md"></i>
 											<p>我的足迹</p>
 										</li>
@@ -176,12 +194,12 @@
 											<p>为你推荐</p>
 										</li>
 									</a>
-									<a href="blog.jsp">
+									<a href="${contextPath}/person/blog.jsp">
 										<li class="am-u-sm-4"><i class="am-icon-share-alt am-icon-md"></i>
 											<p>我的分享</p>
 										</li>
 									</a>
-									<a href="../home/home2.jsp">
+									<a href="${contextPath}/home/home2.jsp">
 										<li class="am-u-sm-4"><i class="am-icon-clock-o am-icon-md"></i>
 											<p>限时活动</p>
 										</li>
@@ -229,7 +247,7 @@
 							<div class="new-goods-info">
 								<a class="shop-info" href="#">
 									<div class="face-img-panel">
-										<img src="../images/imgsearch1.jpg" alt="">
+										<img src="${contextPath}/images/imgsearch1.jpg" alt="">
 									</div>
 									<span class="new-goods-num ">4</span>
 									<span class="shop-title">剥壳松子</span>
@@ -242,37 +260,37 @@
 
 				</div>
 				<!--底部-->
-				<iframe src="../footer.jsp" width="100%" height="150px" frameborder="0" scrolling="no"></iframe>
+				<iframe src="${contextPath}/footer.jsp" width="100%" height="150px" frameborder="0" scrolling="no"></iframe>
 
 			</div>
 
 			<aside class="menu">
 				<ul>
 					<li class="person active">
-						<a href="index.jsp"><i class="am-icon-user"></i>个人中心</a>
+						<a href="${contextPath}/person/index.jsp"><i class="am-icon-user"></i>个人中心</a>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 						<ul>
-							<li> <a href="information.jsp">个人信息</a></li>
-							<li> <a href="safety.jsp">安全设置</a></li>
-							<li> <a href="address.jsp">地址管理</a></li>
+							<li> <a href="${contextPath}/person/information.jsp">个人信息</a></li>
+							<li> <a href="${contextPath}/person/safety.jsp">安全设置</a></li>
+							<li> <a href="${contextPath}/person/address.jsp">地址管理</a></li>
 						</ul>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
-							<li><a href="order.jsp">订单管理</a></li>
-							<li> <a href="change.jsp">退款售后</a></li>
-							<li> <a href="comment.jsp">评价商品</a></li>
+							<li><a href="${contextPath}/person/order.jsp">订单管理</a></li>
+							<li> <a href="${contextPath}/person/change.jsp">退款售后</a></li>
+							<li> <a href="${contextPath}/person/comment.jsp">评价商品</a></li>
 						</ul>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-dollar"></i>我的资产</p>
 						<ul>
-							<li> <a href="points.jsp">我的积分</a></li>
-							<li> <a href="walletlist.jsp">账户余额</a></li>
-							<li> <a href="bill.jsp">账单明细</a></li>
+							<li> <a href="${contextPath}/person/points.jsp">我的积分</a></li>
+							<li> <a href="${contextPath}/person/walletlist.jsp">账户余额</a></li>
+							<li> <a href="${contextPath}/person/bill.jsp">账单明细</a></li>
 						</ul>
 					</li>
 

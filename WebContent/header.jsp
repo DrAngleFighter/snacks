@@ -33,7 +33,7 @@
       <div class="menu-hd"><a href="LatestCommdityServlet" target="_top" class="h">商城首页</a></div>
     </div>
     <div class="topMessage my-shangcheng">
-      <div class="menu-hd MyShangcheng"><a href="person/index.jsp" target="_top">个人中心</a></div>
+      <div class="menu-hd MyShangcheng"><a href="PersonalCenterServlet" target="_top">个人中心</a></div>
     </div>
     <div class="topMessage mini-cart">
       <div class="menu-hd"><a id="mc-menu-hd" href="FindCartByUidServlet" target="_top"><span>购物车</span></a></div>
