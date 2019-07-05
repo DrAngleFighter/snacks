@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link href="back/css/main.css" rel="stylesheet">
+	<link href="${contextPath}/back/css/main.css" rel="stylesheet">
 </head>
 <body>
 			<div class="AccountManagement_c " id="AccountManagement_c">
@@ -27,7 +27,7 @@
                             <li class="b20"><label>${user.password}</label></li>
                             <li class="b20"><label>管理员</label></li>
                             <li class="b60"> 
-                            		<a href="accountedit.jsp" ><div class="edit_btn df_btn fl text_center">编辑</div></a>
+                            		<a href="/back/accountedit.jsp" ><div class="edit_btn df_btn fl text_center">编辑</div></a>
                         			<a href=""><div class="delete_btn df_btn fl text_center">删除</div></a>
                             </li>
                         </ul>
@@ -46,6 +46,6 @@
    
     
 </body>
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="${contextPath}/back/js/jquery.js"></script>
+<script type="text/javascript" src="${contextPath}/back/js/main.js"></script>
 </html>

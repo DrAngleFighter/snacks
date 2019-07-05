@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="${contextPath}/back/css/main.css" rel="stylesheet">
 </head>
 <body>
 <!-- 品牌管理 -->
@@ -12,7 +12,7 @@
                 <h3>品牌管理 
                     <div class="amcl fr">
                         <input type="text" placeholder="品牌名" class="fl" name="">
-                        <div class="search fl"><img src="images/search.png"></div>
+                        <div class="search fl"><img src="${contextPath}/back/search.png"></div>
                     </div> 
                 </h3>
                 <div class="list" id="release_news">
